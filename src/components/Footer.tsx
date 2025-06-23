@@ -33,8 +33,8 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Get In Touch</h3>
             <div className="space-y-2 text-gray-300">
-              <p>Email: info@rypdesign.com</p>
-              <p>Phone: +1 (555) 123-4567</p>
+              <p>Email: renderyourplan@gmail.com</p>
+              <p>Phone: +962 7 7077 798 6</p>
               <p>Address: 123 Design Street, Creative City, CC 12345</p>
             </div>
           </div>
@@ -42,7 +42,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center">
           <p className="text-gray-400">
-            © 2024 RYP Design. All rights reserved. Designed by Ibrahem Alyan.
+      © 2025 Ibrahim Alayan Interior Design. All rights reserved.
           </p>
         </div>
       </div>

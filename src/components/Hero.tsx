@@ -19,13 +19,13 @@ const Hero = () => {
             >
               View Portfolio
             </Button>
-            <Button 
+               <Button 
               size="lg" 
-              variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-black"
+              className="bg-white text-black hover:bg-gray-200"
             >
-              Explore Courses
+                Explore Courses
             </Button>
+     
           </div>
         </div>
       </div>
