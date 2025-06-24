@@ -82,7 +82,7 @@ const Footer = () => {
 
             {/* عنوان اختياري */}
             <h2 className="text-xl font-semibold text-center text-black mb-4">
-            My cv
+              My Curriculum Vitae
             </h2>
 
             {/* صورة CV */}
@@ -94,7 +94,13 @@ const Footer = () => {
 
             {/* زر تحميل */}
             <div className="mt-6 text-center">
+              <a
+                href="/cv.jpeg"
+                download
+                className="inline-block bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800 transition"
+              >
             
+              </a>
             </div>
           </div>
         </div>
