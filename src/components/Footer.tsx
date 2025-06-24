@@ -34,24 +34,26 @@ const Footer = () => {
                 <a href="#portfolio" className="block text-gray-300 hover:text-white transition">Portfolio</a>
                 <a href="#videos" className="block text-gray-300 hover:text-white transition">Videos</a>
                 <a href="#courses" className="block text-gray-300 hover:text-white transition">Courses</a>
-              </div>
-            </div>
-
-            {/* Contact Info + CV Button */}
-            <div>
+                     <button
+                onClick={() => setShowCv(true)}
+                className="block text-gray-300 hover:text-white transition"
+              >
+                View CV
+              </button>
+                  <div>
               <h3 className="text-lg font-semibold mb-4">Get In Touch</h3>
               <div className="space-y-2 text-gray-300 mb-6">
                 <p>Email: renderyourplan@gmail.com</p>
                 <p>Phone: +962 7 7077 798 6</p>
-                <p>Address: Amman, AM, JO</p>
+                <p>Address: Amman, JO</p>
               </div>
-              <button
-                onClick={() => setShowCv(true)}
-                className="bg-white text-black px-5 py-2 rounded-md hover:bg-gray-200 transition font-medium"
-              >
-                View CV
-              </button>
+          
             </div>
+              </div>
+            </div>
+
+            {/* Contact Info + CV Button */}
+          
           </div>
 
           <div className="border-t border-gray-800 mt-12 pt-8 text-center">
