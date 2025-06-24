@@ -14,12 +14,13 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <img src="/logo.jpg" alt="RYP Logo" className="h-10 w-10 rounded-full object-cover" />
-            <span className="ml-3 text-2xl font-bold text-black">RYP</span>
+            <span className="ml-3 text-2xl font-bold text-black">Render Your Plan</span>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             <a href="#home" className="text-gray-900 hover:text-gray-600 transition-colors">Home</a>
+            <a href="#about" className="text-gray-900 hover:text-gray-600 transition-colors ">About</a>
             <a href="#portfolio" className="text-gray-900 hover:text-gray-600 transition-colors">Portfolio</a>
             <a href="#videos" className="text-gray-900 hover:text-gray-600 transition-colors">Videos</a>
             <a href="#courses" className="text-gray-900 hover:text-gray-600 transition-colors">Courses</a>

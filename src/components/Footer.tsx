@@ -8,10 +8,10 @@ const Footer = () => {
           <div>
             <div className="flex items-center mb-4">
               <img src="/logo.jpg" alt="RYP Logo" className="h-10 w-10 rounded-full object-cover" />
-              <span className="ml-3 text-2xl font-bold">RYP</span>
+              <span className="ml-3 text-2xl font-bold">render-your-plan</span>
             </div>
             <p className="text-gray-300 mb-4">
-              Transforming spaces into extraordinary experiences through innovative interior design.
+              Transforming spaces into exggtraordinary experiences through innovative interior design.
             </p>
             <p className="text-gray-400 text-sm">
               Led by Interior Designer Ibrahem Alyan
@@ -22,6 +22,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <div className="space-y-2">
+               <a href="#About" className="block text-gray-300 hover:text-white transition-colors">About</a>
               <a href="#home" className="block text-gray-300 hover:text-white transition-colors">Home</a>
               <a href="#portfolio" className="block text-gray-300 hover:text-white transition-colors">Portfolio</a>
               <a href="#videos" className="block text-gray-300 hover:text-white transition-colors">Videos</a>
