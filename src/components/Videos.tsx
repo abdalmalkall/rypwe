@@ -11,14 +11,12 @@ const Videos = () => {
       duration: "8:45",
       type: "image"
     },
-    
     {
-      
       id: 2,
       title: "Kitchen Design Process: From Concept to Reality",
       description: "A complete walkthrough of our kitchen design methodology",
-      thumbnail: "/2.mp4",
-      type: "video"
+      thumbnail: "https://www.youtube.com/watch?v=abc123XYZ", // YouTube link هنا
+      type: "youtube"
     },
     {
       id: 3,
@@ -30,6 +28,16 @@ const Videos = () => {
     }
   ];
 
+  const getYouTubeEmbedURL = (url: string) => {
+    try {
+      const videoId = url.includes("youtu.be")
+        ? url.split("/").pop()
+        : new URLSearchParams(new URL(url).search).get("v");
+      return `https://www.youtube.com/embed/${videoId}`;
+    } catch {
+      return "";
+    }
+  };
 
   return (
     <section id="videos" className="py-20 bg-white">
@@ -46,7 +54,16 @@ const Videos = () => {
             <Card key={video.id} className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
               <div className="relative">
                 <AspectRatio ratio={16 / 9}>
-                  {video.type === "video" ? (
+                  {video.type === "youtube" ? (
+                    <iframe
+                      src={getYouTubeEmbedURL(video.thumbnail)}
+                      title={video.title}
+                      className="w-full h-full rounded"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  ) : video.type === "video" ? (
                     <video
                       src={video.thumbnail}
                       controls
@@ -66,9 +83,11 @@ const Videos = () => {
                       </div>
                     </>
                   )}
-                  <div className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-sm px-2 py-1 rounded">
-                    {video.duration}
-                  </div>
+                  {video.duration && (
+                    <div className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-sm px-2 py-1 rounded">
+                      {video.duration}
+                    </div>
+                  )}
                 </AspectRatio>
               </div>
               <CardHeader>
