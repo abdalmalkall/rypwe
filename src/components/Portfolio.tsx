@@ -7,13 +7,13 @@ const Portfolio = () => {
       id: 1,
       title: "Modern Minimalist Living Room",
       description: "Clean lines and neutral tones create a serene living space",
-      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "Living.jpeg"
     },
     {
       id: 2,
       title: "Contemporary Kitchen Design",
       description: "Sleek functionality meets elegant aesthetics",
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "Kitchen.png"
     },
     {
       id: 3,
@@ -25,7 +25,7 @@ const Portfolio = () => {
       id: 4,
       title: "Executive Office Space",
       description: "Professional environment with modern touches",
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "4.png"
     },
     {
       id: 5,
@@ -37,7 +37,7 @@ const Portfolio = () => {
       id: 6,
       title: "Bathroom Sanctuary",
       description: "Spa-like retreat with contemporary fixtures",
-      image: "https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "Bathroom.png"
     }
   ];
 
