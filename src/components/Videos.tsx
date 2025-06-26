@@ -7,31 +7,34 @@ const Videos = () => {
       id: 1,
       title: "Before & After: Living Room Transformation",
       description: "Watch how we transformed this outdated living room into a modern masterpiece",
-      thumbnail: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      thumbnail:
+        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       duration: "8:45",
-      type: "image"
+      type: "image",
     },
     {
       id: 2,
       title: "Kitchen Design Process: From Concept to Reality",
       description: "A complete walkthrough of our kitchen design methodology",
-      thumbnail: "https://www.youtube.com/watch?v=abc123XYZ", // YouTube link هنا
-      type: "youtube"
+      thumbnail: "https://youtu.be/7lTpXiLGsYI?si=_GQTQS7jNKZuEX9u",
+      type: "youtube",
+      duration: "", // اختياري – فقط لتظهر العلامة الزمنية
     },
     {
       id: 3,
       title: "Color Theory in Interior Design",
       description: "Learn how to use the perfect color palette for any space",
-      thumbnail: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      thumbnail:
+        "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       duration: "6:15",
-      type: "image"
-    }
+      type: "image",
+    },
   ];
 
   const getYouTubeEmbedURL = (url: string) => {
     try {
       const videoId = url.includes("youtu.be")
-        ? url.split("/").pop()
+        ? url.split("/")[3].split("?")[0]
         : new URLSearchParams(new URL(url).search).get("v");
       return `https://www.youtube.com/embed/${videoId}`;
     } catch {
@@ -51,7 +54,10 @@ const Videos = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {videos.map((video) => (
-            <Card key={video.id} className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+            <Card
+              key={video.id}
+              className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+            >
               <div className="relative">
                 <AspectRatio ratio={16 / 9}>
                   {video.type === "youtube" ? (
@@ -71,8 +77,8 @@ const Videos = () => {
                     />
                   ) : (
                     <>
-                      <img 
-                        src={video.thumbnail} 
+                      <img
+                        src={video.thumbnail}
                         alt={video.title}
                         className="w-full h-full object-cover"
                       />
@@ -83,6 +89,7 @@ const Videos = () => {
                       </div>
                     </>
                   )}
+
                   {video.duration && (
                     <div className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-sm px-2 py-1 rounded">
                       {video.duration}
@@ -90,6 +97,7 @@ const Videos = () => {
                   )}
                 </AspectRatio>
               </div>
+
               <CardHeader>
                 <CardTitle className="text-lg">{video.title}</CardTitle>
               </CardHeader>
