@@ -13,20 +13,20 @@ const Hero = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#portfolio" className="text-center">
-              <Button
+              {/* <Button
                 size="lg"
                 className="bg-white text-black hover:bg-gray-200 w-52"
               >
                 View Portfolio
-              </Button>
+              </Button> */}
             </a>
             <a href="#courses" className="text-center">
-              <Button
+              {/* <Button
                 size="lg"
                 className="bg-white text-black hover:bg-gray-200 w-52"
               >
                 Explore Courses
-              </Button>
+              </Button> */}
             </a>
           </div>
         </div>

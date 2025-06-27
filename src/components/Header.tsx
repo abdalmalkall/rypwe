@@ -24,7 +24,7 @@ const Header = () => {
               <a href="#about" className="text-gray-900 hover:text-gray-600 transition-colors">About</a>
               <a href="#portfolio" className="text-gray-900 hover:text-gray-600 transition-colors">Portfolio</a>
               <a href="#videos" className="text-gray-900 hover:text-gray-600 transition-colors">Videos</a>
-              <a href="#courses" className="text-gray-900 hover:text-gray-600 transition-colors">Courses</a>
+              {/* <a href="#courses" className="text-gray-900 hover:text-gray-600 transition-colors">Courses</a> */}
               <a href="#contact" className="text-gray-900 hover:text-gray-600 transition-colors">Contact</a>
               <button
                 onClick={() => setShowCv(true)}
@@ -50,7 +50,7 @@ const Header = () => {
                 <a href="#home" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Home</a>
                 <a href="#portfolio" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Portfolio</a>
                 <a href="#videos" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Videos</a>
-                <a href="#courses" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Courses</a>
+                {/* <a href="#courses" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Courses</a> */}
                 <a href="#contact" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Contact</a>
                 <button
                   onClick={() => setShowCv(true)}
