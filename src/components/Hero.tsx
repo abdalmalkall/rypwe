@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
@@ -13,19 +12,20 @@ const Hero = () => {
             Transforming spaces into extraordinary experiences. Led by interior designer Ibrahem Alyan.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
-              className="bg-white text-black hover:bg-gray-200"
-            >
-              View Portfolio
-            </Button>
-               <Button 
-              size="lg" 
-              className="bg-white text-black hover:bg-gray-200"
-            >
+         <a href="#portfolio">
+          <Button className="bg-white text-black hover:bg-gray-200">
+            View Portfolio
+          </Button>
+        </a>
+            <a href="#courses">
+              <Button 
+                size="lg" 
+                className="bg-white text-black hover:bg-gray-200"
+              >
                 Explore Courses
-            </Button>
-     
+              </Button>
+            </a>
+
           </div>
         </div>
       </div>

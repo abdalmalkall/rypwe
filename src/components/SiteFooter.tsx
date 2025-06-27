@@ -12,7 +12,7 @@ const Footer = () => {
             <div>
               <div className="flex items-center mb-4">
                 <img
-                  src="/logo.webp"
+                  src="/logo.web"
                   alt="RYP Logo"
                   className="h-10 w-10 rounded-full object-cover"
                 />
