@@ -12,7 +12,7 @@ const Footer = () => {
             <div>
               <div className="flex items-center mb-4">
                 <img
-                  src="/logo.web"
+                  src="/logo."
                   alt="RYP Logo"
                   className="h-10 w-10 rounded-full object-cover"
                 />
@@ -38,7 +38,7 @@ const Footer = () => {
                 onClick={() => setShowCv(true)}
                 className="block text-gray-300 hover:text-white transition"
               >
-                View CV
+                View CV 
               </button>
                   <div>
               <h3 className="text-lg font-semibold mb-4">Get In Touch</h3>
