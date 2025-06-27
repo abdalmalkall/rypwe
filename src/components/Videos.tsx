@@ -5,28 +5,19 @@ const Videos = () => {
   const videos = [
     {
       id: 1,
-      title: "Before & After: Living Room Transformation",
-      description: "Watch how we transformed this outdated living room into a modern masterpiece",
-      thumbnail:
-        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      duration: "8:45",
-      type: "image",
+      title: "A Luxurious Architectural Journey with Lumion 2024",
+      description: "Experience the elegance of high-end architecture  in this exclusive villa design. From concept development to stunning visual rendering using Lumion 2024, this project showcases refined materials, dramatic lighting, and sophisticated spatial planning—crafted to reflect timeless luxury.",
+      thumbnail: "https://youtu.be/7lTpXiLGsYI?si=_GQTQS7jNKZuEX9u",
+      type: "youtube",
+      duration: "",
     },
     {
       id: 2,
-      title: "Kitchen Design Process: From Concept to Reality",
-      description: "A complete walkthrough of our kitchen design methodology",
-      thumbnail: "https://youtu.be/7lTpXiLGsYI?si=_GQTQS7jNKZuEX9u",
-      type: "youtube",
-      duration: "", // اختياري – فقط لتظهر العلامة الزمنية
-    },
-    {
-      id: 3,
-      title: "Color Theory in Interior Design",
-      description: "Learn how to use the perfect color palette for any space",
+      title: "The Art of Architectural Lighting with Lumion 2024 – A Luxurious Visual Journey",
+    description: "Experience how lighting reshapes architectural interiors and exteriors in this creative showcase rendered with Lumion 2024. This project highlights how strategic lighting enhances materials, shadows, and spatial ambiance — delivering depth, realism, and architectural elegance in every frame.",
+
       thumbnail:
         "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      duration: "6:15",
       type: "image",
     },
   ];
@@ -44,7 +35,7 @@ const Videos = () => {
 
   return (
     <section id="videos" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Design Videos</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -52,11 +43,12 @@ const Videos = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* ✅ شبكة من عمودين فقط، ومركزّة */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-center">
           {videos.map((video) => (
             <Card
               key={video.id}
-              className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+              className="w-full max-w-sm mx-auto overflow-hidden hover:shadow-xl transition-shadow"
             >
               <div className="relative">
                 <AspectRatio ratio={16 / 9}>
@@ -69,18 +61,12 @@ const Videos = () => {
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     ></iframe>
-                  ) : video.type === "video" ? (
-                    <video
-                      src={video.thumbnail}
-                      controls
-                      className="w-full h-full object-cover rounded"
-                    />
                   ) : (
                     <>
                       <img
                         src={video.thumbnail}
                         alt={video.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover rounded"
                       />
                       <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
                         <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
@@ -99,7 +85,7 @@ const Videos = () => {
               </div>
 
               <CardHeader>
-                <CardTitle className="text-lg">{video.title}</CardTitle>
+                <CardTitle className="text-lg font-semibold">{video.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">{video.description}</p>
