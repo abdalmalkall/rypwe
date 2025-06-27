@@ -19,7 +19,7 @@ const Portfolio = () => {
       id: 3,
       title: "Luxury Bedroom Suite",
       description: "Sophisticated comfort in monochromatic harmony",
-      image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "Bedroom.webp"
     },
     {
       id: 4,
@@ -31,7 +31,7 @@ const Portfolio = () => {
       id: 5,
       title: "Dining Room Elegance",
       description: "Where style meets functionality for memorable gatherings",
-      image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "Dining.webp"
     },
     {
       id: 6,
