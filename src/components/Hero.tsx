@@ -12,20 +12,22 @@ const Hero = () => {
             Transforming spaces into extraordinary experiences. Led by interior designer Ibrahem Alyan.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-         <a href="#portfolio">
-          <Button className="bg-white text-black hover:bg-gray-200">
-            View Portfolio
-          </Button>
-        </a>
-            <a href="#courses">
-              <Button 
-                size="lg" 
-                className="bg-white text-black hover:bg-gray-200"
+            <a href="#portfolio" className="text-center">
+              <Button
+                size="lg"
+                className="bg-white text-black hover:bg-gray-200 w-52"
+              >
+                View Portfolio
+              </Button>
+            </a>
+            <a href="#courses" className="text-center">
+              <Button
+                size="lg"
+                className="bg-white text-black hover:bg-gray-200 w-52"
               >
                 Explore Courses
               </Button>
             </a>
-
           </div>
         </div>
       </div>
