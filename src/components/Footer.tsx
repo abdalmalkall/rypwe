@@ -11,12 +11,8 @@ const Footer = () => {
             {/* Company Info */}
             <div>
               <div className="flex items-center mb-4">
-                <img
-                  src="/logowh.webp"
-                  alt="RYP Logo"
-                  className="h-20 w-20 rounded-full object-cover"
-                />
-                <span className="ml-3 text-2xl font-bold">RYP</span>
+             
+                <span className="ml-3 text-2xl font-bold">Ibrahem Alyan</span>
               </div>
               <p className="text-gray-300 mb-4">
                 Transforming spaces into extraordinary experiences through innovative interior design.
