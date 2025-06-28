@@ -1,12 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Button } from "@/components/ui/button"; // تأكد من وجود هذا الكمبوننت في مشروعك
 
 const Videos = () => {
   const videos = [
     {
       id: 1,
       title: "A Luxurious Architectural Journey with Lumion 2024",
-      description: "Experience the elegance of high-end architecture  in this exclusive villa design. From concept development to stunning visual rendering using Lumion 2024, this project showcases refined materials, dramatic lighting, and sophisticated spatial planning—crafted to reflect timeless luxury.",
+      description:
+        "Experience the elegance of high-end architecture in this exclusive villa design. From concept development to stunning visual rendering using Lumion 2024, this project showcases refined materials, dramatic lighting, and sophisticated spatial planning—crafted to reflect timeless luxury.",
       thumbnail: "https://youtu.be/7lTpXiLGsYI?si=_GQTQS7jNKZuEX9u",
       type: "youtube",
       duration: "",
@@ -14,19 +16,20 @@ const Videos = () => {
     {
       id: 2,
       title: "The Art of Architectural Lighting with Lumion 2024 – A Luxurious Visual Journey",
-    description: "Experience how lighting reshapes architectural interiors and exteriors in this creative showcase rendered with Lumion 2024. This project highlights how strategic lighting enhances materials, shadows, and spatial ambiance — delivering depth, realism, and architectural elegance in every frame.",
-
-      thumbnail:
-        "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      type: "image",
+      description:
+        "Experience how lighting reshapes architectural interiors and exteriors in this creative showcase rendered with Lumion 2024. This project highlights how strategic lighting enhances materials, shadows, and spatial ambiance — delivering depth, realism, and architectural elegance in every frame.",
+      thumbnail: "https://youtu.be/Y3GIdSMPpqw?si=J57ZVvktQqySknSx",
+      type: "youtube",
+      duration: "",
     },
   ];
 
   const getYouTubeEmbedURL = (url: string) => {
     try {
-      const videoId = url.includes("youtu.be")
-        ? url.split("/")[3].split("?")[0]
-        : new URLSearchParams(new URL(url).search).get("v");
+      const cleanUrl = url.split("?")[0];
+      const videoId = cleanUrl.includes("youtu.be")
+        ? cleanUrl.split("/").pop()
+        : new URLSearchParams(new URL(cleanUrl).search).get("v");
       return `https://www.youtube.com/embed/${videoId}`;
     } catch {
       return "";
@@ -43,7 +46,6 @@ const Videos = () => {
           </p>
         </div>
 
-        {/* ✅ شبكة من عمودين فقط، ومركزّة */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-center">
           {videos.map((video) => (
             <Card
@@ -88,7 +90,14 @@ const Videos = () => {
                 <CardTitle className="text-lg font-semibold">{video.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600">{video.description}</p>
+                <p className="text-gray-600 mb-4">{video.description}</p>
+                <a
+                  href={video.thumbnail}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+               
+                </a>
               </CardContent>
             </Card>
           ))}
