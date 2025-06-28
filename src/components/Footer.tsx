@@ -126,7 +126,7 @@ const Footer = () => {
       View CV
     </button>
     <a
-      href="https://clwe.netlify.app/"
+      href="https://cl-hub.netlify.app/"
       target="_blank"
       rel="noopener noreferrer"
       className="block text-gray-300 hover:text-white transition"
