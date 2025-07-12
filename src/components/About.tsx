@@ -4,21 +4,17 @@ const About = () => {
 
       <div className="max-w-4xl mx-auto px-4 text-center">
         <h2 className="text-4xl md:text-5xl font-bold text-black mb-8">
-          About <span className="text-gray-500">RYP</span>
+          About <span className="text-gray-500">Ibrahim Alyan</span>
         </h2>
         <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
           <p>
-            At Render Your Plan, we are passionate experts in modern and contemporary design.
-            Our mission is to transform ideas into innovative, functional, and visually striking spaces.
+ is a architect and interior designer based in Jordan. He is the founder and creative lead behind RYP (Render Your Plan) — a design brand specializing in architectural visualization and interior design solutions. With a strong academic foundation and hands-on experience in lighting and interior design firms in Amman, Ibrahim blends technical expertise with artistic vision to deliver bespoke, high-end spatial experiences.
           </p>
           <p>
-            With extensive expertise in architectural software, our team delivers creative solutions tailored
-            to meet each project's unique vision and requirements.
+   
+Driven by innovation and attention to detail, he brings clients’ visions to life through thoughtful planning, immersive 3D renderings, and functional yet elegant design concepts.
           </p>
-          <p>
-            We also offer high-quality training courses in architectural programs at affordable rates,
-            making professional knowledge accessible to everyone — from aspiring designers to seasoned professionals.
-          </p>
+        
         </div>
       </div>
     </section>
