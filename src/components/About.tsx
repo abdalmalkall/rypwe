@@ -9,7 +9,8 @@ const About = () => {
           <p>
             is an architect and interior designer based in Jordan. He is the founder and creative lead behind 
             <span className="font-bold text-black mx-1">RYP</span>
-                <span className="font-bold text-black mx-1">(Render Your Plan)</span>
+
+                <span className="text-gray-500">(Render Your Plan)</span>
             — a design brand specializing in architectural visualization and interior design solutions. With a strong academic foundation and hands-on experience in lighting and interior design firms in Amman, Ibrahim blends technical expertise with artistic vision to deliver bespoke, high-end spatial experiences.
           </p>
           <p>
