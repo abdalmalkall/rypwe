@@ -61,7 +61,7 @@ const Footer = () => {
 
                 {/* WhatsApp */}
                 <a
-                  href="https://wa.me/962770777986"
+                  href="https://wa.me/962790383135"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="WhatsApp"
@@ -142,7 +142,7 @@ const Footer = () => {
               <h3 className="text-lg font-semibold mb-4">Get In Touch</h3>
               <div className="space-y-2 text-gray-300 mb-6">
                 <p>Email: renderyourplan@gmail.com</p>
-                <p>Phone: +962 7 7077 798 6</p>
+                <p>Phone: +962 7 9038 313 5 </p>
                 <p>Address: Amman, JO</p>
               </div>
             </div>
