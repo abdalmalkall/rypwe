@@ -16,7 +16,7 @@ const Portfolio = () => {
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const projects: Project[] = [
-    { id: 8, title: "Stylish Outdoor Living", description: "Outdoor space designed for relaxation and entertainment", images: ["bedroom3.jpg", "bedroom2.jpg"] },
+    { id: 8, title: "Stylish Bedroom", description: "Modern Bedroom with a Touch of Timeless Charm", images: ["bedroom3.jpg", "bedroom2.jpg"] },
     { id: 1, title: "Modern Minimalist Living Room", description: "Clean lines and neutral tones create a serene living space", image: "Living.jpeg" },
     { id: 2, title: "Contemporary Kitchen Design", description: "Sleek functionality meets elegant aesthetics", image: "Kitchen.png" },
     { id: 3, title: "Luxury Bedroom Kids", description: "Sophisticated comfort in monochromatic harmony", image: "Bedroom.webp" },
