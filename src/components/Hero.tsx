@@ -12,7 +12,7 @@ const Hero = () => {
             Architect | Interior Designer | Founder of the RYP Brand
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="#portfolio" className="text-center">
+            <a href="#gallery" className="text-center">
               {/* <Button
                 size="lg"
                 className="bg-white text-black hover:bg-gray-200 w-40 sm:w-48 md:w-52 text-sm sm:text-base"

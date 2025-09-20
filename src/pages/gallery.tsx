@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 
+
 interface Project {
   id: number;
   title: string;
@@ -9,14 +10,14 @@ interface Project {
   images?: string[];
 }
 
-const Portfolio = () => {
+const  gallery= () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [allImages, setAllImages] = useState<string[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const projects: Project[] = [
-    { id: 8, title: "Stylish Bedroom", description: "Modern Bedroom with a Touch of Timeless Charm", images: ["bedroom3.jpg", "bedroom2.jpg"] },
+    { id: 8, title: "Stylish Bedroom", description: "Modern Bedroom with a Touch of Timeless Charm", images: ["bedroom3.jpg", "bedroom2.jpg"] },
     { id: 1, title: "Modern Minimalist Living Room", description: "Clean lines and neutral tones create a serene living space", image: "Living.jpeg" },
     { id: 2, title: "Contemporary Kitchen Design", description: "Sleek functionality meets elegant aesthetics", image: "Kitchen.png" },
     { id: 3, title: "Luxury Bedroom Kids", description: "Sophisticated comfort in monochromatic harmony", image: "Bedroom.webp" },
@@ -82,16 +83,32 @@ const Portfolio = () => {
 
             return (
               <Card key={project.id} className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={imgs[0]} // دايمًا الغلاف بيكون أول صورة
-                    alt={project.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 rounded-lg"
-                    onClick={() => openLightbox(startIndex)}
-                    draggable={false}
-                    onContextMenu={(e) => e.preventDefault()}
-                  />
-                </div>
+                {imgs.length > 1 ? (
+                  <div className="flex gap-2 aspect-video">
+                    {imgs.map((imgSrc, index) => (
+                      <img
+                        key={index}
+                        src={imgSrc}
+                        alt={`${project.title} ${index + 1}`}
+                        className="w-1/2 object-cover hover:scale-105 transition-transform duration-300 rounded-lg"
+                        onClick={() => openLightbox(startIndex + index)}
+                        draggable={false}
+                        onContextMenu={(e) => e.preventDefault()}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={imgs[0]}
+                      alt={project.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 rounded-lg"
+                      onClick={() => openLightbox(startIndex)}
+                      draggable={false}
+                      onContextMenu={(e) => e.preventDefault()}
+                    />
+                  </div>
+                )}
 
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">{project.title}</h3>
@@ -126,4 +143,6 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+
+
+export default gallery;
