@@ -67,10 +67,8 @@ const Index: React.FC = () => {
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           
-          {/* Animated Camera Icon */}
-          <div className="absolute top-4 right-4 p-3 bg-white/20 backdrop-blur-sm rounded-full border border-white/30 group-hover:bg-white/30 transition-all duration-300">
-            <Camera className="w-6 h-6 text-white" />
-          </div>
+      
+     
 
           {/* Overlay Text */}
           <div className="absolute bottom-0 left-0 right-0 p-6">
