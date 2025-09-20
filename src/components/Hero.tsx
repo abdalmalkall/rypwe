@@ -17,7 +17,7 @@ const Hero = () => {
                 size="lg"
                 className="bg-white text-black hover:bg-gray-200 w-40 sm:w-48 md:w-52 text-sm sm:text-base"
               >
-                View Portfolio
+                View gallery
               </Button> */}
             </a>
             <a href="#courses" className="text-center">
