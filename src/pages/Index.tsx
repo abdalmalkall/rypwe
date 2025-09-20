@@ -39,12 +39,12 @@ const Index: React.FC = () => {
       <div className="flex items-center justify-center gap-3 mb-4">
         <Sparkles className="text-black w-8 h-8" />
         <h2 className="text-4xl font-bold text-black">
-          Work Gallery
+      Design Works
         </h2>
         <Sparkles className="text-black w-8 h-8" />
       </div>
       <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-        Explore a collection of top-quality projects and creative works
+        Creating modern spaces with comfort and elegance
       </p>
     </div>
 
@@ -75,10 +75,10 @@ const Index: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-2xl font-bold text-white mb-2">
-                  Enter Gallery
+               Elevating Interior Design
                 </h3>
                 <p className="text-white/90 text-sm">
-                  Discover outstanding works
+               Where aesthetics meet comfort
                 </p>
               </div>
               <div className="p-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30 group-hover:translate-x-1 transition-transform duration-300">
@@ -134,7 +134,7 @@ const Index: React.FC = () => {
       </div>
       <div className="text-center p-4 bg-white backdrop-blur-sm rounded-2xl border border-gray-300">
         <div className="text-2xl font-bold text-black mb-1">11+</div>
-        <div className="text-sm text-gray-700">High-Quality Images</div>
+        <div className="text-sm text-gray-700">Designs</div>
       </div>
       <div className="text-center p-4 bg-white backdrop-blur-sm rounded-2xl border border-gray-300">
         <div className="text-2xl font-bold text-black mb-1">24/7</div>
