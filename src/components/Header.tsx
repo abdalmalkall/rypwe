@@ -22,7 +22,7 @@ const Header = () => {
             <nav className="hidden md:flex space-x-8">
               <a href="#home" className="text-gray-900 hover:text-gray-600 transition-colors">Home</a>
               <a href="#about" className="text-gray-900 hover:text-gray-600 transition-colors">About</a>
-              <a href="/gallery" className="text-gray-900 hover:text-gray-600 transition-colors">gallery</a>
+              <a href="/gallery" className="text-gray-900 hover:text-gray-600 transition-colors">Designs</a>
               <a href="#videos" className="text-gray-900 hover:text-gray-600 transition-colors">Videos</a>
               {/* <a href="#courses" className="text-gray-900 hover:text-gray-600 transition-colors">Courses</a> */}
               <a href="#contact" className="text-gray-900 hover:text-gray-600 transition-colors">Contact</a>
@@ -48,7 +48,7 @@ const Header = () => {
             <nav className="md:hidden py-4 border-t border-gray-200">
               <div className="flex flex-col space-y-2">
                 <a href="#home" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Home</a>
-                <a href="#gallery" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">gallery</a>
+                <a href="#gallery" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Designs</a>
                 <a href="#videos" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Videos</a>
                 {/* <a href="#courses" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Courses</a> */}
                 <a href="#contact" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Contact</a>

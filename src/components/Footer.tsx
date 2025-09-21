@@ -117,7 +117,7 @@ const Footer = () => {
   <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
   <div className="space-y-2">
     <a href="#home" className="block text-gray-300 hover:text-white transition">Home</a>
-    <a href="/gallery" className="block text-gray-300 hover:text-white transition">gallery</a>
+    <a href="/gallery" className="block text-gray-300 hover:text-white transition">Designs</a>
     <a href="#videos" className="block text-gray-300 hover:text-white transition">Videos</a>
     <button
       onClick={() => setShowCv(true)}
