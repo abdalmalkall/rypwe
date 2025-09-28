@@ -55,9 +55,10 @@ const Header = () => {
               <a href="#home" className="text-gray-900 hover:text-gray-600 transition-colors">Home</a>
               <a href="#about" className="text-gray-900 hover:text-gray-600 transition-colors">About</a>
               <a href="/gallery" className="text-gray-900 hover:text-gray-600 transition-colors">Designs</a>
-              <a href="#videos" className="text-gray-900 hover:text-gray-600 transition-colors">Videos</a>
+              <a href=".#videos" className="text-gray-900 hover:text-gray-600 transition-colors">Videos</a>
               {/* <a href="#courses" className="text-gray-900 hover:text-gray-600 transition-colors">Courses</a> */}
               <a href="#contact" className="text-gray-900 hover:text-gray-600 transition-colors">Contact</a>
+              
               <button
                 onClick={() => setShowCv(true)}
                 className="text-gray-900 hover:text-gray-600 transition-colors"
