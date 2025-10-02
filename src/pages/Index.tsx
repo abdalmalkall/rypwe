@@ -2,12 +2,26 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Gallery from "@/pages/gallery";
-import Line from "@/components/line";
+import Line from "@/components/line"; 
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { Camera, ArrowRight, Sparkles, Star, Zap, Users, Clock, Play } from "lucide-react";
 
 const Index: React.FC = () => {
+  // صور المعرض
+  const galleryImages = [
+    "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+  ];
+
+  // صور الفيديو
+  const videoThumbnails = [
+    "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -23,109 +37,115 @@ const Index: React.FC = () => {
         </section>
         
         {/* Gallery Section */}
-        <section id="gallery" className="py-12 md:py-20 px-4 bg-white">
-          <div className="max-w-7xl mx-auto">
+        <section id="gallery" className="py-16 md:py-24 px-4 bg-white">
+          <div className="max-w-6xl mx-auto">
             {/* Main Title */}
-            <div className="text-center mb-8 md:mb-16">
-              <div className="flex items-center justify-center gap-2 md:gap-4 mb-4 md:mb-6">
-                <Sparkles className="text-gray-800 w-6 h-6 md:w-10 md:h-10" />
-                <h2 className="text-2xl md:text-5xl font-bold text-black">
+            <div className="text-center mb-12 md:mb-20">
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="w-2 h-2 bg-black rounded-full"></div>
+                <h2 className="text-3xl md:text-5xl font-bold text-black">
                   Design Portfolio
                 </h2>
-                <Sparkles className="text-gray-800 w-6 h-6 md:w-10 md:h-10" />
+                <div className="w-2 h-2 bg-black rounded-full"></div>
               </div>
-              <p className="text-base md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed px-4">
-                Discover our curated collection of modern interior designs where innovation meets comfort, 
-                and every space tells a unique story
+              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                Discover our curated collection of modern interior designs where innovation meets comfort
               </p>
             </div>
 
             {/* Gallery Entrance Card */}
-            <div className="flex justify-center">
+            <div className="flex justify-center mb-16">
               <Link
                 to="/gallery"
-                className="group relative block w-full max-w-2xl mx-auto overflow-hidden rounded-xl md:rounded-3xl bg-white shadow-lg hover:shadow-xl transform hover:scale-[1.01] transition-all duration-300 border border-gray-300"
+                className="group block w-full max-w-4xl overflow-hidden rounded-2xl bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300"
               >
                 {/* Main Image Container */}
                 <div className="relative overflow-hidden">
                   <img
                     src="Living.jpeg"
                     alt="Interior Design Gallery"
-                    className="w-full h-48 md:h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-64 md:h-96 object-cover transition-transform duration-700 group-hover:scale-105"
                     draggable={false}
                     onContextMenu={(e) => e.preventDefault()}
                   />
                   
                   {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   
-                  {/* Floating Elements */}
-                  <div className="absolute top-2 md:top-4 right-2 md:right-4">
-                    <div className="bg-white/90 backdrop-blur-md rounded-full px-2 py-1 md:px-3 md:py-1 border border-gray-300">
-                      <span className="text-gray-800 text-xs md:text-sm font-medium flex items-center gap-1">
-                        <Zap className="w-3 h-3 md:w-4 md:h-4" />
-                        Featured
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Overlay Text */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8">
+                  {/* Content Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8">
                     <div className="flex items-end justify-between">
                       <div className="flex-1">
-                        <h3 className="text-lg md:text-3xl font-bold text-white mb-2 md:mb-3 leading-tight">
+                        <h3 className="text-2xl md:text-4xl font-bold text-white mb-4">
                           Elevating Interior Design
                         </h3>
-                        <p className="text-white/90 text-sm md:text-lg mb-2 md:mb-4 hidden md:block">
+                        <p className="text-gray-200 text-lg mb-4 hidden md:block">
                           Where aesthetics meet comfort in perfect harmony
                         </p>
-                        <div className="flex items-center gap-2 md:gap-4">
-                          <div className="flex items-center gap-1">
-                            {[1, 2, 3, 4, 5].map((star) => (
-                              <Star key={star} className="w-3 h-3 md:w-5 md:h-5 fill-yellow-400 text-yellow-400" />
-                            ))}
+                        <div className="flex items-center gap-4">
+                          <div className="flex items-center gap-2">
+                            <div className="flex">
+                              {[1, 2, 3, 4, 5].map((star) => (
+                                <Star key={star} className="w-4 h-4 fill-white text-white" />
+                              ))}
+                            </div>
+                            <span className="text-white text-sm">Premium Collection</span>
                           </div>
-                          <span className="text-white/80 text-xs md:text-sm">Premium Collection</span>
                         </div>
                       </div>
-                      <div className="p-2 md:p-3 bg-white/20 backdrop-blur-md rounded-full border border-white/30 group-hover:bg-white/30 transition-all duration-300">
-                        <ArrowRight className="w-4 h-4 md:w-6 md:h-6 text-white" />
+                      <div className="p-4 bg-white/20 backdrop-blur-sm rounded-full border border-white/30 group-hover:bg-white/30 transition-all duration-300">
+                        <ArrowRight className="w-6 h-6 text-white" />
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Bottom Section */}
-                <div className="relative p-4 md:p-8 bg-white">
-                  <div className="flex items-center justify-between mb-3 md:mb-4">
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <div className="flex items-center gap-1 md:gap-2">
-                        <div className="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full animate-pulse" />
-                        <span className="text-xs md:text-sm font-medium text-gray-800">
+                {/* Preview Images Grid */}
+                <div className="p-6 bg-gray-50 border-t border-gray-200">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-sm font-medium text-gray-800">Gallery Preview</span>
+                    <span className="text-xs text-gray-600">{galleryImages.length} images</span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-3">
+                    {galleryImages.map((image, index) => (
+                      <div key={index} className="relative group">
+                        <img
+                          src={image}
+                          alt={`Gallery preview ${index + 1}`}
+                          className="w-full h-20 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-lg" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom Info Section */}
+                <div className="p-6 bg-white">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full" />
+                        <span className="text-sm font-medium text-gray-800">
                           Live Updates
                         </span>
                       </div>
-                      <div className="w-px h-3 md:h-4 bg-gray-400"></div>
-                      <span className="text-xs md:text-sm text-gray-700 hidden sm:block">
+                      <div className="w-px h-4 bg-gray-300"></div>
+                      <span className="text-sm text-gray-600">
                         New projects weekly
                       </span>
                     </div>
-                    <div className="text-right">
-                      <span className="text-xs md:text-sm font-medium text-gray-800">
-                        Explore
-                      </span>
-                    </div>
+                    <span className="text-sm font-medium text-gray-800">
+                      Explore Gallery
+                    </span>
                   </div>
                   
                   {/* Progress Bar */}
-                  <div className="space-y-2 md:space-y-3">
-                    <div className="w-full bg-gray-200 rounded-full h-2 md:h-3 overflow-hidden">
-                      <div 
-                        className="h-2 md:h-3 bg-gray-800 rounded-full transition-all duration-500 group-hover:w-full w-4/5"
-                      >
-                      </div>
+                  <div className="space-y-2">
+                    <div className="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
+                      <div className="h-2 bg-gray-800 rounded-full w-4/5 transition-all duration-500" />
                     </div>
-                    <div className="flex justify-between text-xs text-gray-600">
+                    <div className="flex justify-between text-sm text-gray-600">
                       <span>Collection Progress</span>
                       <span>80%</span>
                     </div>
@@ -135,7 +155,7 @@ const Index: React.FC = () => {
             </div>
 
             {/* Quick Stats */}
-            <div className="mt-8 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-16">
               {[
                 { icon: Camera, number: "50+", label: "Featured Projects" },
                 { icon: Users, number: "11+", label: "Design Styles" },
@@ -143,142 +163,155 @@ const Index: React.FC = () => {
               ].map((stat, index) => (
                 <div 
                   key={index}
-                  className="text-center p-4 md:p-8 bg-white rounded-lg md:rounded-2xl shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 border border-gray-300"
+                  className="text-center p-8 bg-white rounded-xl border border-gray-200 hover:border-gray-300 transition-all duration-300"
                 >
-                  <div className="inline-flex items-center justify-center w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gray-100 text-gray-800 mb-3 md:mb-4">
-                    <stat.icon className="w-5 h-5 md:w-8 md:h-8" />
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gray-100 text-gray-800 mb-4">
+                    <stat.icon className="w-8 h-8" />
                   </div>
-                  <div className="text-xl md:text-3xl font-bold text-black mb-1 md:mb-2">
+                  <div className="text-3xl font-bold text-black mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-gray-700 font-medium text-sm md:text-base">
+                  <div className="text-gray-600 font-medium">
                     {stat.label}
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Additional CTA */}
-            <div className="text-center mt-8 md:mt-12">
-              <p className="text-gray-700 mb-4 md:mb-6 text-base md:text-lg">
-                Ready to transform your space?
-              </p>
+            {/* CTA Button */}
+            <div className="text-center">
               <Link
                 to="/gallery"
-                className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-gray-900 text-white rounded-xl md:rounded-2xl font-semibold hover:bg-black transition-all duration-300 text-sm md:text-base"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-black text-white rounded-xl font-semibold hover:bg-gray-800 transition-all duration-300 text-lg"
               >
-                <Camera className="w-4 h-4 md:w-5 md:h-5" />
+                <Camera className="w-5 h-5" />
                 Explore Full Gallery
-                <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
           </div>
         </section>
 
         {/* Video Section */}
-        <section id="line" className="py-12 md:py-20 bg-black">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="line" className="py-16 md:py-24 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-4">
             {/* Video Section Header */}
-            <div className="text-center mb-8 md:mb-16">
-              <div className="flex items-center justify-center gap-2 md:gap-4 mb-4 md:mb-6">
-                <Sparkles className="text-white w-6 h-6 md:w-10 md:h-10" />
-                <h2 className="text-2xl md:text-5xl font-bold text-white">
+            <div className="text-center mb-12 md:mb-20">
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="w-2 h-2 bg-black rounded-full"></div>
+                <h2 className="text-3xl md:text-5xl font-bold text-black">
                   Design Videos
                 </h2>
-                <Sparkles className="text-white w-6 h-6 md:w-10 md:h-10" />
+                <div className="w-2 h-2 bg-black rounded-full"></div>
               </div>
-              <p className="text-base md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4">
-                Watch our design process come to life through captivating videos that showcase the transformation of spaces
+              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                Watch our design process come to life through captivating videos
               </p>
             </div>
 
             {/* Video Entrance Card */}
-            <div className="flex justify-center">
+            <div className="flex justify-center mb-16">
               <Link
                 to="/line"
-                className="group relative block w-full max-w-2xl mx-auto overflow-hidden rounded-xl md:rounded-3xl bg-gray-900 shadow-lg hover:shadow-xl transform hover:scale-[1.01] transition-all duration-300 border border-gray-700"
+                className="group block w-full max-w-4xl overflow-hidden rounded-2xl bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300 shadow-sm"
               >
                 {/* Video Preview Container */}
-                <div className="relative overflow-hidden">
-                  <div className="w-full h-48 md:h-80 bg-gray-800 flex items-center justify-center">
+                <div className="relative overflow-hidden bg-gray-900">
+                  <div className="w-full h-64 md:h-96 flex items-center justify-center relative">
                     {/* Play Button */}
-                    <div className="relative">
-                      <div className="w-12 h-12 md:w-20 md:h-20 bg-white/10 backdrop-blur-md rounded-full border border-white/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                        <Play className="w-4 h-4 md:w-8 md:h-8 text-white ml-0.5 md:ml-1" />
+                    <div className="relative z-10">
+                      <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                        <Play className="w-8 h-8 text-white ml-1" />
                       </div>
                     </div>
                     
-                    {/* Floating Elements */}
-                    <div className="absolute top-2 md:top-4 right-2 md:right-4">
-                      <div className="bg-black/80 backdrop-blur-md rounded-full px-2 py-1 md:px-3 md:py-1 border border-gray-600">
-                        <span className="text-white text-xs md:text-sm font-medium flex items-center gap-1">
-                          <Zap className="w-3 h-3 md:w-4 md:h-4" />
-                          Featured
-                        </span>
-                      </div>
-                    </div>
+                    {/* Video Thumbnail Background */}
+                    <img
+                      src={videoThumbnails[0]}
+                      alt="Video preview"
+                      className="absolute inset-0 w-full h-full object-cover opacity-60"
+                    />
                   </div>
                   
                   {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-                  {/* Overlay Text */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8">
+                  {/* Content Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8">
                     <div className="flex items-end justify-between">
                       <div className="flex-1">
-                        <h3 className="text-lg md:text-3xl font-bold text-white mb-2 md:mb-3 leading-tight">
+                        <h3 className="text-2xl md:text-4xl font-bold text-white mb-4">
                           Behind The Design
                         </h3>
-                        <p className="text-gray-300 text-sm md:text-lg mb-2 md:mb-4 hidden md:block">
+                        <p className="text-gray-300 text-lg mb-4 hidden md:block">
                           Exclusive look at our creative process
                         </p>
-                        <div className="flex items-center gap-2 md:gap-4">
-                          <div className="flex items-center gap-1">
-                            {[1, 2, 3, 4, 5].map((star) => (
-                              <Star key={star} className="w-3 h-3 md:w-5 md:h-5 fill-yellow-400 text-yellow-400" />
-                            ))}
+                        <div className="flex items-center gap-4">
+                          <div className="flex items-center gap-2">
+                            <div className="flex">
+                              {[1, 2, 3, 4, 5].map((star) => (
+                                <Star key={star} className="w-4 h-4 fill-white text-white" />
+                              ))}
+                            </div>
+                            <span className="text-gray-300 text-sm">Premium Content</span>
                           </div>
-                          <span className="text-gray-400 text-xs md:text-sm">Premium Content</span>
                         </div>
                       </div>
-                      <div className="p-2 md:p-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 group-hover:bg-white/20 transition-all duration-300">
-                        <ArrowRight className="w-4 h-4 md:w-6 md:h-6 text-white" />
+                      <div className="p-4 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 group-hover:bg-white/20 transition-all duration-300">
+                        <ArrowRight className="w-6 h-6 text-white" />
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Bottom Section */}
-                <div className="relative p-4 md:p-8 bg-gray-900">
-                  <div className="flex items-center justify-between mb-3 md:mb-4">
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <div className="flex items-center gap-1 md:gap-2">
-                        <div className="w-2 h-2 md:w-3 md:h-3 bg-green-400 rounded-full animate-pulse" />
-                        <span className="text-xs md:text-sm font-medium text-gray-300">
+                {/* Video Thumbnails Grid */}
+                <div className="p-6 bg-gray-50 border-t border-gray-200">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-sm font-medium text-gray-800">Video Previews</span>
+                    <span className="text-xs text-gray-600">{videoThumbnails.length} videos</span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-3">
+                    {videoThumbnails.map((thumbnail, index) => (
+                      <div key={index} className="relative group">
+                        <img
+                          src={thumbnail}
+                          alt={`Video preview ${index + 1}`}
+                          className="w-full h-20 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-lg flex items-center justify-center">
+                          <Play className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom Info Section */}
+                <div className="p-6 bg-white">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full" />
+                        <span className="text-sm font-medium text-gray-800">
                           New Videos
                         </span>
                       </div>
-                      <div className="w-px h-3 md:h-4 bg-gray-600"></div>
-                      <span className="text-xs md:text-sm text-gray-400 hidden sm:block">
+                      <div className="w-px h-4 bg-gray-300"></div>
+                      <span className="text-sm text-gray-600">
                         Updated regularly
                       </span>
                     </div>
-                    <div className="text-right">
-                      <span className="text-xs md:text-sm font-medium text-gray-300">
-                        Watch Videos
-                      </span>
-                    </div>
+                    <span className="text-sm font-medium text-gray-800">
+                      Watch Videos
+                    </span>
                   </div>
                   
                   {/* Progress Bar */}
-                  <div className="space-y-2 md:space-y-3">
-                    <div className="w-full bg-gray-700 rounded-full h-2 md:h-3 overflow-hidden">
-                      <div 
-                        className="h-2 md:h-3 bg-white rounded-full transition-all duration-500 group-hover:w-full w-3/4"
-                      >
-                      </div>
+                  <div className="space-y-2">
+                    <div className="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
+                      <div className="h-2 bg-gray-800 rounded-full w-3/4 transition-all duration-500" />
                     </div>
-                    <div className="flex justify-between text-xs text-gray-500">
+                    <div className="flex justify-between text-sm text-gray-600">
                       <span>Content Progress</span>
                       <span>75%</span>
                     </div>
@@ -288,42 +321,31 @@ const Index: React.FC = () => {
             </div>
 
             {/* Video Stats */}
-            <div className="mt-8 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-16">
               {[
-                { icon: Play, number: "20+", label: "Design Videos" },
-                { icon: Users, number: "5K+", label: "Views" },
+                { icon: Play, number: "3+", label: "Design Videos" },
                 { icon: Clock, number: "24/7", label: "Available" }
               ].map((stat, index) => (
                 <div 
                   key={index}
-                  className="text-center p-4 md:p-8 bg-gray-900 rounded-lg md:rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border border-gray-700"
+                  className="text-center p-8 bg-white rounded-xl border border-gray-200 hover:border-gray-300 transition-all duration-300"
                 >
-                  <div className="inline-flex items-center justify-center w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gray-800 text-white mb-3 md:mb-4">
-                    <stat.icon className="w-5 h-5 md:w-8 md:h-8" />
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gray-100 text-gray-800 mb-4">
+                    <stat.icon className="w-8 h-8" />
                   </div>
-                  <div className="text-xl md:text-3xl font-bold text-white mb-1 md:mb-2">
+                  <div className="text-3xl font-bold text-black mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-gray-300 font-medium text-sm md:text-base">
+                  <div className="text-gray-600 font-medium">
                     {stat.label}
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Video CTA */}
-            <div className="text-center mt-8 md:mt-12">
-              <p className="text-gray-300 mb-4 md:mb-6 text-base md:text-lg">
-                Want to see our designs in motion?
-              </p>
-              <Link
-                to="/line"
-                className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-white text-black rounded-xl md:rounded-2xl font-semibold hover:bg-gray-100 transition-all duration-300 text-sm md:text-base"
-              >
-                <Play className="w-4 h-4 md:w-5 md:h-5" />
-                Watch All Videos
-                <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
-              </Link>
+            {/* CTA Button */}
+            <div className="text-center">
+        
             </div>
           </div>
         </section>
