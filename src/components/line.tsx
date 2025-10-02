@@ -21,7 +21,7 @@ const Videos = () => {
       description: "Experience the elegance of high-end architecture in this exclusive villa design. From concept development to stunning visual rendering using Lumion 2024, this project showcases refined materials, dramatic lighting, and sophisticated spatial planning—crafted to reflect timeless luxury.",
       thumbnail: "https://youtu.be/7lTpXiLGsYI?si=_GQTQS7jNKZuEX9u",
       youtubeUrl: "https://youtu.be/7lTpXiLGsYI?si=_GQTQS7jNKZuEX9u",
-      publishedAt: "3 days ago"
+ 
     },
     {
       id: 2,
@@ -29,8 +29,16 @@ const Videos = () => {
       description: "Experience how lighting reshapes architectural interiors and exteriors in this creative showcase rendered with Lumion 2024. This project highlights how strategic lighting enhances materials, shadows, and spatial ambiance — delivering depth, realism, and architectural elegance in every frame.",
       thumbnail: "https://youtu.be/Y3GIdSMPpqw?si=J57ZVvktQqySknSx",
       youtubeUrl: "https://youtu.be/Y3GIdSMPpqw?si=J57ZVvktQqySknSx",
-      publishedAt: "1 week ago"
+     
     },
+    {
+      id: 3,
+      title: "Modern Travel Shop Design in Industrial Style",
+      description: "Explore the transformation of a travel shop into a modern industrial space. This project highlights the use of raw materials, open layouts, and functional design elements to create an inviting retail environment that reflects contemporary aesthetics and practicality.",
+       thumbnail: "https://youtu.be/oRgEdrtIbMI?si=nbyQ1DS-l7CnObZy",
+      youtubeUrl: "https://youtu.be/oRgEdrtIbMI?si=nbyQ1DS-l7CnObZy",
+
+    }
   ];
 
   const getYouTubeThumbnail = (url) => {
@@ -225,7 +233,8 @@ const Videos = () => {
                   {/* Content */}
                   <div className="p-4 md:p-6">
                     <div className="mb-3 md:mb-4">
-                      <span className="text-gray-600 text-xs md:text-sm font-medium">{video.publishedAt}</span>
+                  
+
                     </div>
                     
                     <h3 className="text-lg md:text-xl font-bold text-black mb-3 md:mb-4 leading-tight line-clamp-2">
