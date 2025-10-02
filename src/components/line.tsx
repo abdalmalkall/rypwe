@@ -136,7 +136,7 @@ const Videos = () => {
               <div className="text-center">
                 <div className="flex items-center gap-1 text-black font-bold text-lg md:text-2xl">
                   <Users className="w-4 h-4 md:w-6 md:h-6" />
-                  <span>1.2K+</span>
+                  <span>35K+</span>
                 </div>
                 <p className="text-gray-600 text-xs md:text-sm">Subscribers</p>
               </div>
