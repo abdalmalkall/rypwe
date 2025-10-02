@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Play, ExternalLink, Home, Bell, Users, Eye, Clock, Search, X } from "lucide-react";
 
 const Videos = () => {
   const [hoveredVideo, setHoveredVideo] = useState(null);
   const [playingVideo, setPlayingVideo] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Auto scroll to top on component mount
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, []);
 
   const videos = [
     {
