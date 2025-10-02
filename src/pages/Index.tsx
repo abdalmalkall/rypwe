@@ -179,16 +179,7 @@ const Index: React.FC = () => {
             </div>
 
             {/* CTA Button */}
-            <div className="text-center">
-              <Link
-                to="/gallery"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-black text-white rounded-xl font-semibold hover:bg-gray-800 transition-all duration-300 text-lg"
-              >
-                <Camera className="w-5 h-5" />
-                Explore Full Gallery
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
+      
           </div>
         </section>
 
