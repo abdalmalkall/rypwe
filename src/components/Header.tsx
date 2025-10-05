@@ -24,8 +24,11 @@ const Header = () => {
               <a href="#about" className="text-gray-900 hover:text-gray-600 transition-colors">About</a>
               <a href="/gallery" className="text-gray-900 hover:text-gray-600 transition-colors">Designs</a>
               <a href="/line" className="text-gray-900 hover:text-gray-600 transition-colors">Videos</a>
+            <a href="/exterior" className="text-gray-900 hover:text-gray-600 transition-colors">Exterior</a>
               {/* <a href="#courses" className="text-gray-900 hover:text-gray-600 transition-colors">Courses</a> */}
               <a href="#contact" className="text-gray-900 hover:text-gray-600 transition-colors">Contact</a>
+                              <a href="/exterior" className="text-gray-900 hover:text-gray-600 transition-colors">Exterior</a>
+
               <button
                 onClick={() => setShowCv(true)}
                 className="text-gray-900 hover:text-gray-600 transition-colors"
@@ -52,6 +55,8 @@ const Header = () => {
                 <a href="/line" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Videos</a>
                 {/* <a href="#courses" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Courses</a> */}
                 <a href="#contact" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Contact</a>
+                                <a href="/exterior" className="block text-gray-300 hover:text-white transition">Exterior</a>
+
                 <button
                   onClick={() => setShowCv(true)}
                   className="px-3 py-2 text-gray-900 hover:bg-gray-100 text-left"

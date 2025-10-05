@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Home, ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface Project {
   id: number;
@@ -9,6 +10,7 @@ interface Project {
   image?: string;
   images?: string[];
   expandedDescription?: string;
+  category: "interior";
 }
 
 // Configuration constants
@@ -52,9 +54,10 @@ const Header = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8">
-              <a href="/" className="text-gray-900 hover:text-gray-600 transition-colors">Home</a>
-              <a href="/line" className="text-gray-900 hover:text-gray-600 transition-colors">Videos</a>
-
+              <Link to="/" className="text-gray-900 hover:text-gray-600 transition-colors">Home</Link>
+              <Link to="/gallery" className="text-gray-900 hover:text-gray-600 transition-colors">Interior Designs</Link>
+              <Link to="/exterior" className="text-gray-900 hover:text-gray-600 transition-colors">Exterior Designs</Link>
+              <Link to="/line" className="text-gray-900 hover:text-gray-600 transition-colors">Videos</Link>
               <button
                 onClick={() => setShowCv(true)}
                 className="text-gray-900 hover:text-gray-600 transition-colors"
@@ -76,10 +79,10 @@ const Header = () => {
           {isMenuOpen && (
             <nav className="md:hidden py-4 border-t border-gray-200">
               <div className="flex flex-col space-y-2">
-                <a href="#home" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Home</a>
-                <a href="#gallery" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Designs</a>
-                <a href="/line" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Videos</a>
-                <a href="#contact" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Contact</a>
+                <Link to="/" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Home</Link>
+                <Link to="/gallery" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Interior Designs</Link>
+                <Link to="/exterior" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Exterior Designs</Link>
+                <Link to="/line" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Videos</Link>
                 <button
                   onClick={() => setShowCv(true)}
                   className="px-3 py-2 text-gray-900 hover:bg-gray-100 text-left"
@@ -102,30 +105,20 @@ const Header = () => {
             className="relative bg-white rounded-xl p-4 shadow-2xl w-full max-w-4xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* زر إغلاق */}
             <button
               onClick={() => setShowCv(false)}
               className="absolute top-4 left-4 text-black text-2xl font-bold hover:text-gray-500"
             >
               ×
             </button>
-
-            {/* عنوان اختياري */}
             <h2 className="text-xl font-semibold text-center text-black mb-4">
-              My cv
+              My CV
             </h2>
-
-            {/* صورة CV */}
             <img
               src="/cv.jpeg"
               alt="CV"
               className="w-full max-h-[75vh] object-contain rounded-md"
             />
-
-            {/* زر تحميل */}
-            <div className="mt-6 text-center">
-            
-            </div>
           </div>
         </div>
       )}
@@ -164,8 +157,10 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <div className="space-y-2">
-                <a href="/" className="block text-gray-300 hover:text-white transition">Home</a>
-                <a href="/line" className="block text-gray-300 hover:text-white transition">Videos</a>
+                <Link to="/" className="block text-gray-300 hover:text-white transition">Home</Link>
+                <Link to="/gallery" className="block text-gray-300 hover:text-white transition">Interior Designs</Link>
+                <Link to="/exterior" className="block text-gray-300 hover:text-white transition">Exterior Designs</Link>
+                <Link to="/line" className="block text-gray-300 hover:text-white transition">Videos</Link>
                 <button
                   onClick={() => setShowCv(true)}
                   className="block text-gray-300 hover:text-white transition"
@@ -204,30 +199,20 @@ const Footer = () => {
             className="relative bg-white rounded-xl p-4 shadow-2xl w-full max-w-4xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* زر إغلاق */}
             <button
               onClick={() => setShowCv(false)}
               className="absolute top-4 left-4 text-black text-2xl font-bold hover:text-gray-500"
             >
               ×
             </button>
-
-            {/* عنوان اختياري */}
             <h2 className="text-xl font-semibold text-center text-black mb-4">
-              My cv
+              My CV
             </h2>
-
-            {/* صورة CV */}
             <img
               src="/cv.jpeg"
               alt="CV"
               className="w-full max-h-[75vh] object-contain rounded-md"
             />
-
-            {/* زر تحميل */}
-            <div className="mt-6 text-center">
-            
-            </div>
           </div>
         </div>
       )}
@@ -254,71 +239,64 @@ const Gallery = () => {
     });
   }, []);
 
-  // Project data
+  // Interior Projects data
   const projects: Project[] = useMemo(() => [
     { 
       id: 8, 
       title: "Stylish Bedroom", 
       description: "Modern Bedroom with a Touch of Timeless Charm", 
       images: ["bedroom3.jpg", "bedroom2.jpg"],
-      expandedDescription: "A modern bedroom design that combines luxury and comfort, using warm colors and natural materials to create an atmosphere of calm and relaxation. Features carefully planned lighting and decorative touches that reflect refined taste."
+      expandedDescription: "A modern bedroom design that combines luxury and comfort, using warm colors and natural materials to create an atmosphere of calm and relaxation. Features carefully planned lighting and decorative touches that reflect refined taste.",
+      category: "interior"
     },
     { 
       id: 1, 
       title: "Modern Minimalist Living Room", 
       description: "Clean lines and neutral tones create a serene living space", 
       images: ["Living.jpeg", "Living2.jpg"],
-      expandedDescription: "An elegant living space based on thoughtful simplicity and clean lines. Neutral colors were carefully chosen to create a sense of tranquility and harmony, with furniture pieces that combine beauty and practical functionality."
+      expandedDescription: "An elegant living space based on thoughtful simplicity and clean lines. Neutral colors were carefully chosen to create a sense of tranquility and harmony, with furniture pieces that combine beauty and practical functionality.",
+      category: "interior"
     },
     { 
       id: 2, 
       title: "Contemporary Kitchen Design", 
       description: "Sleek functionality meets elegant aesthetics", 
       images: ["Kitchen.png"],
-      expandedDescription: "A modern kitchen that embodies perfection in design and functionality, where advanced technology meets elegant design. High-quality materials and smart lighting systems were used to create an exceptional cooking environment."
+      expandedDescription: "A modern kitchen that embodies perfection in design and functionality, where advanced technology meets elegant design. High-quality materials and smart lighting systems were used to create an exceptional cooking environment.",
+      category: "interior"
     },
     { 
       id: 3, 
       title: "Luxury Kids Bedroom", 
       description: "Sophisticated comfort in monochromatic harmony", 
       images: ["Bedroom.webp"],
-      expandedDescription: "A luxurious children's bedroom that achieves the perfect balance between fun and elegance. Designed to nurture a child's imagination while providing a safe and comfortable environment, using calm colors and interactive elements that stimulate creativity."
+      expandedDescription: "A luxurious children's bedroom that achieves the perfect balance between fun and elegance. Designed to nurture a child's imagination while providing a safe and comfortable environment, using calm colors and interactive elements that stimulate creativity.",
+      category: "interior"
     },
     { 
       id: 4, 
       title: "Executive Office Space", 
       description: "Professional environment with modern touches", 
       images: ["4.png"],
-      expandedDescription: "A sophisticated executive office that reflects success and professionalism, designed to enhance productivity and creativity. Combines luxury with practical functionality using high-quality materials and advanced lighting technologies."
+      expandedDescription: "A sophisticated executive office that reflects success and professionalism, designed to enhance productivity and creativity. Combines luxury with practical functionality using high-quality materials and advanced lighting technologies.",
+      category: "interior"
     },
     { 
       id: 5, 
       title: "Dining Room Elegance", 
       description: "Where style meets functionality for memorable gatherings", 
       images: ["Dining.webp"],
-      expandedDescription: "An elegant dining room designed to host special moments and warm family gatherings. Features a luxurious table and distinctive lighting that creates intimate and sophisticated atmospheres for unforgettable dining experiences."
+      expandedDescription: "An elegant dining room designed to host special moments and warm family gatherings. Features a luxurious table and distinctive lighting that creates intimate and sophisticated atmospheres for unforgettable dining experiences.",
+      category: "interior"
     },
     { 
       id: 6, 
       title: "Bathroom Sanctuary", 
       description: "Spa-like retreat with contemporary fixtures", 
       images: ["Bathroom.png"],
-      expandedDescription: "A luxurious bathroom that mimics the atmosphere of world-class health resorts, where relaxation and well-being meet. Natural luxury materials and modern technologies were used to create a personal sanctuary for relaxation and renewal."
-    },
-    { 
-      id: 7, 
-      title: "Garden Projects", 
-      description: "Two elegant garden views in one design", 
-      images: ["4deb4433-c0f7-48c6-b9fd-8c30e2831906.jpeg", "a9e3b97c-29e7-4cff-b8ad-67925bc23866.jpeg"],
-      expandedDescription: "Exceptional garden design that combines nature and architectural art. Carefully planned green spaces achieve harmony between natural elements and modern design, providing an oasis of peace and beauty in the heart of the home."
-    },
-    { 
-      id: 9, 
-      title: "Architectural Facade Design", 
-      description: "Modern & Traditional Blend", 
-      images: ["architectural.jpg"],
-      expandedDescription: "An innovative architectural facade that blends heritage spirit with contemporary style, where tradition meets modernity in perfect harmony. A design that reflects cultural identity with a modern touch that makes it a unique architectural masterpiece."
-    },
+      expandedDescription: "A luxurious bathroom that mimics the atmosphere of world-class health resorts, where relaxation and well-being meet. Natural luxury materials and modern technologies were used to create a personal sanctuary for relaxation and renewal.",
+      category: "interior"
+    }
   ], []);
 
   // Image index calculation
@@ -478,6 +456,19 @@ const Gallery = () => {
 
   return (
     <section id="portfolio" className="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50 overflow-hidden">
+      {/* Back to Home Button */}
+      <div className="fixed top-24 left-4 sm:left-8 z-40">
+        <Link
+          to="/"
+          className="group flex items-center gap-2 bg-white/90 backdrop-blur-md border border-gray-200 px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white hover:-translate-y-0.5"
+        >
+          <ArrowLeft className="w-4 h-4 text-gray-700 group-hover:text-gray-900 transition-colors" />
+          <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors">
+            Back to Home
+          </span>
+        </Link>
+      </div>
+
       {/* Background */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-100/50 to-transparent animate-pulse"></div>
@@ -510,13 +501,13 @@ const Gallery = () => {
               
               <div className="space-y-1 sm:space-y-2 mb-6 sm:mb-8">
                 <span className="text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-gray-500 font-light block">
-                  ✦ Exclusive Collection ✦
+                  ✦ Interior Design Collection ✦
                 </span>
                 <div className="h-px w-6 sm:w-8 bg-gray-300 mx-auto"></div>
               </div>
 
               <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extralight text-gray-900 mb-6 sm:mb-8 tracking-tighter leading-none">
-                <span className="block font-thin">Our</span>
+                <span className="block font-thin">Interior</span>
                 <span className="block font-light italic bg-gradient-to-r from-gray-700 via-gray-900 to-gray-700 bg-clip-text text-transparent">
                   Masterworks
                 </span>
@@ -524,12 +515,12 @@ const Gallery = () => {
 
               <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
                 <p className="text-lg sm:text-xl md:text-2xl text-gray-600 font-extralight leading-relaxed tracking-wide px-4">
-                  Where <em className="italic font-light">architectural poetry</em> meets 
-                  <em className="italic font-light"> timeless sophistication</em>
+                  Where <em className="italic font-light">elegant interiors</em> meet 
+                  <em className="italic font-light"> functional sophistication</em>
                 </p>
                 <div className="flex items-center justify-center space-x-4 sm:space-x-6 text-gray-400">
                   <div className="h-px w-8 sm:w-16 bg-gray-300"></div>
-                  <span className="text-xs sm:text-sm tracking-widest font-light">EST. MMXXIII</span>
+                  <span className="text-xs sm:text-sm tracking-widest font-light">{projects.length} PROJECTS</span>
                   <div className="h-px w-8 sm:w-16 bg-gray-300"></div>
                 </div>
               </div>
@@ -732,7 +723,7 @@ const Gallery = () => {
 };
 
 // Main App Component
-const PortfolioPage = () => {
+const GalleryPage = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -744,4 +735,4 @@ const PortfolioPage = () => {
   );
 };
 
-export default PortfolioPage;
+export default GalleryPage;

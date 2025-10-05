@@ -4,11 +4,11 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Gallery from "./pages/gallery";
-import Line from "./components/line"; // ← أضف هذا الاستورد
+import Exterior from "./pages/exterior";
+import Line from "./components/line";
 
 const queryClient = new QueryClient();
 
@@ -21,7 +21,8 @@ const App: React.FC = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/line" element={<Line />} /> {/* ← أضف هذا المسار */}
+          <Route path="/exterior" element={<Exterior />} />
+          <Route path="/line" element={<Line />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

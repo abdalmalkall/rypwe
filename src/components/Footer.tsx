@@ -67,6 +67,7 @@ const Footer = () => {
     { name: "Home", href: "#home" },
     { name: "Designs", href: "/gallery" },
     { name: "Videos", href: "/line" },
+    { name: "Exterior", href: "/exterior" },
     { name: "View CV", onClick: () => setShowCv(true) },
     { name: "Web Developer", href: "https://cl-hub.netlify.app/", external: true }
   ];
