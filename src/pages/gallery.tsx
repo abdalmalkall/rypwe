@@ -52,12 +52,9 @@ const Header = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8">
-              <a href="#home" className="text-gray-900 hover:text-gray-600 transition-colors">Home</a>
-              <a href="#about" className="text-gray-900 hover:text-gray-600 transition-colors">About</a>
-              <a href="/gallery" className="text-gray-900 hover:text-gray-600 transition-colors">Designs</a>
-              <a href=".#videos" className="text-gray-900 hover:text-gray-600 transition-colors">Videos</a>
-              <a href="#contact" className="text-gray-900 hover:text-gray-600 transition-colors">Contact</a>
-              
+              <a href="/" className="text-gray-900 hover:text-gray-600 transition-colors">Home</a>
+              <a href="/line" className="text-gray-900 hover:text-gray-600 transition-colors">Videos</a>
+
               <button
                 onClick={() => setShowCv(true)}
                 className="text-gray-900 hover:text-gray-600 transition-colors"
@@ -81,7 +78,7 @@ const Header = () => {
               <div className="flex flex-col space-y-2">
                 <a href="#home" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Home</a>
                 <a href="#gallery" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Designs</a>
-                <a href="#videos" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Videos</a>
+                <a href="/line" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Videos</a>
                 <a href="#contact" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Contact</a>
                 <button
                   onClick={() => setShowCv(true)}
@@ -167,9 +164,8 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <div className="space-y-2">
-                <a href="#home" className="block text-gray-300 hover:text-white transition">Home</a>
-                <a href="./gallery" className="block text-gray-300 hover:text-white transition">Designs</a>
-                <a href="#videos" className="block text-gray-300 hover:text-white transition">Videos</a>
+                <a href="/" className="block text-gray-300 hover:text-white transition">Home</a>
+                <a href="/line" className="block text-gray-300 hover:text-white transition">Videos</a>
                 <button
                   onClick={() => setShowCv(true)}
                   className="block text-gray-300 hover:text-white transition"

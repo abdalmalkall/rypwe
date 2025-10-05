@@ -32,7 +32,7 @@ const Footer = () => {
               <div className="space-y-2">
                 <a href="#home" className="block text-gray-300 hover:text-white transition">Home</a>
                 <a href="./gallery" className="block text-gray-300 hover:text-white transition">Designs</a>
-                <a href="#videos" className="block text-gray-300 hover:text-white transition">Videos</a>
+                <a href="./line" className="block text-gray-300 hover:text-white transition">Videos</a>
                 <a href="#courses" className="block text-gray-300 hover:text-white transition">Courses</a>
                      <button
                 onClick={() => setShowCv(true)}
