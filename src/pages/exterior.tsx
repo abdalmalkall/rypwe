@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Menu, X, Home, ArrowLeft, TreePine, Building, Mountain, Mail, Phone, MapPin, FileText, ExternalLink } from "lucide-react";
+import { Menu, X, Home, ArrowLeft, Mail, Phone, MapPin, FileText, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface Project {
@@ -139,7 +139,7 @@ const Footer = () => {
           <path d="M23.498 6.186a2.978 2.978 0 0 0-2.096-2.104C19.63 3.5 12 3.5 12 3.5s-7.63 0-9.402.582a2.978 2.978 0 0 0-2.096 2.104A31.03 31.03 0 0 0 0 12a31.03 31.03 0 0 0 .502 5.814 2.978 2.978 0 0 0 2.096 2.104C4.37 20.5 12 20.5 12 20.5s7.63 0 9.402-.582a2.978 2.978 0 0 0 2.096-2.104A31.03 31.03 0 0 0 24 12a31.03 31.03 0 0 0-.502-5.814zM9.546 15.568V8.432l6.18 3.568-6.18 3.568z" />
         </svg>
       ),
-      color: "hover:bg-red-600"
+      color: "hover:bg-gray-700"
     },
     {
       name: "Instagram",
@@ -149,7 +149,7 @@ const Footer = () => {
           <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .3 2.5.5.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.5.4 1.3.5 2.5.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.5 2.5-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.5.2-1.3.4-2.5.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.5-.5-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.5-.4-1.3-.5-2.5-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-2 .5-2.5.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .5-.2 1.3-.4 2.5-.5 1.3-.1 1.7-.1 4.9-.1zm0-2.2C8.7 0 8.3 0 7 0.1 5.7 0.2 4.6 0.4 3.8 0.7 2.9 1 2.1 1.5 1.5 2.1.9 2.7.4 3.4.1 4.3c-.3.8-.5 1.9-.6 3.2C0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.4.6 3.2.3.9.8 1.6 1.4 2.2.6.6 1.3 1.1 2.2 1.4.8.3 1.9.5 3.2.6C8.3 24 8.7 24 12 24s3.7 0 4.9-.1c1.3-.1 2.4-.3 3.2-.6.9-.3 1.6-.8 2.2-1.4.6-.6 1.1-1.3 1.4-2.2.3-.8.5-1.9.6-3.2.1-1.3.1-1.7.1-4.9s0-3.7-.1-4.9c-.1-1.3-.3-2.4-.6-3.2-.3-.9-.8-1.6-1.4-2.2-.6-.6-1.3-1.1-2.2-1.4-.8-.3-1.9-.5-3.2-.6C15.7 0 15.3 0 12 0zM12 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.4a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/>
         </svg>
       ),
-      color: "hover:bg-pink-500"
+      color: "hover:bg-gray-700"
     },
     {
       name: "WhatsApp",
@@ -159,13 +159,13 @@ const Footer = () => {
           <path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.373 0 0 5.373 0 12c0 2.11.55 4.07 1.51 5.82L0 24l6.33-1.5a11.937 11.937 0 0 0 5.67 1.44c6.627 0 12-5.373 12-12 0-3.21-1.27-6.22-3.48-8.46zM12 21.75a9.64 9.64 0 0 1-4.87-1.34l-.35-.21-3.75.89.89-3.66-.23-.37A9.52 9.52 0 0 1 2.25 12c0-5.2 4.23-9.44 9.44-9.44 2.52 0 4.88.98 6.64 2.75a9.352 9.352 0 0 1 2.75 6.7c0 5.2-4.23 9.44-9.44 9.44zm5.3-7.5c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.15-.19.29-.73.93-.9 1.12-.17.19-.35.21-.64.07-.29-.15-1.22-.45-2.32-1.43-.86-.77-1.44-1.72-1.6-2-.17-.29-.02-.44.13-.59.14-.14.29-.35.43-.52.14-.17.19-.29.29-.48.1-.19.05-.35-.02-.5-.07-.15-.63-1.5-.86-2.06-.23-.54-.46-.47-.64-.47-.17 0-.37-.02-.57-.02s-.52.07-.79.35c-.26.29-1 1-1 2.44 0 1.44 1.02 2.84 1.16 3.04.14.19 2 3.05 4.84 4.27.68.29 1.21.46 1.62.59.68.22 1.3.19 1.79.12.55-.08 1.7-.7 1.94-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z" />
         </svg>
       ),
-      color: "hover:bg-green-500"
+      color: "hover:bg-gray-700"
     },
     {
       name: "Email",
       href: "mailto:renderyourplan@gmail.com",
       icon: <Mail className="w-5 h-5" />,
-      color: "hover:bg-blue-600"
+      color: "hover:bg-gray-700"
     },
     {
       name: "Facebook",
@@ -175,7 +175,7 @@ const Footer = () => {
           <path d="M22.675 0H1.325C.593 0 0 .592 0 1.324v21.352C0 23.406.592 24 1.324 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.466.099 2.797.143v3.243l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.313h3.59l-.467 3.622h-3.123V24h6.116c.73 0 1.324-.594 1.324-1.324V1.324C24 .592 23.406 0 22.675 0z" />
         </svg>
       ),
-      color: "hover:bg-blue-700"
+      color: "hover:bg-gray-700"
     },
     {
       name: "LinkedIn",
@@ -185,7 +185,7 @@ const Footer = () => {
           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
         </svg>
       ),
-      color: "hover:bg-blue-800"
+      color: "hover:bg-gray-700"
     }
   ];
 
@@ -580,31 +580,20 @@ const Exterior = () => {
   );
 
   return (
-    <section id="exterior" className="relative min-h-screen bg-gradient-to-br from-emerald-50 via-white to-blue-50 overflow-hidden">
-      {/* Back to Home Button */}
-      <div className="fixed top-24 left-4 sm:left-8 z-40">
-        <Link
-          to="/"
-          className="group flex items-center gap-2 bg-white/90 backdrop-blur-md border border-gray-200 px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white hover:-translate-y-0.5"
-        >
-          <ArrowLeft className="w-4 h-4 text-gray-700 group-hover:text-gray-900 transition-colors" />
-          <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors">
-            Back to Home
-          </span>
-        </Link>
-      </div>
+    <section id="exterior" className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden">
+
 
       {/* Background */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-100/50 to-transparent animate-pulse"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-100/50 to-transparent animate-pulse"></div>
         <div 
           className="absolute inset-0 opacity-20"
           style={{
             backgroundImage: `
-              radial-gradient(circle at 25% 25%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 75% 75%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
-              linear-gradient(45deg, rgba(167, 243, 208, 0.05) 25%, transparent 25%),
-              linear-gradient(-45deg, rgba(167, 243, 208, 0.05) 25%, transparent 25%)
+              radial-gradient(circle at 25% 25%, rgba(156, 163, 175, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 75% 75%, rgba(209, 213, 219, 0.1) 0%, transparent 50%),
+              linear-gradient(45deg, rgba(243, 244, 246, 0.05) 25%, transparent 25%),
+              linear-gradient(-45deg, rgba(243, 244, 246, 0.05) 25%, transparent 25%)
             `,
             backgroundSize: '400px 400px, 300px 300px, 60px 60px, 60px 60px',
           }}
@@ -615,25 +604,25 @@ const Exterior = () => {
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           {/* Header */}
           <div className="text-center mb-16 sm:mb-20 md:mb-28 relative">
-            <div className="absolute -top-8 sm:-top-16 left-1/2 transform -translate-x-1/2 w-20 sm:w-32 h-20 sm:h-32 bg-gradient-to-br from-emerald-200 to-blue-300 rounded-full opacity-20 animate-pulse"></div>
+            <div className="absolute -top-8 sm:-top-16 left-1/2 transform -translate-x-1/2 w-20 sm:w-32 h-20 sm:h-32 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full opacity-20 animate-pulse"></div>
             
             <div className="relative">
               <div className="flex items-center justify-center mb-6 sm:mb-8">
-                <div className="h-px w-12 sm:w-24 bg-gradient-to-r from-transparent via-emerald-400 to-emerald-400"></div>
-                <div className="mx-2 sm:mx-4 w-3 sm:w-4 h-3 sm:h-4 bg-emerald-300 rotate-45 shadow-lg"></div>
-                <div className="h-px w-12 sm:w-24 bg-gradient-to-l from-transparent via-emerald-400 to-emerald-400"></div>
+                <div className="h-px w-12 sm:w-24 bg-gradient-to-r from-transparent via-gray-400 to-gray-400"></div>
+                <div className="mx-2 sm:mx-4 w-3 sm:w-4 h-3 sm:h-4 bg-gray-300 rotate-45 shadow-lg"></div>
+                <div className="h-px w-12 sm:w-24 bg-gradient-to-l from-transparent via-gray-400 to-gray-400"></div>
               </div>
               
               <div className="space-y-1 sm:space-y-2 mb-6 sm:mb-8">
-                <span className="text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-emerald-600 font-light block">
+                <span className="text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-gray-600 font-light block">
                   ✦ Exterior Architecture Collection ✦
                 </span>
-                <div className="h-px w-6 sm:w-8 bg-emerald-300 mx-auto"></div>
+                <div className="h-px w-6 sm:w-8 bg-gray-300 mx-auto"></div>
               </div>
 
               <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extralight text-gray-900 mb-6 sm:mb-8 tracking-tighter leading-none">
                 <span className="block font-thin">Exterior</span>
-                <span className="block font-light italic bg-gradient-to-r from-emerald-700 via-gray-900 to-blue-700 bg-clip-text text-transparent">
+                <span className="block font-light italic bg-gradient-to-r from-gray-700 via-gray-900 to-gray-700 bg-clip-text text-transparent">
                   Architecture
                 </span>
               </h1>
@@ -641,12 +630,12 @@ const Exterior = () => {
               <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
                 <p className="text-lg sm:text-xl md:text-2xl text-gray-600 font-extralight leading-relaxed tracking-wide px-4">
                   Where <em className="italic font-light">architectural vision</em> meets 
-                  <em className="italic font-light"> natural harmony</em>
+                  <em className="italic font-light"> timeless elegance</em>
                 </p>
                 <div className="flex items-center justify-center space-x-4 sm:space-x-6 text-gray-400">
-                  <div className="h-px w-8 sm:w-16 bg-emerald-300"></div>
+                  <div className="h-px w-8 sm:w-16 bg-gray-300"></div>
                   <span className="text-xs sm:text-sm tracking-widest font-light">{projects.length} ARCHITECTURAL PROJECTS</span>
-                  <div className="h-px w-8 sm:w-16 bg-emerald-300"></div>
+                  <div className="h-px w-8 sm:w-16 bg-gray-300"></div>
                 </div>
               </div>
             </div>
@@ -685,11 +674,11 @@ const Exterior = () => {
                     {/* Content Area */}
                     <CardContent className="p-6 sm:p-8 md:p-10 relative bg-gradient-to-b from-white/90 to-white/95">
                       <div className="flex items-center justify-center mb-4 sm:mb-6">
-                        <div className="h-px flex-1 bg-gradient-to-r from-transparent to-emerald-200"></div>
+                        <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gray-200"></div>
                         <div className="mx-3 sm:mx-4">
-                          <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-emerald-300 rounded-full"></div>
+                          <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-gray-300 rounded-full"></div>
                         </div>
-                        <div className="h-px flex-1 bg-gradient-to-l from-transparent to-emerald-200"></div>
+                        <div className="h-px flex-1 bg-gradient-to-l from-transparent to-gray-200"></div>
                       </div>
 
                       <div className="space-y-4 sm:space-y-6">
@@ -710,7 +699,7 @@ const Exterior = () => {
 
                         {/* Expand/Collapse Button */}
                         <div className="flex items-center justify-center pt-3 sm:pt-4">
-                          <button className="flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 transition-colors duration-300 text-xs sm:text-sm uppercase tracking-wide">
+                          <button className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors duration-300 text-xs sm:text-sm uppercase tracking-wide">
                             <span>{isExpanded ? 'Show Less' : 'Read More'}</span>
                             <svg 
                               className={`w-3 sm:w-4 h-3 sm:h-4 transition-transform duration-300 ${
@@ -726,11 +715,11 @@ const Exterior = () => {
                         </div>
 
                         {/* Action Area */}
-                        <div className={`border-t border-emerald-100 transition-all duration-500 ${
+                        <div className={`border-t border-gray-100 transition-all duration-500 ${
                           isExpanded ? 'pt-3 sm:pt-4 mt-3 sm:mt-4' : 'pt-4 sm:pt-6 mt-4 sm:mt-6'
                         }`}>
                           <div className="flex items-center justify-between">
-                            <div className="flex items-center space-x-2 sm:space-x-3 text-emerald-600 group-hover:text-emerald-700 transition-colors duration-500">
+                            <div className="flex items-center space-x-2 sm:space-x-3 text-gray-600 group-hover:text-gray-800 transition-colors duration-500">
                               <span className="text-xs sm:text-sm uppercase tracking-[0.15em] sm:tracking-[0.2em] font-light">
                                 {isExpanded ? 'Architectural Gallery' : 'Explore Design'}
                               </span>
@@ -741,7 +730,7 @@ const Exterior = () => {
                               </div>
                             </div>
                             
-                            <div className="text-emerald-300 text-xs sm:text-sm font-light">
+                            <div className="text-gray-300 text-xs sm:text-sm font-light">
                               {String(projectIndex + 1).padStart(2, '0')}
                             </div>
                           </div>
@@ -750,7 +739,7 @@ const Exterior = () => {
 
                       {/* Floating decoration */}
                       {hoveredCard === project.id && (
-                        <div className="absolute -top-1 sm:-top-2 -right-1 sm:-right-2 w-8 sm:w-12 h-8 sm:h-12 bg-gradient-to-br from-emerald-50 to-blue-50 rounded-full shadow-xl opacity-80 animate-pulse"></div>
+                        <div className="absolute -top-1 sm:-top-2 -right-1 sm:-right-2 w-8 sm:w-12 h-8 sm:h-12 bg-gradient-to-br from-white to-gray-100 rounded-full shadow-xl opacity-80 animate-pulse"></div>
                       )}
                     </CardContent>
                   </Card>
@@ -768,7 +757,7 @@ const Exterior = () => {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="absolute inset-0 bg-gradient-radial from-emerald-900/20 via-black/50 to-black opacity-60"></div>
+          <div className="absolute inset-0 bg-gradient-radial from-gray-900/20 via-black/50 to-black opacity-60"></div>
           
           {/* Navigation Buttons */}
           <button 
