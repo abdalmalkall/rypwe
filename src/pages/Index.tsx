@@ -37,8 +37,8 @@ const Index: React.FC = () => {
   const exteriorData = {
     images: [
       "architectural.jpg",
-      "4deb4433-c0f7-48c6-b9fd-8c30e2831906.jpeg",
-      "a9e3b97c-29e7-4cff-b8ad-67925bc23866.jpeg"
+      "a-(1).jpg",
+      "a-(2).jpg"
     ],
     stats: [
       { icon: Home, number: "25+", label: "Exterior Projects" },
