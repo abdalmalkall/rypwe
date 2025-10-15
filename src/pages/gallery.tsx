@@ -590,18 +590,7 @@ const Gallery = () => {
 
   return (
     <section id="portfolio" className="relative min-h-screen bg-white overflow-hidden">
-      {/* Back to Home Button */}
-      <div className="fixed top-20 left-4 sm:left-8 z-40">
-        <Link
-          to="/"
-          className="group flex items-center gap-2 bg-white/90 backdrop-blur-md border border-gray-200 px-3 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white active:bg-gray-100 touch-manipulation"
-        >
-          <ArrowLeft className="w-4 h-4 text-gray-700 group-hover:text-black transition-colors" />
-          <span className="text-xs font-semibold text-gray-700 group-hover:text-black transition-colors">
-            Back to Home
-          </span>
-        </Link>
-      </div>
+     
 
       {/* Minimal Background */}
       <div className="absolute inset-0 opacity-5">
