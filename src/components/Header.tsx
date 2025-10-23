@@ -27,7 +27,7 @@ const Header = () => {
             <a href="/exterior" className="text-gray-900 hover:text-gray-600 transition-colors">Exterior</a>
               {/* <a href="#courses" className="text-gray-900 hover:text-gray-600 transition-colors">Courses</a> */}
               <a href="#contact" className="text-gray-900 hover:text-gray-600 transition-colors">Contact</a>
-                              <a href="/exterior" className="text-gray-900 hover:text-gray-600 transition-colors">Exterior</a>
+                 
 
               <button
                 onClick={() => setShowCv(true)}

@@ -69,9 +69,10 @@ const Header = () => {
                 />
                 <div className="absolute inset-0 rounded-full border-2 border-black/10 animate-pulse"></div>
               </div>
-              <span className="ml-3 text-xl md:text-2xl font-bold text-black">
-                Render Your Plan
-              </span>
+              <Link to="/" className="flex items-center">
+  
+  <span className="ml-3 text-2xl font-bold text-black">Render Your Plan</span>
+</Link>
             </div>
 
             {/* Desktop Navigation */}

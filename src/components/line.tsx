@@ -16,8 +16,10 @@ const Header = () => {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <img src="/logo.jpg" alt="RYP Logo" className="h-10 w-10 rounded-full object-cover" />
-              <span className="ml-3 text-2xl font-bold text-black">Render Your Plan</span>
+    <Link to="/" className="flex items-center">
+  <img src="/logo.jpg" alt="RYP Logo" className="h-10 w-10 rounded-full object-cover" />
+  <span className="ml-3 text-2xl font-bold text-black">Render Your Plan</span>
+</Link>
             </div>
 
             {/* Desktop Navigation */}

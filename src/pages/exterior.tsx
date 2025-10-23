@@ -48,8 +48,10 @@ const Header = () => {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <img src="/logo.jpg" alt="RYP Logo" className="h-10 w-10 rounded-full object-cover" />
-              <span className="ml-3 text-2xl font-bold text-black">Render Your Plan</span>
+            <Link to="/" className="flex items-center">
+  <img src="/logo.jpg" alt="RYP Logo" className="h-10 w-10 rounded-full object-cover" />
+  <span className="ml-3 text-2xl font-bold text-black">Render Your Plan</span>
+</Link>
             </div>
 
             {/* Desktop Navigation */}
@@ -396,7 +398,7 @@ const Exterior = () => {
     });
   }, []);
 
-  // Exterior Projects data
+  // Exterior Projects data - تم التصحيح هنا
   const projects: Project[] = useMemo(() => [
     { 
       id: 1, 
@@ -420,6 +422,22 @@ const Exterior = () => {
       description: "Modern residential building with innovative architectural elements", 
       images: ["a9e3b97c-29e7-4cff-b8ad-67925bc23866.jpeg"],
       expandedDescription: "An innovative residential complex featuring a dynamic facade that plays with light and shadow. The design incorporates sustainable materials and green building principles while maintaining a striking visual appeal that stands as a landmark in urban architecture.",
+      category: "exterior"
+    },
+    { 
+      id: 4,
+      title: "Neo-Classical Elegance Villa", 
+      description: "Neo-Classical Elegance Villa",
+      images: ["(1).png", "(4).png"],
+      expandedDescription: "A sophisticated villa design blending classical architectural elements with modern touches, featuring grand façades, elegant columns, and balanced proportions to create a timeless and luxurious living space.",
+      category: "exterior"
+    },
+    { 
+      id: 5,
+      title: "Cozy Cabin in the Woods", 
+      description: "Cozy Cabin in the Woods",
+      images: ["(2).png", "(3).png"],
+      expandedDescription: "A unique villa inspired by a rustic cabin, nestled in a dense forest, where the surrounding nature harmonizes with wooden and glass architectural elements to create a peaceful and cozy atmosphere, featuring open spaces that allow natural light and enchanting views of the surrounding trees.",
       category: "exterior"
     }
   ], []);
