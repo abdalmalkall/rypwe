@@ -5,6 +5,13 @@ import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { Camera, ArrowRight, Star, Users, Clock, Play, Home, TreePine } from "lucide-react";
 
+// تعريف نوع البيانات للإحصائيات
+interface StatItem {
+  icon: React.ComponentType<{ className?: string }>;
+  number: string;
+  label: string;
+}
+
 const Index: React.FC = () => {
   // بيانات المعرض
   const galleryData = {
@@ -61,7 +68,7 @@ const Index: React.FC = () => {
     description: string;
     mainImage: string;
     previewItems: string[];
-    stats: any[];
+    stats: StatItem[];
     linkTo: string;
     type?: "gallery" | "video" | "exterior";
   }) => (
@@ -252,7 +259,7 @@ const Index: React.FC = () => {
   );
 
   // مكون الإحصائيات المشترك
-  const StatsGrid = ({ stats }: { stats: any[] }) => (
+  const StatsGrid = ({ stats }: { stats: StatItem[] }) => (
     <div className={`grid gap-6 max-w-3xl mx-auto mb-16 ${
       stats.length === 3 ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1 md:grid-cols-2'
     }`}>
