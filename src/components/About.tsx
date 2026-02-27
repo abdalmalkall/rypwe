@@ -23,11 +23,11 @@ const About = () => {
               {/* حلقة متحركة */}
               <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-gray-300 animate-spin-slow"></div>
             </div>
-            
-            <h2 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
+
+            {/* <h2 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
               About <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-900">Ibrahim Alyan</span>
-            </h2>
-            
+            </h2> */}
+
             {/* خط فاصل فاخر */}
             <div className="relative">
               <div className="w-48 h-1 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto"></div>
@@ -38,7 +38,7 @@ const About = () => {
 
         {/* المحتوى الرئيسي */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 items-start mb-20">
-          
+
           {/* قسم النص */}
           <div className="space-y-8">
             {/* بطاقة العلامة التجارية الفاخرة */}
@@ -107,7 +107,7 @@ const About = () => {
                 />
                 {/* Overlay فاخر */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-2xl"></div>
-                
+
                 {/* شارة اللوجو */}
                 <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl border border-white/50">
                   <div className="flex items-center gap-2">
@@ -143,7 +143,7 @@ const About = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-6 shadow-2xl border border-gray-200/50 transform hover:scale-[1.05] transition-all duration-500 group">
                 <div className="relative overflow-hidden rounded-2xl">
                   <img
@@ -166,7 +166,7 @@ const About = () => {
           {/* خلفية ديكورية */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-32 translate-x-32"></div>
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-24 -translate-x-24"></div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center relative z-10">
             <div className="p-8 group">
               <div className="text-4xl font-bold text-white mb-4 transform group-hover:scale-110 transition-transform duration-500">2+ Years</div>

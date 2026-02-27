@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
+// import About from "@/components/About";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { Camera, ArrowRight, Star, Users, Clock, Play, Home, TreePine } from "lucide-react";
@@ -14,18 +14,7 @@ interface StatItem {
 
 const Index: React.FC = () => {
   // بيانات المعرض
-  const galleryData = {
-    images: [
-      "bedroom3.jpg",
-      "Living.jpeg", 
-      "bedroom2.jpg",
-    ],
-    stats: [
-      { icon: Camera, number: "50+", label: "Featured Projects" },
-      { icon: Users, number: "11+", label: "Design Styles" },
-      { icon: Clock, number: "24/7", label: "Accessible" }
-    ]
-  };
+
 
   // بيانات الفيديو
   const videoData = {
@@ -55,9 +44,9 @@ const Index: React.FC = () => {
   };
 
   // مكون القسم المشترك
-  const SectionCard = ({ 
-    title, 
-    description, 
+  const SectionCard = ({
+    title,
+    description,
     mainImage,
     previewItems,
     stats,
@@ -82,7 +71,7 @@ const Index: React.FC = () => {
           <div className={`w-full h-64 md:h-96 flex items-center justify-center relative ${
             type === 'video' ? 'bg-gray-900' : type === 'exterior' ? 'bg-gradient-to-br from-blue-900/20 to-green-900/20' : ''
           }`}>
-            
+
             {type === 'video' && (
               <>
                 <div className="relative z-10">
@@ -97,7 +86,7 @@ const Index: React.FC = () => {
                 />
               </>
             )}
-            
+
             {(type === 'gallery' || type === 'exterior') && (
               <img
                 src={mainImage}
@@ -106,10 +95,10 @@ const Index: React.FC = () => {
               />
             )}
           </div>
-          
+
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          
+
           {/* المحتوى العلوي */}
           <div className="absolute bottom-0 left-0 right-0 p-8">
             <div className="flex items-end justify-between">
@@ -129,8 +118,8 @@ const Index: React.FC = () => {
                     </div>
                     <span className="text-gray-300 text-sm">
                       Premium {
-                        type === 'gallery' ? 'Collection' : 
-                        type === 'video' ? 'Content' : 
+                        type === 'gallery' ? 'Collection' :
+                        type === 'video' ? 'Content' :
                         'Architecture'
                       }
                     </span>
@@ -138,8 +127,8 @@ const Index: React.FC = () => {
                 </div>
               </div>
               <div className={`p-4 rounded-full border transition-all duration-300 ${
-                type === 'gallery' 
-                  ? 'bg-white/20 backdrop-blur-sm border-white/30 group-hover:bg-white/30' 
+                type === 'gallery'
+                  ? 'bg-white/20 backdrop-blur-sm border-white/30 group-hover:bg-white/30'
                   : type === 'video'
                   ? 'bg-white/10 backdrop-blur-sm border-white/20 group-hover:bg-white/20'
                   : 'bg-green-500/20 backdrop-blur-sm border-green-400/30 group-hover:bg-green-500/30'
@@ -154,8 +143,8 @@ const Index: React.FC = () => {
         <div className="p-6 bg-gray-50 border-t border-gray-200">
           <div className="flex items-center justify-between mb-4">
             <span className="text-sm font-medium text-gray-800">
-              {type === 'gallery' ? 'Gallery Preview' : 
-               type === 'video' ? 'Video Previews' : 
+              {type === 'gallery' ? 'Gallery Preview' :
+               type === 'video' ? 'Video Previews' :
                'Exterior Designs Preview'}
             </span>
             <span className="text-xs text-gray-600">
@@ -168,8 +157,8 @@ const Index: React.FC = () => {
                 <img
                   src={item}
                   alt={`${
-                    type === 'gallery' ? 'Gallery' : 
-                    type === 'video' ? 'Video' : 
+                    type === 'gallery' ? 'Gallery' :
+                    type === 'video' ? 'Video' :
                     'Exterior'
                   } preview ${index + 1}`}
                   className="w-full h-20 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
@@ -198,25 +187,25 @@ const Index: React.FC = () => {
                   'bg-emerald-500'
                 }`} />
                 <span className="text-sm font-medium text-gray-800">
-                  {type === 'gallery' ? 'Live Updates' : 
-                   type === 'video' ? 'New Videos' : 
+                  {type === 'gallery' ? 'Live Updates' :
+                   type === 'video' ? 'New Videos' :
                    'Latest Projects'}
                 </span>
               </div>
               <div className="w-px h-4 bg-gray-300"></div>
               <span className="text-sm text-gray-600">
-                {type === 'gallery' ? 'New projects weekly' : 
-                 type === 'video' ? 'Updated regularly' : 
+                {type === 'gallery' ? 'New projects weekly' :
+                 type === 'video' ? 'Updated regularly' :
                  'Ongoing developments'}
               </span>
             </div>
             <span className="text-sm font-medium text-gray-800">
-              {type === 'gallery' ? 'Explore Gallery' : 
-               type === 'video' ? 'Watch Videos' : 
+              {type === 'gallery' ? 'Explore Gallery' :
+               type === 'video' ? 'Watch Videos' :
                'View Exteriors'}
             </span>
           </div>
-          
+
           {/* شريط التقدم */}
           <div className="space-y-2">
             <div className="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
@@ -228,13 +217,13 @@ const Index: React.FC = () => {
             </div>
             <div className="flex justify-between text-sm text-gray-600">
               <span>
-                {type === 'gallery' ? 'Collection Progress' : 
-                 type === 'video' ? 'Content Progress' : 
+                {type === 'gallery' ? 'Collection Progress' :
+                 type === 'video' ? 'Content Progress' :
                  'Projects Progress'}
               </span>
               <span>
-                {type === 'gallery' ? '80%' : 
-                 type === 'video' ? '75%' : 
+                {type === 'gallery' ? '80%' :
+                 type === 'video' ? '75%' :
                  '65%'}
               </span>
             </div>
@@ -264,7 +253,7 @@ const Index: React.FC = () => {
       stats.length === 3 ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1 md:grid-cols-2'
     }`}>
       {stats.map((stat, index) => (
-        <div 
+        <div
           key={index}
           className="text-center p-8 bg-white rounded-xl border border-gray-200 hover:border-gray-300 transition-all duration-300"
         >
@@ -291,11 +280,10 @@ const Index: React.FC = () => {
           <Hero />
         </section>
 
-        {/* About Section */}
-        <section id="about">
+        {/* <section id="about">
           <About />
-        </section>
-        
+        </section>  */}
+
         {/* Gallery Section */}
         <section id="gallery" className="py-16 md:py-24 px-4 bg-white">
           <div className="max-w-6xl mx-auto">
@@ -304,17 +292,8 @@ const Index: React.FC = () => {
               description="Discover our curated collection of modern interior designs where innovation meets comfort"
             />
 
-            <SectionCard
-              title="Elevating Interior Design"
-              description="Where aesthetics meet comfort in perfect harmony"
-              mainImage="Living.jpeg"
-              previewItems={galleryData.images}
-              stats={galleryData.stats}
-              linkTo="/gallery"
-              type="gallery"
-            />
+      
 
-            <StatsGrid stats={galleryData.stats} />
           </div>
         </section>
 
