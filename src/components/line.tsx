@@ -93,7 +93,7 @@ const Header = () => {
 
             {/* زر تحميل */}
             <div className="mt-6 text-center">
-            
+
             </div>
           </div>
         </div>
@@ -139,7 +139,7 @@ const Footer = () => {
                   onClick={() => setShowCv(true)}
                   className="block text-gray-300 hover:text-white transition"
                 >
-                  View CV 
+                  View CV
                 </button>
               </div>
             </div>
@@ -195,7 +195,7 @@ const Footer = () => {
 
             {/* زر تحميل */}
             <div className="mt-6 text-center">
-            
+
             </div>
           </div>
         </div>
@@ -264,7 +264,7 @@ const Videos = () => {
     }
   };
 
-  const filteredVideos = videos.filter(video => 
+  const filteredVideos = videos.filter(video =>
     video.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     video.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -279,7 +279,7 @@ const Videos = () => {
       <main className="flex-1">
         <section id="videos" className="py-12 md:py-20 bg-white relative">
           {/* Back to Home Button */}
-      
+
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Header Section */}
@@ -288,11 +288,11 @@ const Videos = () => {
                 <Play className="w-4 h-4" />
                 <span>Featured Content</span>
               </div>
-              
+
               <h2 className="text-3xl md:text-5xl font-bold text-black mb-4 md:mb-6">
                 Design Videos
               </h2>
-              
+
               <p className="text-base md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mb-6 md:mb-8">
                 Get an inside look at our design process and transformations through cinematic architectural visualizations
               </p>
@@ -350,9 +350,9 @@ const Videos = () => {
                     </div>
                     <p className="text-gray-600 text-xs md:text-sm">Subscribers</p>
                   </div>
-                  
+
                   <div className="w-px h-8 md:h-12 bg-gray-300"></div>
-                  
+
                   <div className="text-center">
                     <div className="flex items-center gap-1 text-black font-bold text-lg md:text-2xl">
                       <Eye className="w-4 h-4 md:w-6 md:h-6" />
@@ -360,9 +360,9 @@ const Videos = () => {
                     </div>
                     <p className="text-gray-600 text-xs md:text-sm">Total Views</p>
                   </div>
-                  
+
                   <div className="w-px h-8 md:h-12 bg-gray-300"></div>
-                  
+
                   <div className="text-center">
                     <div className="flex items-center gap-1 text-black font-bold text-lg md:text-2xl">
                       <Play className="w-4 h-4 md:w-6 md:h-6" />
@@ -412,7 +412,7 @@ const Videos = () => {
                                 alt={video.title}
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                               />
-                              
+
                               {/* Play Button Overlay */}
                               <button
                                 onClick={() => setPlayingVideo(video.id)}
@@ -422,7 +422,7 @@ const Videos = () => {
                                   <Play className="w-6 h-6 md:w-8 md:h-8" fill="white" />
                                 </div>
                               </button>
-                              
+
                               {/* Duration Badge */}
                               <div className="absolute bottom-3 right-3 bg-black bg-opacity-80 text-white px-2 py-1 rounded text-xs font-medium">
                                 <Clock className="w-3 h-3 inline mr-1" />
@@ -437,7 +437,7 @@ const Videos = () => {
                         <h3 className="text-lg md:text-xl font-bold text-black mb-3 md:mb-4 leading-tight line-clamp-2">
                           {video.title}
                         </h3>
-                        
+
                         <p className="text-gray-700 text-sm md:text-base mb-4 md:mb-6 leading-relaxed line-clamp-3">
                           {video.description}
                         </p>
@@ -451,7 +451,7 @@ const Videos = () => {
                             <Play className="w-4 h-4" />
                             <span>Watch Now</span>
                           </button>
-                          
+
                           <a
                             href={video.youtubeUrl}
                             target="_blank"
@@ -482,12 +482,12 @@ const Videos = () => {
                   <div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-white bg-opacity-20 rounded-full mb-6">
                     <Bell className="w-8 h-8 md:w-10 md:h-10" />
                   </div>
-                  
+
                   <h3 className="text-2xl md:text-3xl font-bold mb-4">Don't Miss Out!</h3>
                   <p className="text-gray-200 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
                     Subscribe to our channel for exclusive architectural visualization content, design inspiration, and behind-the-scenes looks at our creative process
                   </p>
-                  
+
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <button
                       onClick={handleSubscribe}
@@ -496,7 +496,7 @@ const Videos = () => {
                       <Bell className="w-5 h-5" />
                       <span>Subscribe Now</span>
                     </button>
-                    
+
                     <Link
                       to="/"
                       className="bg-transparent hover:bg-white hover:bg-opacity-10 text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-3 text-base md:text-lg border border-white border-opacity-30"
