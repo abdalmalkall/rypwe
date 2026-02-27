@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
+    <section id="about" className="py-8 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
       <style>{`
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
