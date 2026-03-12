@@ -1,4 +1,4 @@
-import { FC, ComponentType, memo } from "react";
+import { FC, ComponentType, memo, useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -57,13 +57,14 @@ return(
 <span className="text-sm font-medium text-gray-800">{type==="gallery"?"Gallery Preview":type==="video"?"Video Previews":"Exterior Designs Preview"}</span>
 <span className="text-xs text-gray-600">{previewItems.length} {type==="gallery"?"images":type==="video"?"videos":"designs"}</span>
 </div>
-<div className="grid grid-cols-3 gap-2">
+<div className="grid grid-cols-3 gap-3">
 {previewItems.map((item,i)=>(
-<div key={i} className="relative group">
-<img src={item} alt={`preview ${i+1}`} className="w-full h-20 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"/>
-<div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-lg flex items-center justify-center">
-{isVideo&&<Play className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"/>}
-{isExterior&&<Home className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"/>}
+<div key={i} className="relative group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+<img src={item} alt={`preview ${i+1}`} className="w-full h-24 md:h-28 object-cover transition-transform duration-500 group-hover:scale-110"/>
+<div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-all duration-300"/>
+<div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+{isVideo&&<Play className="w-5 h-5 text-white"/>}
+{isExterior&&<Home className="w-5 h-5 text-white"/>}
 </div>
 </div>
 ))}
@@ -128,33 +129,75 @@ return(
 StatsGrid.displayName="StatsGrid";
 
 const Index:FC=()=>{
+useEffect(()=>{
+const elements=Array.from(document.querySelectorAll<HTMLElement>("[data-animate]"));
+if(!elements.length)return;
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach((entry)=>{
+if(entry.isIntersecting){
+entry.target.setAttribute("data-in-view","true");
+observer.unobserve(entry.target);
+}
+});
+},{threshold:0.2,rootMargin:"0px 0px -10% 0px"});
+elements.forEach((el)=>observer.observe(el));
+return()=>observer.disconnect();
+},[]);
 return(
 <div className="min-h-screen bg-white">
 <Header/>
 <main>
+<style>{`
+  .lux-reveal {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+    filter: blur(6px);
+    transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1),
+      transform 700ms cubic-bezier(0.4, 0, 0.2, 1),
+      filter 700ms cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform, filter;
+  }
+  .lux-reveal[data-in-view="true"] {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+`}</style>
 <section id="home"><Hero/></section>
 <section id="about"><About/></section>
 
 <section id="gallery" className="py-8 px-4 bg-white">
 <div className="max-w-6xl mx-auto">
+<div data-animate className="lux-reveal" style={{transitionDelay:"0ms"}}>
 <SectionHeader title="Design Portfolio" description="Discover our curated collection of modern interior designs where innovation meets comfort"/>
+</div>
+<div data-animate className="lux-reveal" style={{transitionDelay:"120ms"}}>
 <SectionCard title="Elevating Interior Design" description="Where aesthetics meet comfort in perfect harmony" mainImage="Living.jpeg" previewItems={[...galleryData.images]} stats={[...galleryData.stats]} linkTo="/gallery" type="gallery"/>
+</div>
 <StatsGrid stats={[...galleryData.stats]}/>
 </div>
 </section>
 
 <section id="exterior" className="py-8 bg-gradient-to-br from-gray-50 to-emerald-50">
 <div className="max-w-6xl mx-auto px-4">
+<div data-animate className="lux-reveal" style={{transitionDelay:"0ms"}}>
 <SectionHeader title="Exterior Designs" description="Transform your outdoor spaces with stunning architectural facades and landscape designs"/>
+</div>
+<div data-animate className="lux-reveal" style={{transitionDelay:"120ms"}}>
 <SectionCard title="Architectural Excellence" description="Creating captivating exteriors that blend with nature" mainImage={exteriorData.images[0]} previewItems={[...exteriorData.images]} stats={[...exteriorData.stats]} linkTo="/exterior" type="exterior"/>
+</div>
 <StatsGrid stats={[...exteriorData.stats]}/>
 </div>
 </section>
 
 <section id="line" className="py-8 bg-gray-50">
 <div className="max-w-6xl mx-auto px-4">
+<div data-animate className="lux-reveal" style={{transitionDelay:"0ms"}}>
 <SectionHeader title="Design Videos" description="Watch our design process come to life through captivating videos"/>
+</div>
+<div data-animate className="lux-reveal" style={{transitionDelay:"120ms"}}>
 <SectionCard title="Behind The Design" description="Exclusive look at our creative process" mainImage={videoData.thumbnails[0]} previewItems={[...videoData.thumbnails]} stats={[...videoData.stats]} linkTo="/line" type="video"/>
+</div>
 <StatsGrid stats={[...videoData.stats]}/>
 </div>
 </section>

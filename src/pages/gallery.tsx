@@ -342,6 +342,27 @@ const Gallery = () => {
     });
   }, []);
 
+  // Scroll reveal effects
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll<HTMLElement>("[data-animate]"));
+    if (!elements.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.setAttribute("data-in-view", "true");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   // Interior Projects data
   const projects: Project[] = useMemo(() => [
     {
@@ -423,8 +444,8 @@ const Gallery = () => {
       category: "interior",
       rating: 5,
       features: ["Spa-like", "Luxury Materials", "Modern Tech", "Relaxation Focus"]
-    }
-      {
+    },
+    {
       id: 7,
       title: "Spa Bathroom",
       description: "Luxury retreat with contemporary fixtures",
@@ -525,11 +546,6 @@ const Gallery = () => {
     setExpandedCard(prev => prev === projectId ? null : projectId);
   }, []);
 
-  const handleImageClick = useCallback((e: React.MouseEvent, startIndex: number, index: number = 0) => {
-    e.stopPropagation();
-    openLightbox(startIndex + index);
-  }, [openLightbox]);
-
   // Render methods for better organization
   const renderImageGrid = (imgs: string[], startIndex: number, projectId: number) => {
     if (imgs.length >= 4) {
@@ -541,7 +557,6 @@ const Gallery = () => {
                 src={imgSrc}
                 alt={`${projects.find(p => p.id === projectId)?.title} ${index + 1}`}
                 className="w-full h-full object-cover transition-all duration-700 cursor-pointer hover:scale-110"
-                onClick={(e) => handleImageClick(e, startIndex, index)}
                 draggable={false}
                 onContextMenu={(e) => e.preventDefault()}
               />
@@ -561,7 +576,6 @@ const Gallery = () => {
                 src={imgSrc}
                 alt={`${projects.find(p => p.id === projectId)?.title} ${index + 1}`}
                 className="w-full h-full object-cover transition-all duration-700 cursor-pointer hover:scale-110"
-                onClick={(e) => handleImageClick(e, startIndex, index)}
                 draggable={false}
                 onContextMenu={(e) => e.preventDefault()}
               />
@@ -579,7 +593,6 @@ const Gallery = () => {
             src={imgs[0]}
             alt={projects.find(p => p.id === projectId)?.title}
             className="w-full h-full object-cover transition-all duration-700 cursor-pointer hover:scale-110"
-            onClick={(e) => handleImageClick(e, startIndex)}
             draggable={false}
             onContextMenu={(e) => e.preventDefault()}
           />
@@ -601,12 +614,39 @@ const Gallery = () => {
 
   return (
     <section id="portfolio" className="relative min-h-screen bg-white overflow-hidden">
+      <style>{`
+        .lux-reveal {
+          opacity: 0;
+          transform: translateY(24px) scale(0.98);
+          filter: blur(6px);
+          transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1),
+            transform 700ms cubic-bezier(0.4, 0, 0.2, 1),
+            filter 700ms cubic-bezier(0.4, 0, 0.2, 1);
+          will-change: opacity, transform, filter;
+        }
+        .lux-reveal[data-in-view="true"] {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+          filter: blur(0);
+        }
+        .lux-card[data-in-view="true"] .lux-ring {
+          opacity: 1;
+        }
+        .lux-glow {
+          background: radial-gradient(1200px 600px at 10% -10%, rgba(0, 0, 0, 0.08), transparent 60%),
+            radial-gradient(900px 500px at 90% 10%, rgba(0, 0, 0, 0.06), transparent 55%);
+        }
+      `}</style>
 
 
       {/* Minimal Background */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-transparent to-gray-800"></div>
       </div>
+      <div className="absolute inset-0 lux-glow pointer-events-none" />
+      <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-gray-200/60 blur-3xl pointer-events-none" />
+      <div className="absolute top-32 -right-20 h-80 w-80 rounded-full bg-gray-300/40 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-gray-200/50 blur-3xl pointer-events-none" />
 
       <div className="relative z-10 py-12 sm:py-20 md:py-28">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
@@ -614,27 +654,43 @@ const Gallery = () => {
           <div className="text-center mb-12 sm:mb-16 md:mb-24 relative">
             <div className="relative">
               {/* Decorative elements */}
-              <div className="flex items-center justify-center mb-6 sm:mb-10 md:mb-12">
+              <div
+                className="flex items-center justify-center mb-6 sm:mb-10 md:mb-12 lux-reveal"
+                data-animate
+                style={{ transitionDelay: "0ms" }}
+              >
                 <div className="h-px w-12 sm:w-16 md:w-32 bg-gradient-to-r from-transparent via-gray-400 to-gray-400"></div>
                 <div className="mx-3 sm:mx-4 md:mx-6 w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6 bg-gray-400 rotate-45 shadow-lg"></div>
                 <div className="h-px w-12 sm:w-16 md:w-32 bg-gradient-to-l from-transparent via-gray-400 to-gray-400"></div>
               </div>
 
               {/* Category badge */}
-              <div className="inline-flex items-center px-4 py-2 md:px-6 md:py-3 bg-white backdrop-blur-sm rounded-full border border-gray-300 shadow-lg mb-6 md:mb-8">
+              <div
+                className="inline-flex items-center px-4 py-2 md:px-6 md:py-3 bg-white backdrop-blur-sm rounded-full border border-gray-300 shadow-lg mb-6 md:mb-8 lux-reveal"
+                data-animate
+                style={{ transitionDelay: "80ms" }}
+              >
                 <span className="text-xs md:text-sm font-semibold text-gray-700 uppercase tracking-wider">
                   ✦ Premium Interior Collection ✦
                 </span>
               </div>
 
               {/* Main title */}
-              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-black mb-6 md:mb-8 tracking-tight leading-none">
+              <h1
+                className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-black mb-6 md:mb-8 tracking-tight leading-none lux-reveal"
+                data-animate
+                style={{ transitionDelay: "140ms" }}
+              >
                 <span className="block">Interior</span>
                 <span className="block text-gray-800">Masterworks</span>
               </h1>
 
               {/* Description */}
-              <div className="max-w-3xl mx-auto space-y-4 md:space-y-6">
+              <div
+                className="max-w-3xl mx-auto space-y-4 md:space-y-6 lux-reveal"
+                data-animate
+                style={{ transitionDelay: "200ms" }}
+              >
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 font-light leading-relaxed">
                   Where <span className="font-semibold text-black">elegant interiors</span> meet
                   <span className="font-semibold text-black"> functional sophistication</span>.
@@ -671,11 +727,15 @@ const Gallery = () => {
                   onMouseLeave={() => setHoveredCard(null)}
                 >
                   <Card
-                    className={`relative overflow-hidden bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 md:hover:-translate-y-2 cursor-pointer touch-manipulation ${
+                    data-animate
+                    style={{ transitionDelay: `${Math.min(projectIndex * 60, 360)}ms` }}
+                    className={`lux-reveal lux-card relative overflow-hidden bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 md:hover:-translate-y-2 touch-manipulation ${
                       isExpanded ? 'scale-105 -translate-y-1 md:-translate-y-2 shadow-xl' : ''
                     }`}
-                    onClick={() => handleCardClick(project.id)}
                   >
+                    <div className="lux-ring pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-black/5 opacity-0 transition-opacity duration-700" />
+                    <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-black/80 via-gray-500 to-black/80" />
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none bg-gradient-to-br from-black/5 via-transparent to-black/10" />
 
                     {/* Image Container */}
                     <div className="relative p-3 md:p-4 pb-0">
@@ -736,7 +796,10 @@ const Gallery = () => {
 
                         {/* Expand/Collapse Button */}
                         <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-gray-200">
-                          <button className="flex items-center space-x-1 md:space-x-2 text-black hover:text-gray-700 transition-colors duration-300 text-xs md:text-sm font-semibold touch-manipulation">
+                          <button
+                            onClick={() => handleCardClick(project.id)}
+                            className="flex items-center space-x-1 md:space-x-2 text-black hover:text-gray-700 transition-colors duration-300 text-xs md:text-sm font-semibold touch-manipulation"
+                          >
                             <span>{isExpanded ? 'Show Less' : 'Read More'}</span>
                             {isExpanded ? (
                               <ChevronUp className="w-3 h-3 md:w-4 md:h-4" />
