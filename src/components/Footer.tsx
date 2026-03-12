@@ -84,11 +84,11 @@ const Footer = () => {
                   Ibrahem Alyan
                 </span>
               </div>
-              
+
               <p className="text-gray-300 text-base md:text-lg mb-6 leading-relaxed">
                 Transforming spaces into extraordinary experiences through innovative interior design and architectural visualization.
               </p>
-              
+
               <p className="text-gray-400 mb-6 md:mb-8">
                 Led by Interior Designer Ibrahem Alyan
               </p>
@@ -170,7 +170,7 @@ const Footer = () => {
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-3 text-gray-300">
                   <div className="w-8 h-8 md:w-10 md:h-10 bg-gray-800 rounded-lg flex items-center justify-center">
                     <Phone className="w-4 h-4" />
@@ -182,7 +182,7 @@ const Footer = () => {
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-3 text-gray-300">
                   <div className="w-8 h-8 md:w-10 md:h-10 bg-gray-800 rounded-lg flex items-center justify-center">
                     <MapPin className="w-4 h-4" />
@@ -199,7 +199,7 @@ const Footer = () => {
           {/* Bottom Bar */}
           <div className="border-t border-gray-800 mt-8 md:mt-12 pt-6 md:pt-8 text-center">
             <p className="text-gray-400 text-sm md:text-base">
-              © 2025 Ibrahem Alayan Interior Design. All rights reserved.
+              © 2026 Ibrahem Alayan Interior Design. All rights reserved.
             </p>
           </div>
         </div>
@@ -243,7 +243,7 @@ const Footer = () => {
               >
                 Close
               </button>
-            
+
             </div>
           </div>
         </div>

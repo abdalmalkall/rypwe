@@ -212,11 +212,11 @@ const Footer = () => {
                   Ibrahem Alyan
                 </span>
               </div>
-              
+
               <p className="text-gray-300 text-base md:text-lg mb-6 leading-relaxed">
                 Transforming spaces into extraordinary experiences through innovative interior design and architectural visualization.
               </p>
-              
+
               <p className="text-gray-400 mb-6 md:mb-8">
                 Led by Interior Designer Ibrahem Alyan
               </p>
@@ -298,7 +298,7 @@ const Footer = () => {
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-3 text-gray-300">
                   <div className="w-8 h-8 md:w-10 md:h-10 bg-gray-800 rounded-lg flex items-center justify-center">
                     <Phone className="w-4 h-4" />
@@ -310,7 +310,7 @@ const Footer = () => {
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-3 text-gray-300">
                   <div className="w-8 h-8 md:w-10 md:h-10 bg-gray-800 rounded-lg flex items-center justify-center">
                     <MapPin className="w-4 h-4" />
@@ -327,7 +327,7 @@ const Footer = () => {
           {/* Bottom Bar */}
           <div className="border-t border-gray-800 mt-8 md:mt-12 pt-6 md:pt-8 text-center">
             <p className="text-gray-400 text-sm md:text-base">
-              © 2025 Ibrahem Alayan Interior Design. All rights reserved.
+              © 2026 Ibrahem Alayan Interior Design. All rights reserved.
             </p>
           </div>
         </div>
@@ -400,41 +400,41 @@ const Exterior = () => {
 
   // Exterior Projects data - تم التصحيح هنا
   const projects: Project[] = useMemo(() => [
-    { 
-      id: 1, 
-      title: "Modern Villa Exterior", 
-      description: "Contemporary architectural design with clean lines and natural integration", 
+    {
+      id: 1,
+      title: "Modern Villa Exterior",
+      description: "Contemporary architectural design with clean lines and natural integration",
       images: ["ryp(1).JPG"],
       expandedDescription: "A stunning modern villa that seamlessly blends with its natural surroundings. Featuring clean architectural lines, large glass surfaces, and sustainable materials that create a harmonious connection between indoor and outdoor living spaces.",
       category: "exterior"
     },
-    { 
-      id: 2, 
-      title: "Luxury Garden Design", 
-      description: "Elegant landscape with water features and outdoor entertainment areas", 
+    {
+      id: 2,
+      title: "Luxury Garden Design",
+      description: "Elegant landscape with water features and outdoor entertainment areas",
       images: ["ryp(3).PNG", "ryp(4).PNG"],
       expandedDescription: "An exquisite garden design that transforms outdoor spaces into luxurious retreats. Incorporating water features, carefully curated plant selections, and sophisticated lighting to create an atmosphere of tranquility and elegance for outdoor entertainment and relaxation.",
       category: "exterior"
     },
-    { 
-      id: 3, 
-      title: "Residential Complex Facade", 
-      description: "Modern residential building with innovative architectural elements", 
+    {
+      id: 3,
+      title: "Residential Complex Facade",
+      description: "Modern residential building with innovative architectural elements",
       images: ["a9e3b97c-29e7-4cff-b8ad-67925bc23866.jpeg"],
       expandedDescription: "An innovative residential complex featuring a dynamic facade that plays with light and shadow. The design incorporates sustainable materials and green building principles while maintaining a striking visual appeal that stands as a landmark in urban architecture.",
       category: "exterior"
     },
-    { 
+    {
       id: 4,
-      title: "Neo-Classical Elegance Villa", 
+      title: "Neo-Classical Elegance Villa",
       description: "Neo-Classical Elegance Villa",
       images: ["(1).png", "(4).png"],
       expandedDescription: "A sophisticated villa design blending classical architectural elements with modern touches, featuring grand façades, elegant columns, and balanced proportions to create a timeless and luxurious living space.",
       category: "exterior"
     },
-    { 
+    {
       id: 5,
-      title: "Cozy Cabin in the Woods", 
+      title: "Cozy Cabin in the Woods",
       description: "Cozy Cabin in the Woods",
       images: ["(2).png", "(3).png"],
       expandedDescription: "A unique villa inspired by a rustic cabin, nestled in a dense forest, where the surrounding nature harmonizes with wooden and glass architectural elements to create a peaceful and cozy atmosphere, featuring open spaces that allow natural light and enchanting views of the surrounding trees.",
@@ -484,7 +484,7 @@ const Exterior = () => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!lightboxOpen) return;
-      
+
       switch (e.key) {
         case "ArrowLeft":
           prevImage();
@@ -511,10 +511,10 @@ const Exterior = () => {
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (touchStartX === null) return;
-    
+
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchStartX - touchEndX;
-    
+
     if (Math.abs(diff) > CONFIG.touch.swipeThreshold) {
       if (diff > 0) {
         nextImage();
@@ -522,7 +522,7 @@ const Exterior = () => {
         prevImage();
       }
     }
-    
+
     setTouchStartX(null);
   };
 
@@ -586,7 +586,7 @@ const Exterior = () => {
       <div className="transform translate-y-4 sm:translate-y-8 group-hover:translate-y-0 transition-all duration-700 delay-200">
         <div className="bg-white/95 backdrop-blur-md border border-white/20 px-4 sm:px-8 py-2 sm:py-4 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105">
           <div className="flex items-center space-x-2 sm:space-x-3">
-    
+
           </div>
         </div>
       </div>
@@ -600,7 +600,7 @@ const Exterior = () => {
       {/* Background */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-100/50 to-transparent animate-pulse"></div>
-        <div 
+        <div
           className="absolute inset-0 opacity-20"
           style={{
             backgroundImage: `
@@ -619,14 +619,14 @@ const Exterior = () => {
           {/* Header */}
           <div className="text-center mb-16 sm:mb-20 md:mb-28 relative">
             <div className="absolute -top-8 sm:-top-16 left-1/2 transform -translate-x-1/2 w-20 sm:w-32 h-20 sm:h-32 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full opacity-20 animate-pulse"></div>
-            
+
             <div className="relative">
               <div className="flex items-center justify-center mb-6 sm:mb-8">
                 <div className="h-px w-12 sm:w-24 bg-gradient-to-r from-transparent via-gray-400 to-gray-400"></div>
                 <div className="mx-2 sm:mx-4 w-3 sm:w-4 h-3 sm:h-4 bg-gray-300 rotate-45 shadow-lg"></div>
                 <div className="h-px w-12 sm:w-24 bg-gradient-to-l from-transparent via-gray-400 to-gray-400"></div>
               </div>
-              
+
               <div className="space-y-1 sm:space-y-2 mb-6 sm:mb-8">
                 <span className="text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-gray-600 font-light block">
                   ✦ Exterior Architecture Collection ✦
@@ -643,7 +643,7 @@ const Exterior = () => {
 
               <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
                 <p className="text-lg sm:text-xl md:text-2xl text-gray-600 font-extralight leading-relaxed tracking-wide px-4">
-                  Where <em className="italic font-light">architectural vision</em> meets 
+                  Where <em className="italic font-light">architectural vision</em> meets
                   <em className="italic font-light"> timeless elegance</em>
                 </p>
                 <div className="flex items-center justify-center space-x-4 sm:space-x-6 text-gray-400">
@@ -663,24 +663,24 @@ const Exterior = () => {
               const isExpanded = expandedCard === project.id;
 
               return (
-                <div 
-                  key={project.id} 
+                <div
+                  key={project.id}
                   className="group relative"
                   onMouseEnter={() => setHoveredCard(project.id)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
-                  <Card 
+                  <Card
                     className={`relative overflow-hidden bg-white/80 backdrop-blur-xl border-0 rounded-2xl sm:rounded-3xl shadow-2xl hover:shadow-4xl transition-all duration-700 transform hover:-translate-y-2 sm:hover:-translate-y-8 hover:rotate-1 group-hover:bg-white/90 cursor-pointer ${
                       isExpanded ? 'scale-105 -translate-y-2 sm:-translate-y-4 shadow-4xl bg-white/95' : ''
                     }`}
                     onClick={() => handleCardClick(project.id)}
                   >
-                    
+
                     {/* Image Container */}
                     <div className="relative overflow-hidden rounded-t-2xl sm:rounded-t-3xl">
                       {renderImageGrid(images, startIndex, project.id)}
                       {renderViewButton()}
-                      
+
                       {/* Corner accent */}
                       <div className="absolute top-3 sm:top-4 right-3 sm:right-4 w-4 sm:w-6 h-4 sm:h-6 border-t-2 border-r-2 border-white/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </div>
@@ -701,12 +701,12 @@ const Exterior = () => {
                         }`}>
                           {project.title}
                         </h3>
-                        
+
                         <p className={`text-gray-600 leading-relaxed sm:leading-loose font-light tracking-wide transition-all duration-500 ${
                           isExpanded ? 'text-sm sm:text-base' : 'text-base sm:text-lg'
                         }`}>
-                          {isExpanded && project.expandedDescription ? 
-                            project.expandedDescription : 
+                          {isExpanded && project.expandedDescription ?
+                            project.expandedDescription :
                             project.description
                           }
                         </p>
@@ -715,12 +715,12 @@ const Exterior = () => {
                         <div className="flex items-center justify-center pt-3 sm:pt-4">
                           <button className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors duration-300 text-xs sm:text-sm uppercase tracking-wide">
                             <span>{isExpanded ? 'Show Less' : 'Read More'}</span>
-                            <svg 
+                            <svg
                               className={`w-3 sm:w-4 h-3 sm:h-4 transition-transform duration-300 ${
                                 isExpanded ? 'rotate-180' : ''
-                              }`} 
-                              fill="none" 
-                              stroke="currentColor" 
+                              }`}
+                              fill="none"
+                              stroke="currentColor"
                               viewBox="0 0 24 24"
                             >
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
@@ -743,7 +743,7 @@ const Exterior = () => {
                                 </svg>
                               </div>
                             </div>
-                            
+
                             <div className="text-gray-300 text-xs sm:text-sm font-light">
                               {String(projectIndex + 1).padStart(2, '0')}
                             </div>
@@ -772,10 +772,10 @@ const Exterior = () => {
           onTouchEnd={handleTouchEnd}
         >
           <div className="absolute inset-0 bg-gradient-radial from-gray-900/20 via-black/50 to-black opacity-60"></div>
-          
+
           {/* Navigation Buttons */}
-          <button 
-            className="absolute left-2 sm:left-4 md:left-12 top-1/2 transform -translate-y-1/2 group z-20" 
+          <button
+            className="absolute left-2 sm:left-4 md:left-12 top-1/2 transform -translate-y-1/2 group z-20"
             onClick={prevImage}
             aria-label="Previous image"
           >
@@ -785,7 +785,7 @@ const Exterior = () => {
               </svg>
             </div>
           </button>
-          
+
           {/* Image Display */}
           <div className="relative max-w-[90vw] sm:max-w-[85vw] max-h-[70vh] sm:max-h-[85vh] flex items-center justify-center z-10 px-4 sm:px-0">
             <div className="relative">
@@ -800,7 +800,7 @@ const Exterior = () => {
                   onContextMenu={(e) => e.preventDefault()}
                 />
               </div>
-              
+
               <div className="absolute -bottom-12 sm:-bottom-16 left-1/2 transform -translate-x-1/2 flex items-center space-x-4 sm:space-x-8">
                 <div className="bg-white/10 backdrop-blur-xl border border-white/20 px-4 sm:px-6 py-2 sm:py-3 rounded-full">
                   <span className="text-white/90 text-xs sm:text-sm font-light tracking-wide">
@@ -810,9 +810,9 @@ const Exterior = () => {
               </div>
             </div>
           </div>
-          
-          <button 
-            className="absolute right-2 sm:right-4 md:right-12 top-1/2 transform -translate-y-1/2 group z-20" 
+
+          <button
+            className="absolute right-2 sm:right-4 md:right-12 top-1/2 transform -translate-y-1/2 group z-20"
             onClick={nextImage}
             aria-label="Next image"
           >
@@ -822,10 +822,10 @@ const Exterior = () => {
               </svg>
             </div>
           </button>
-          
+
           {/* Close Button */}
-          <button 
-            className="absolute top-4 sm:top-8 md:top-12 right-4 sm:right-8 md:right-12 group z-20" 
+          <button
+            className="absolute top-4 sm:top-8 md:top-12 right-4 sm:right-8 md:right-12 group z-20"
             onClick={closeLightbox}
             aria-label="Close lightbox"
           >
@@ -835,7 +835,7 @@ const Exterior = () => {
               </svg>
             </div>
           </button>
-          
+
           {/* Instructions */}
           <div className="absolute bottom-6 sm:bottom-12 left-1/2 transform -translate-x-1/2 text-center hidden sm:block">
             <div className="bg-black/30 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full">

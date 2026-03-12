@@ -39,7 +39,7 @@ const Footer = () => {
                 onClick={() => setShowCv(true)}
                 className="block text-gray-300 hover:text-white transition"
               >
-                View CV 
+                View CV
               </button>
                   <div>
               <h3 className="text-lg font-semibold mb-4">Get In Touch</h3>
@@ -48,18 +48,18 @@ const Footer = () => {
                 <p>Phone: +962 7 7077 798 6</p>
                 <p>Address: Amman, JO</p>
               </div>
-          
+
             </div>
               </div>
             </div>
 
             {/* Contact Info + CV Button */}
-          
+
           </div>
 
           <div className="border-t border-gray-800 mt-12 pt-8 text-center">
             <p className="text-gray-400">
-              © 2025 Ibrahim Alayan Interior Design. All rights reserved.
+              © 2026 Ibrahim Alayan Interior Design. All rights reserved.
             </p>
           </div>
         </div>
@@ -97,7 +97,7 @@ const Footer = () => {
 
             {/* زر تحميل */}
             <div className="mt-6 text-center">
-            
+
             </div>
           </div>
         </div>

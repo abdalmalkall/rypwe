@@ -265,7 +265,7 @@ const Footer = () => {
 
           <div className="border-t border-gray-800 pt-6 md:pt-8 text-center">
             <p className="text-gray-400 text-sm md:text-base">
-              © 2025 Ibrahim Alayan Interior Design. All rights reserved.
+              © 2026 Ibrahim Alayan Interior Design. All rights reserved.
             </p>
           </div>
         </div>
