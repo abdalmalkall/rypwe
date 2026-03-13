@@ -3,6 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Menu, X, Home, ArrowLeft, Star, Eye, ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "react-router-dom";
 
+type Lang = "en" | "ar";
+
 interface Project {
   id: number;
   title: string;
@@ -10,9 +12,13 @@ interface Project {
   image?: string;
   images?: string[];
   expandedDescription?: string;
+  titleAr?: string;
+  descriptionAr?: string;
+  expandedDescriptionAr?: string;
   category: "interior";
   rating?: number;
   features?: string[];
+  featuresAr?: string[];
 }
 
 // Configuration constants
@@ -36,11 +42,71 @@ const CONFIG = {
   },
 } as const;
 
+const TRANSLATIONS = {
+  en: {
+    brand: "Render Your Plan",
+    home: "Home",
+    interior: "Interior Designs",
+    exterior: "Exterior Designs",
+    videos: "Videos",
+    viewCv: "View CV",
+    myCv: "My CV",
+    quickLinks: "Quick Links",
+    getInTouch: "Get In Touch",
+    footerAbout:
+      "Transforming spaces into extraordinary experiences through innovative interior design. We create environments that inspire and delight.",
+    ledBy: "Led by Interior Designer Ibrahem Alyan",
+    copyright: "© 2026 Ibrahim Alayan Interior Design. All rights reserved.",
+    badge: "✦ Premium Interior Collection ✦",
+    headerTitlePrimary: "Interior",
+    headerTitleSecondary: "Masterworks",
+    headerDesc:
+      "Where elegant interiors meet functional sophistication. Discover spaces designed to inspire.",
+    premiumProjects: "Premium Projects",
+    clientSatisfaction: "100% Client Satisfaction",
+    readMore: "Read More",
+    showLess: "Show Less",
+    lightboxAlt: "Portfolio Masterpiece",
+    lightboxHint: "Use ← → keys or swipe to navigate • ESC to close",
+    moreSuffix: "more",
+    langToggle: "عربي",
+  },
+  ar: {
+    brand: "Render Your Plan",
+    home: "الرئيسية",
+    interior: "تصاميم داخلية",
+    exterior: "تصاميم خارجية",
+    videos: "فيديوهات",
+    viewCv: "عرض السيرة",
+    myCv: "السيرة الذاتية",
+    quickLinks: "روابط سريعة",
+    getInTouch: "تواصل معنا",
+    footerAbout:
+      "نحوّل المساحات إلى تجارب استثنائية عبر تصميم داخلي مبتكر. نصنع بيئات تُلهم وتُسعد.",
+    ledBy: "بإشراف المصمم الداخلي إبراهيم عليان",
+    copyright: "© 2026 إبراهيم عليان للتصميم الداخلي. جميع الحقوق محفوظة.",
+    badge: "✦ مجموعة داخلية مميزة ✦",
+    headerTitlePrimary: "روائع",
+    headerTitleSecondary: "التصميم الداخلي",
+    headerDesc:
+      "حيث تلتقي التصاميم الأنيقة مع الوظائف الذكية. اكتشف مساحات صُممت لتُلهمك.",
+    premiumProjects: "مشاريع مميزة",
+    clientSatisfaction: "رضا العملاء 100%",
+    readMore: "اقرأ المزيد",
+    showLess: "عرض أقل",
+    lightboxAlt: "عمل من المعرض",
+    lightboxHint: "استخدم الأسهم ← → أو السحب للتنقل • ESC للإغلاق",
+    moreSuffix: "المزيد",
+    langToggle: "English",
+  },
+} as const;
+
 // Header Component
-const Header = () => {
+const Header = ({ lang, onToggleLang }: { lang: Lang; onToggleLang: () => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showCv, setShowCv] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const t = TRANSLATIONS[lang];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,17 +137,17 @@ const Header = () => {
               </div>
               <Link to="/" className="flex items-center">
 
-  <span className="ml-3 text-2xl font-bold text-black">Render Your Plan</span>
+  <span className="ml-3 text-2xl font-bold text-black">{t.brand}</span>
 </Link>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8">
               {[
-                { to: "/", label: "Home" },
-                { to: "/gallery", label: "Interior Designs" },
-                { to: "/exterior", label: "Exterior Designs" },
-                { to: "/line", label: "Videos" }
+                { to: "/", label: t.home },
+                { to: "/gallery", label: t.interior },
+                { to: "/exterior", label: t.exterior },
+                { to: "/line", label: t.videos }
               ].map((item) => (
                 <Link
                   key={item.to}
@@ -96,7 +162,14 @@ const Header = () => {
                 onClick={() => setShowCv(true)}
                 className="bg-black text-white px-6 py-2 rounded-lg font-medium hover:bg-gray-800 transition-all duration-300"
               >
-                View CV
+                {t.viewCv}
+              </button>
+              <button
+                onClick={onToggleLang}
+                className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:text-black hover:border-gray-400 transition-all duration-300 font-medium"
+                aria-label="Toggle language"
+              >
+                {t.langToggle}
               </button>
             </nav>
 
@@ -115,10 +188,10 @@ const Header = () => {
             <nav className="md:hidden py-4 border-t border-gray-200 mt-3">
               <div className="flex flex-col space-y-3">
                 {[
-                  { to: "/", label: "Home" },
-                  { to: "/gallery", label: "Interior Designs" },
-                  { to: "/exterior", label: "Exterior Designs" },
-                  { to: "/line", label: "Videos" }
+                  { to: "/", label: t.home },
+                  { to: "/gallery", label: t.interior },
+                  { to: "/exterior", label: t.exterior },
+                  { to: "/line", label: t.videos }
                 ].map((item) => (
                   <Link
                     key={item.to}
@@ -136,7 +209,16 @@ const Header = () => {
                   }}
                   className="px-4 py-3 bg-black text-white rounded-xl font-medium hover:bg-gray-800 transition-all duration-300 text-center active:bg-gray-700"
                 >
-                  View CV
+                  {t.viewCv}
+                </button>
+                <button
+                  onClick={() => {
+                    onToggleLang();
+                    setIsMenuOpen(false);
+                  }}
+                  className="px-4 py-3 border border-gray-300 rounded-xl font-medium text-gray-700 hover:text-black hover:border-gray-400 transition-all duration-300 text-center"
+                >
+                  {t.langToggle}
                 </button>
               </div>
             </nav>
@@ -155,7 +237,7 @@ const Header = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between p-4 md:p-6 border-b border-gray-200">
-              <h2 className="text-xl md:text-2xl font-bold text-black">My CV</h2>
+              <h2 className="text-xl md:text-2xl font-bold text-black">{t.myCv}</h2>
               <button
                 onClick={() => setShowCv(false)}
                 className="p-2 hover:bg-gray-100 rounded-xl transition-colors duration-200 touch-manipulation"
@@ -179,8 +261,9 @@ const Header = () => {
 };
 
 // Footer Component
-const Footer = () => {
+const Footer = ({ lang }: { lang: Lang }) => {
   const [showCv, setShowCv] = useState(false);
+  const t = TRANSLATIONS[lang];
 
   return (
     <>
@@ -202,23 +285,22 @@ const Footer = () => {
                 </span>
               </div>
               <p className="text-gray-300 text-base md:text-lg mb-4 md:mb-6 leading-relaxed">
-                Transforming spaces into extraordinary experiences through innovative interior design.
-                We create environments that inspire and delight.
+                {t.footerAbout}
               </p>
               <p className="text-white font-semibold text-sm md:text-base">
-                Led by Interior Designer Ibrahem Alyan
+                {t.ledBy}
               </p>
             </div>
 
             {/* Quick Links */}
             <div>
-              <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-white">Quick Links</h3>
+              <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-white">{t.quickLinks}</h3>
               <div className="space-y-2 md:space-y-3">
                 {[
-                  { to: "/", label: "Home" },
-                  { to: "/gallery", label: "Interior Designs" },
-                  { to: "/exterior", label: "Exterior Designs" },
-                  { to: "/line", label: "Videos" }
+                  { to: "/", label: t.home },
+                  { to: "/gallery", label: t.interior },
+                  { to: "/exterior", label: t.exterior },
+                  { to: "/line", label: t.videos }
                 ].map((item) => (
                   <Link
                     key={item.to}
@@ -232,14 +314,14 @@ const Footer = () => {
                   onClick={() => setShowCv(true)}
                   className="block text-gray-300 hover:text-white transition-colors duration-300 hover:translate-x-1 md:hover:translate-x-2 transform text-left active:text-white"
                 >
-                  View CV
+                  {t.viewCv}
                 </button>
               </div>
             </div>
 
             {/* Contact Info */}
             <div>
-              <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-white">Get In Touch</h3>
+              <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-white">{t.getInTouch}</h3>
               <div className="space-y-3 md:space-y-4 text-gray-300">
                 <div className="flex items-center space-x-3">
                   <div className="w-7 h-7 md:w-8 md:h-8 bg-white/10 rounded-lg flex items-center justify-center">
@@ -265,7 +347,7 @@ const Footer = () => {
 
           <div className="border-t border-gray-800 pt-6 md:pt-8 text-center">
             <p className="text-gray-400 text-sm md:text-base">
-              © 2026 Ibrahim Alayan Interior Design. All rights reserved.
+              {t.copyright}
             </p>
           </div>
         </div>
@@ -282,7 +364,7 @@ const Footer = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between p-4 md:p-6 border-b border-gray-200">
-              <h2 className="text-xl md:text-2xl font-bold text-black">My CV</h2>
+              <h2 className="text-xl md:text-2xl font-bold text-black">{t.myCv}</h2>
               <button
                 onClick={() => setShowCv(false)}
                 className="p-2 hover:bg-gray-100 rounded-xl transition-colors duration-200 touch-manipulation"
@@ -324,7 +406,10 @@ const RatingStars = ({ rating = 5 }: { rating?: number }) => {
 };
 
 // Gallery Component (Main Content)
-const Gallery = () => {
+const Gallery = ({ lang }: { lang: Lang }) => {
+  const t = TRANSLATIONS[lang];
+  const getFeatures = (project: Project) =>
+    (lang === "ar" && project.featuresAr ? project.featuresAr : project.features) ?? [];
   // State management
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [allImages, setAllImages] = useState<string[]>([]);
@@ -365,6 +450,20 @@ const Gallery = () => {
 
   // Interior Projects data
   const projects: Project[] = useMemo(() => [
+    {
+      id: 9,
+      title: "Modern Bedroom Interior Design",
+      description: "Calm and Elegant Bedroom with Warm Natural Materials",
+      images: ["modern-bedroom-loft.jpg", "bedroom2.jpg"],
+      expandedDescription: "A serene modern bedroom designed to create a sense of comfort and balance. Soft natural tones, warm wood textures, and minimalist furniture shape a relaxing atmosphere ideal for rest. Integrated lighting and clean architectural lines enhance the spatial harmony, while carefully selected materials add depth and warmth to the design. The result is a refined contemporary bedroom that blends simplicity, functionality, and timeless elegance.",
+      titleAr: "تصميم غرفة نوم حديثة",
+      descriptionAr: "غرفة نوم هادئة وأنيقة بخامات طبيعية دافئة",
+      expandedDescriptionAr: "غرفة نوم حديثة هادئة صُممت لتمنح شعورًا بالراحة والتوازن. ألوان طبيعية ناعمة وخامات خشبية دافئة وأثاث بسيط تُكوّن أجواءً مريحة مثالية للراحة. إضاءة مدمجة وخطوط معمارية نظيفة تُعزز انسجام الفراغ، بينما تضيف المواد المختارة بعناية عمقًا ودفئًا للتصميم. النتيجة غرفة نوم معاصرة راقية تجمع بين البساطة والوظيفة والأناقة الخالدة.",
+      category: "interior",
+      rating: 5,
+      features: ["Warm Woods", "Natural Tones", "Integrated Lighting", "Minimalist Style"],
+      featuresAr: ["خشب دافئ", "درجات طبيعية", "إضاءة مدمجة", "أسلوب بسيط"]
+    },
     {
       id: 7,
       title: "Modern Interior Design",
@@ -671,7 +770,7 @@ const Gallery = () => {
                 style={{ transitionDelay: "80ms" }}
               >
                 <span className="text-xs md:text-sm font-semibold text-gray-700 uppercase tracking-wider">
-                  ✦ Premium Interior Collection ✦
+                  {t.badge}
                 </span>
               </div>
 
@@ -681,8 +780,8 @@ const Gallery = () => {
                 data-animate
                 style={{ transitionDelay: "140ms" }}
               >
-                <span className="block">Interior</span>
-                <span className="block text-gray-800">Masterworks</span>
+                <span className="block">{t.headerTitlePrimary}</span>
+                <span className="block text-gray-800">{t.headerTitleSecondary}</span>
               </h1>
 
               {/* Description */}
@@ -692,20 +791,18 @@ const Gallery = () => {
                 style={{ transitionDelay: "200ms" }}
               >
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 font-light leading-relaxed">
-                  Where <span className="font-semibold text-black">elegant interiors</span> meet
-                  <span className="font-semibold text-black"> functional sophistication</span>.
-                  Discover spaces designed to inspire.
+                  {t.headerDesc}
                 </p>
 
                 {/* Stats */}
                 <div className="flex items-center justify-center space-x-6 md:space-x-8 text-xs md:text-sm text-gray-500">
                   <div className="flex items-center space-x-2">
                     <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-black rounded-full"></div>
-                    <span>{projects.length} Premium Projects</span>
+                    <span>{projects.length} {t.premiumProjects}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-black rounded-full"></div>
-                    <span>100% Client Satisfaction</span>
+                    <span>{t.clientSatisfaction}</span>
                   </div>
                 </div>
               </div>
@@ -759,17 +856,17 @@ const Gallery = () => {
                         {/* Title and description */}
                         <div>
                           <h3 className="text-lg md:text-xl font-bold text-black mb-1 md:mb-2 leading-tight">
-                            {project.title}
+                            {lang === "ar" && project.titleAr ? project.titleAr : project.title}
                           </h3>
                           <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-                            {project.description}
+                            {lang === "ar" && project.descriptionAr ? project.descriptionAr : project.description}
                           </p>
                         </div>
 
                         {/* Features chips */}
                         {project.features && (
                           <div className="flex flex-wrap gap-1 md:gap-2">
-                            {project.features.slice(0, 3).map((feature, index) => (
+                            {getFeatures(project).slice(0, 3).map((feature, index) => (
                               <span
                                 key={index}
                                 className="px-2 py-1 md:px-3 md:py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full border border-gray-200"
@@ -777,9 +874,9 @@ const Gallery = () => {
                                 {feature}
                               </span>
                             ))}
-                            {project.features.length > 3 && (
+                            {getFeatures(project).length > 3 && (
                               <span className="px-2 py-1 md:px-3 md:py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full">
-                                +{project.features.length - 3} more
+                                +{getFeatures(project).length - 3} {t.moreSuffix}
                               </span>
                             )}
                           </div>
@@ -789,7 +886,9 @@ const Gallery = () => {
                         {isExpanded && project.expandedDescription && (
                           <div className="animate-fade-in">
                             <p className="text-gray-700 text-sm md:text-base leading-relaxed border-t border-gray-200 pt-3 md:pt-4 mt-3 md:mt-4">
-                              {project.expandedDescription}
+                              {lang === "ar" && project.expandedDescriptionAr
+                                ? project.expandedDescriptionAr
+                                : project.expandedDescription}
                             </p>
                           </div>
                         )}
@@ -800,7 +899,7 @@ const Gallery = () => {
                             onClick={() => handleCardClick(project.id)}
                             className="flex items-center space-x-1 md:space-x-2 text-black hover:text-gray-700 transition-colors duration-300 text-xs md:text-sm font-semibold touch-manipulation"
                           >
-                            <span>{isExpanded ? 'Show Less' : 'Read More'}</span>
+                            <span>{isExpanded ? t.showLess : t.readMore}</span>
                             {isExpanded ? (
                               <ChevronUp className="w-3 h-3 md:w-4 md:h-4" />
                             ) : (
@@ -848,7 +947,7 @@ const Gallery = () => {
               <div className="relative p-1 md:p-2 bg-gradient-to-br from-white/10 to-white/5 rounded-2xl md:rounded-3xl backdrop-blur-lg border border-white/20 shadow-2xl">
                 <img
                   src={allImages[currentImageIndex]}
-                  alt="Portfolio Masterpiece"
+                  alt={t.lightboxAlt}
                   className={`max-w-full max-h-full rounded-xl md:rounded-2xl transition-all duration-700 ease-out ${
                     isLoading ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
                   }`}
@@ -897,7 +996,7 @@ const Gallery = () => {
           <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 text-center">
             <div className="bg-black/50 backdrop-blur-lg border border-white/10 px-4 py-2 md:px-6 md:py-3 rounded-full">
               <span className="text-white/70 text-xs md:text-sm font-medium">
-                Use ← → keys or swipe to navigate • ESC to close
+                {t.lightboxHint}
               </span>
             </div>
           </div>
@@ -909,13 +1008,16 @@ const Gallery = () => {
 
 // Main App Component
 const GalleryPage = () => {
+  const [lang, setLang] = useState<Lang>("en");
+  const toggleLang = () => setLang((prev) => (prev === "en" ? "ar" : "en"));
+
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <Header />
+    <div className="min-h-screen flex flex-col bg-white" dir={lang === "ar" ? "rtl" : "ltr"}>
+      <Header lang={lang} onToggleLang={toggleLang} />
       <main className="flex-1">
-        <Gallery />
+        <Gallery lang={lang} />
       </main>
-      <Footer />
+      <Footer lang={lang} />
     </div>
   );
 };

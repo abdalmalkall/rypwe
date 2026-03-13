@@ -284,10 +284,7 @@ const Videos = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Header Section */}
             <div className="text-center mb-8 md:mb-16">
-              <div className="inline-flex items-center gap-2 bg-black text-white px-4 py-2 rounded-full text-sm font-medium mb-4 md:mb-6">
-                <Play className="w-4 h-4" />
-                <span>Featured Content</span>
-              </div>
+
 
               <h2 className="text-3xl md:text-5xl font-bold text-black mb-4 md:mb-6">
                 Design Videos
@@ -298,81 +295,20 @@ const Videos = () => {
               </p>
 
               {/* Search Bar */}
-              <div className="max-w-2xl mx-auto mb-6 md:mb-8">
-                <div className="relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
-                  <input
-                    type="text"
-                    placeholder="Search videos by title or description..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-12 pr-12 py-4 rounded-xl border border-gray-300 focus:border-black focus:outline-none text-black placeholder-gray-500 transition-all bg-white"
-                  />
-                  {searchQuery && (
-                    <button
-                      onClick={() => setSearchQuery("")}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-black"
-                    >
-                      <X className="w-5 h-5" />
-                    </button>
-                  )}
-                </div>
-              </div>
+
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
-                <button
-                  onClick={handleSubscribe}
-                  className="group flex items-center gap-2 md:gap-3 bg-black hover:bg-gray-800 text-white px-6 py-3 md:px-8 md:py-4 rounded-lg md:rounded-xl font-semibold transition-all duration-300 text-sm md:text-base"
-                >
-                  <Bell className="w-4 h-4 md:w-5 md:h-5" />
-                  <span>Subscribe to Our Channel</span>
-                </button>
 
-                <Link
-                  to="/"
-                  className="group flex items-center gap-2 md:gap-3 bg-white hover:bg-gray-50 text-black px-6 py-3 md:px-8 md:py-4 rounded-lg md:rounded-xl font-semibold transition-all duration-300 text-sm md:text-base border border-gray-300"
-                >
-                  <Home className="w-4 h-4 md:w-5 md:h-5" />
-                  <span>Back to Home</span>
-                </Link>
+
+
+
               </div>
             </div>
 
-            {/* Channel Stats */}
-            <div className="flex justify-center mb-8 md:mb-16">
-              <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 border border-gray-200">
-                <div className="flex items-center gap-4 md:gap-8">
-                  <div className="text-center">
-                    <div className="flex items-center gap-1 text-black font-bold text-lg md:text-2xl">
-                      <Users className="w-4 h-4 md:w-6 md:h-6" />
-                      <span>35K+</span>
-                    </div>
-                    <p className="text-gray-600 text-xs md:text-sm">Subscribers</p>
-                  </div>
 
-                  <div className="w-px h-8 md:h-12 bg-gray-300"></div>
+                
 
-                  <div className="text-center">
-                    <div className="flex items-center gap-1 text-black font-bold text-lg md:text-2xl">
-                      <Eye className="w-4 h-4 md:w-6 md:h-6" />
-                      <span>15K+</span>
-                    </div>
-                    <p className="text-gray-600 text-xs md:text-sm">Total Views</p>
-                  </div>
-
-                  <div className="w-px h-8 md:h-12 bg-gray-300"></div>
-
-                  <div className="text-center">
-                    <div className="flex items-center gap-1 text-black font-bold text-lg md:text-2xl">
-                      <Play className="w-4 h-4 md:w-6 md:h-6" />
-                      <span>{videos.length}</span>
-                    </div>
-                    <p className="text-gray-600 text-xs md:text-sm">Videos</p>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             {/* Videos Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
@@ -477,36 +413,7 @@ const Videos = () => {
 
             {/* Call to Action */}
             <div className="text-center mt-12 md:mt-20">
-              <div className="bg-black text-white rounded-xl md:rounded-2xl p-8 md:p-12 max-w-4xl mx-auto relative overflow-hidden">
-                <div className="relative z-10">
-                  <div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-white bg-opacity-20 rounded-full mb-6">
-                    <Bell className="w-8 h-8 md:w-10 md:h-10" />
-                  </div>
-
-                  <h3 className="text-2xl md:text-3xl font-bold mb-4">Don't Miss Out!</h3>
-                  <p className="text-gray-200 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
-                    Subscribe to our channel for exclusive architectural visualization content, design inspiration, and behind-the-scenes looks at our creative process
-                  </p>
-
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button
-                      onClick={handleSubscribe}
-                      className="bg-white text-black hover:bg-gray-100 px-8 py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-3 text-base md:text-lg"
-                    >
-                      <Bell className="w-5 h-5" />
-                      <span>Subscribe Now</span>
-                    </button>
-
-                    <Link
-                      to="/"
-                      className="bg-transparent hover:bg-white hover:bg-opacity-10 text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-3 text-base md:text-lg border border-white border-opacity-30"
-                    >
-                      <Home className="w-5 h-5" />
-                      <span>Back to Home</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+             
             </div>
           </div>
 
