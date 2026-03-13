@@ -1,9 +1,31 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useLang } from "@/lib/lang";
+
+const TRANSLATIONS = {
+  en: {
+    name: "Ibrahim Alyan",
+    roles: "Architect | Interior Designer | Founder of RYP",
+    description:
+      "Transforming spaces into extraordinary experiences through innovative architectural design and immersive 3D visualizations",
+    viewGallery: "View Gallery",
+    slideAlt: (index: number) => `Architectural Design ${index + 1}`,
+  },
+  ar: {
+    name: "إبراهيم عليان",
+    roles: "مهندس معماري | مصمم داخلي | مؤسس RYP",
+    description:
+      "نحوّل المساحات إلى تجارب استثنائية عبر تصميم معماري مبتكر وتصوير ثلاثي الأبعاد غامر",
+    viewGallery: "عرض المعرض",
+    slideAlt: (index: number) => `تصميم معماري ${index + 1}`,
+  },
+} as const;
 
 const Hero = () => {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
+  const { lang } = useLang();
+  const t = TRANSLATIONS[lang];
 
   // مصفوفة الصور الخاصة بك
   const backgroundImages = [
@@ -41,7 +63,7 @@ const Hero = () => {
           >
             <img
               src={image}
-              alt={`Architectural Design ${index + 1}`}
+              alt={t.slideAlt(index)}
               className="w-full h-full object-cover"
             />
             {/* Overlay داكن لجعل النص مقروءًا */}
@@ -65,21 +87,17 @@ const Hero = () => {
 
           {/* العنوان الرئيسي */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
-            Ibrahim <span className="text-white">Alyan</span>
+            {t.name}
           </h1>
           
           {/* الوصف */}
           <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Architect <span className="text-white/50">|</span> Interior Designer <span className="text-white/50">|</span>{" "}
-            <span className="text-white font-semibold">
-              Founder of RYP
-            </span>
+            {t.roles}
           </p>
 
           {/* وصف إضافي */}
           <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Transforming spaces into extraordinary experiences through innovative architectural design 
-            and immersive 3D visualizations
+            {t.description}
           </p>
 
           {/* أزرار التحكم */}
@@ -90,7 +108,7 @@ const Hero = () => {
               onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <ArrowRight className="w-5 h-5 mr-2" />
-              View Gallery
+              {t.viewGallery}
             </Button>
           </div>
           {/* مؤشر الصور */}

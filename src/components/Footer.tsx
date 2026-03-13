@@ -1,8 +1,62 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, ExternalLink, FileText, X, Download } from "lucide-react";
+import { Mail, Phone, MapPin, ExternalLink, FileText, X } from "lucide-react";
+import { useLang } from "@/lib/lang";
+
+const TRANSLATIONS = {
+  en: {
+    name: "Ibrahem Alyan",
+    about:
+      "Transforming spaces into extraordinary experiences through innovative interior design and architectural visualization.",
+    ledBy: "Led by Interior Designer Ibrahem Alyan",
+    quickLinks: "Quick Links",
+    getInTouch: "Get In Touch",
+    email: "Email",
+    phone: "Phone",
+    location: "Location",
+    locationValue: "Amman, Jordan",
+    copyright: "© 2026 Ibrahem Alayan Interior Design. All rights reserved.",
+    cvTitle: "Curriculum Vitae",
+    cvAlt: "Ibrahem Alyan CV",
+    close: "Close",
+    viewCv: "View CV",
+    links: {
+      home: "Home",
+      designs: "Designs",
+      videos: "Videos",
+      exterior: "Exterior",
+      webDev: "Web Developer",
+    },
+  },
+  ar: {
+    name: "إبراهيم عليان",
+    about:
+      "نحوّل المساحات إلى تجارب استثنائية عبر التصميم الداخلي المبتكر والتصوير المعماري.",
+    ledBy: "بإشراف المصمم الداخلي إبراهيم عليان",
+    quickLinks: "روابط سريعة",
+    getInTouch: "تواصل معنا",
+    email: "البريد الإلكتروني",
+    phone: "الهاتف",
+    location: "الموقع",
+    locationValue: "عمّان، الأردن",
+    copyright: "© 2026 إبراهيم عليان للتصميم الداخلي. جميع الحقوق محفوظة.",
+    cvTitle: "السيرة الذاتية",
+    cvAlt: "السيرة الذاتية لإبراهيم عليان",
+    close: "إغلاق",
+    viewCv: "عرض السيرة",
+    links: {
+      home: "الرئيسية",
+      designs: "التصاميم",
+      videos: "فيديوهات",
+      exterior: "التصاميم الخارجية",
+      webDev: "مطوّر الويب",
+    },
+  },
+} as const;
 
 const Footer = () => {
   const [showCv, setShowCv] = useState(false);
+  const { lang } = useLang();
+  const t = TRANSLATIONS[lang];
 
   const socialLinks = [
     {
@@ -64,12 +118,12 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Designs", href: "/gallery" },
-    { name: "Videos", href: "/line" },
-    { name: "Exterior", href: "/exterior" },
-    { name: "View CV", onClick: () => setShowCv(true) },
-    { name: "Web Developer", href: "https://cl-hub.netlify.app/", external: true }
+    { name: t.links.home, href: "#home" },
+    { name: t.links.designs, href: "/gallery" },
+    { name: t.links.videos, href: "/line" },
+    { name: t.links.exterior, href: "/exterior" },
+    { name: t.viewCv, onClick: () => setShowCv(true) },
+    { name: t.links.webDev, href: "https://cl-hub.netlify.app/", external: true }
   ];
 
   return (
@@ -81,16 +135,16 @@ const Footer = () => {
             <div className="lg:col-span-2">
               <div className="mb-6">
                 <span className="text-2xl md:text-3xl font-bold text-white">
-                  Ibrahem Alyan
+                  {t.name}
                 </span>
               </div>
 
               <p className="text-gray-300 text-base md:text-lg mb-6 leading-relaxed">
-                Transforming spaces into extraordinary experiences through innovative interior design and architectural visualization.
+                {t.about}
               </p>
 
               <p className="text-gray-400 mb-6 md:mb-8">
-                Led by Interior Designer Ibrahem Alyan
+                {t.ledBy}
               </p>
 
               {/* Social Icons */}
@@ -120,7 +174,7 @@ const Footer = () => {
             {/* Quick Links */}
             <div>
               <h3 className="text-lg md:text-xl font-semibold mb-4 md:mb-6 text-white">
-                Quick Links
+                {t.quickLinks}
               </h3>
               <div className="space-y-2 md:space-y-3">
                 {quickLinks.map((link) => (
@@ -156,7 +210,7 @@ const Footer = () => {
             {/* Get In Touch */}
             <div>
               <h3 className="text-lg md:text-xl font-semibold mb-4 md:mb-6 text-white">
-                Get In Touch
+                {t.getInTouch}
               </h3>
               <div className="space-y-3 md:space-y-4">
                 <div className="flex items-center gap-3 text-gray-300">
@@ -164,7 +218,7 @@ const Footer = () => {
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-xs md:text-sm text-gray-400">Email</p>
+                    <p className="text-xs md:text-sm text-gray-400">{t.email}</p>
                     <a href="mailto:renderyourplan@gmail.com" className="hover:text-white transition-colors text-sm md:text-base">
                       renderyourplan@gmail.com
                     </a>
@@ -176,7 +230,7 @@ const Footer = () => {
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-xs md:text-sm text-gray-400">Phone</p>
+                    <p className="text-xs md:text-sm text-gray-400">{t.phone}</p>
                     <a href="tel:+962790383135" className="hover:text-white transition-colors text-sm md:text-base">
                       +962 7 9038 3135
                     </a>
@@ -188,8 +242,8 @@ const Footer = () => {
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-xs md:text-sm text-gray-400">Location</p>
-                    <p className="text-sm md:text-base">Amman, Jordan</p>
+                    <p className="text-xs md:text-sm text-gray-400">{t.location}</p>
+                    <p className="text-sm md:text-base">{t.locationValue}</p>
                   </div>
                 </div>
               </div>
@@ -199,7 +253,7 @@ const Footer = () => {
           {/* Bottom Bar */}
           <div className="border-t border-gray-800 mt-8 md:mt-12 pt-6 md:pt-8 text-center">
             <p className="text-gray-400 text-sm md:text-base">
-              © 2026 Ibrahem Alayan Interior Design. All rights reserved.
+              {t.copyright}
             </p>
           </div>
         </div>
@@ -217,7 +271,7 @@ const Footer = () => {
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 md:p-6 border-b border-gray-200 bg-white">
-              <h2 className="text-lg md:text-xl font-bold text-black">Curriculum Vitae</h2>
+              <h2 className="text-lg md:text-xl font-bold text-black">{t.cvTitle}</h2>
               <button
                 onClick={() => setShowCv(false)}
                 className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
@@ -230,7 +284,7 @@ const Footer = () => {
             <div className="overflow-auto max-h-[calc(90vh-120px)]">
               <img
                 src="/cv.jpeg"
-                alt="Ibrahem Alyan CV"
+                alt={t.cvAlt}
                 className="w-full h-auto object-contain"
               />
             </div>
@@ -241,7 +295,7 @@ const Footer = () => {
                 onClick={() => setShowCv(false)}
                 className="px-4 md:px-6 py-2 text-gray-600 hover:text-gray-900 transition-colors text-sm md:text-base"
               >
-                Close
+                {t.close}
               </button>
 
             </div>

@@ -1,11 +1,65 @@
 import { useState, useEffect } from "react";
-import { Play, ExternalLink, Home, Bell, Users, Eye, Clock, Search, X, Menu } from "lucide-react";
+import { Play, ExternalLink, Clock, Search, X, Menu } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLang } from "@/lib/lang";
+
+const TRANSLATIONS = {
+  en: {
+    brand: "Render Your Plan",
+    home: "Home",
+    videos: "Videos",
+    viewCv: "View CV",
+    myCv: "My CV",
+    title: "Design Videos",
+    subtitle:
+      "Get an inside look at our design process and transformations through cinematic architectural visualizations",
+    watchNow: "Watch Now",
+    youtube: "YouTube",
+    noVideos: "No videos found",
+    adjustSearch: "Try adjusting your search query",
+    quickLinks: "Quick Links",
+    getInTouch: "Get In Touch",
+    footerAbout:
+      "Transforming spaces into extraordinary experiences through innovative interior design.",
+    ledBy: "Led by Interior Designer Ibrahem Alyan",
+    email: "Email: renderyourplan@gmail.com",
+    phone: "Phone: +962 7 7077 798 6",
+    address: "Address: Amman, JO",
+    copyright: "© 2026 Ibrahim Alayan Interior Design. All rights reserved.",
+    langToggle: "عربي",
+  },
+  ar: {
+    brand: "Render Your Plan",
+    home: "الرئيسية",
+    videos: "فيديوهات",
+    viewCv: "عرض السيرة",
+    myCv: "السيرة الذاتية",
+    title: "فيديوهات التصميم",
+    subtitle:
+      "نظرة على عملية التصميم والتحوّلات من خلال تصوّرات معمارية سينمائية",
+    watchNow: "شاهد الآن",
+    youtube: "يوتيوب",
+    noVideos: "لا توجد فيديوهات",
+    adjustSearch: "جرّب تعديل البحث",
+    quickLinks: "روابط سريعة",
+    getInTouch: "تواصل معنا",
+    footerAbout:
+      "نحوّل المساحات إلى تجارب استثنائية عبر التصميم الداخلي المبتكر.",
+    ledBy: "بإشراف المصمم الداخلي إبراهيم عليان",
+    email: "البريد الإلكتروني: renderyourplan@gmail.com",
+    phone: "الهاتف: +962 7 7077 798 6",
+    address: "العنوان: عمّان، الأردن",
+    copyright: "© 2026 إبراهيم عليان للتصميم الداخلي. جميع الحقوق محفوظة.",
+    langToggle: "English",
+  },
+} as const;
 
 // Header Component
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showCv, setShowCv] = useState(false);
+  const { lang, toggleLang } = useLang();
+  const t = TRANSLATIONS[lang];
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -18,19 +72,25 @@ const Header = () => {
             <div className="flex items-center">
     <Link to="/" className="flex items-center">
   <img src="/logo.jpg" alt="RYP Logo" className="h-10 w-10 rounded-full object-cover" />
-  <span className="ml-3 text-2xl font-bold text-black">Render Your Plan</span>
+  <span className={`${lang === "ar" ? "mr-3" : "ml-3"} text-2xl font-bold text-black`}>{t.brand}</span>
 </Link>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8">
-              <Link to="/" className="text-gray-900 hover:text-gray-600 transition-colors">Home</Link>
-              <Link to="/line" className="text-gray-900 hover:text-gray-600 transition-colors">Videos</Link>
+              <Link to="/" className="text-gray-900 hover:text-gray-600 transition-colors">{t.home}</Link>
+              <Link to="/line" className="text-gray-900 hover:text-gray-600 transition-colors">{t.videos}</Link>
               <button
                 onClick={() => setShowCv(true)}
                 className="text-gray-900 hover:text-gray-600 transition-colors"
               >
-                View CV
+                {t.viewCv}
+              </button>
+              <button
+                onClick={toggleLang}
+                className="text-gray-900 hover:text-gray-600 transition-colors"
+              >
+                {t.langToggle}
               </button>
             </nav>
 
@@ -47,13 +107,19 @@ const Header = () => {
           {isMenuOpen && (
             <nav className="md:hidden py-4 border-t border-gray-200">
               <div className="flex flex-col space-y-2">
-                <Link to="/" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Home</Link>
-                <Link to="/line" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Videos</Link>
+                <Link to="/" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">{t.home}</Link>
+                <Link to="/line" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">{t.videos}</Link>
                 <button
                   onClick={() => setShowCv(true)}
                   className="px-3 py-2 text-gray-900 hover:bg-gray-100 text-left"
                 >
-                  View CV
+                  {t.viewCv}
+                </button>
+                <button
+                  onClick={toggleLang}
+                  className="px-3 py-2 text-gray-900 hover:bg-gray-100 text-left"
+                >
+                  {t.langToggle}
                 </button>
               </div>
             </nav>
@@ -81,7 +147,7 @@ const Header = () => {
 
             {/* عنوان اختياري */}
             <h2 className="text-xl font-semibold text-center text-black mb-4">
-              My cv
+              {t.myCv}
             </h2>
 
             {/* صورة CV */}
@@ -105,6 +171,8 @@ const Header = () => {
 // Footer Component
 const Footer = () => {
   const [showCv, setShowCv] = useState(false);
+  const { lang } = useLang();
+  const t = TRANSLATIONS[lang];
 
   return (
     <>
@@ -122,42 +190,42 @@ const Footer = () => {
                 <span className="ml-3 text-2xl font-bold">RYP</span>
               </div>
               <p className="text-gray-300 mb-4">
-                Transforming spaces into extraordinary experiences through innovative interior design.
+                {t.footerAbout}
               </p>
               <p className="text-gray-400 text-sm">
-                Led by Interior Designer Ibrahem Alyan
+                {t.ledBy}
               </p>
             </div>
 
             {/* Quick Links */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+              <h3 className="text-lg font-semibold mb-4">{t.quickLinks}</h3>
               <div className="space-y-2">
-                <Link to="/" className="block text-gray-300 hover:text-white transition">Home</Link>
-                <Link to="/line" className="block text-gray-300 hover:text-white transition">Videos</Link>
+                <Link to="/" className="block text-gray-300 hover:text-white transition">{t.home}</Link>
+                <Link to="/line" className="block text-gray-300 hover:text-white transition">{t.videos}</Link>
                 <button
                   onClick={() => setShowCv(true)}
                   className="block text-gray-300 hover:text-white transition"
                 >
-                  View CV
+                  {t.viewCv}
                 </button>
               </div>
             </div>
 
             {/* Contact Info */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Get In Touch</h3>
+              <h3 className="text-lg font-semibold mb-4">{t.getInTouch}</h3>
               <div className="space-y-2 text-gray-300 mb-6">
-                <p>Email: renderyourplan@gmail.com</p>
-                <p>Phone: +962 7 7077 798 6</p>
-                <p>Address: Amman, JO</p>
+                <p>{t.email}</p>
+                <p>{t.phone}</p>
+                <p>{t.address}</p>
               </div>
             </div>
           </div>
 
           <div className="border-t border-gray-800 mt-12 pt-8 text-center">
             <p className="text-gray-400">
-              © 2026 Ibrahim Alayan Interior Design. All rights reserved.
+              {t.copyright}
             </p>
           </div>
         </div>
@@ -183,7 +251,7 @@ const Footer = () => {
 
             {/* عنوان اختياري */}
             <h2 className="text-xl font-semibold text-center text-black mb-4">
-              My cv
+              {t.myCv}
             </h2>
 
             {/* صورة CV */}
@@ -208,6 +276,8 @@ const Videos = () => {
   const [hoveredVideo, setHoveredVideo] = useState<number | null>(null);
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const { lang } = useLang();
+  const t = TRANSLATIONS[lang];
 
   // Auto scroll to top on component mount
   useEffect(() => {
@@ -287,11 +357,11 @@ const Videos = () => {
 
 
               <h2 className="text-3xl md:text-5xl font-bold text-black mb-4 md:mb-6">
-                Design Videos
+                {t.title}
               </h2>
 
               <p className="text-base md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mb-6 md:mb-8">
-                Get an inside look at our design process and transformations through cinematic architectural visualizations
+                {t.subtitle}
               </p>
 
               {/* Search Bar */}
@@ -385,7 +455,7 @@ const Videos = () => {
                             className="flex-1 bg-black hover:bg-gray-800 text-white px-4 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base"
                           >
                             <Play className="w-4 h-4" />
-                            <span>Watch Now</span>
+                            <span>{t.watchNow}</span>
                           </button>
 
                           <a
@@ -395,7 +465,7 @@ const Videos = () => {
                             className="bg-white hover:bg-gray-50 text-black px-4 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base border border-gray-300"
                           >
                             <ExternalLink className="w-4 h-4" />
-                            <span>YouTube</span>
+                            <span>{t.youtube}</span>
                           </a>
                         </div>
                       </div>
@@ -405,8 +475,8 @@ const Videos = () => {
               ) : (
                 <div className="col-span-full text-center py-12">
                   <Search className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-black mb-2">No videos found</h3>
-                  <p className="text-gray-600">Try adjusting your search query</p>
+                  <h3 className="text-xl font-semibold text-black mb-2">{t.noVideos}</h3>
+                  <p className="text-gray-600">{t.adjustSearch}</p>
                 </div>
               )}
             </div>

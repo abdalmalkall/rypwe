@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Menu, X, Home, ArrowLeft, Mail, Phone, MapPin, FileText, ExternalLink } from "lucide-react";
+import { Menu, X, Mail, Phone, MapPin, FileText, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLang } from "@/lib/lang";
 
 interface Project {
   id: number;
@@ -10,6 +11,9 @@ interface Project {
   image?: string;
   images?: string[];
   expandedDescription?: string;
+  titleAr?: string;
+  descriptionAr?: string;
+  expandedDescriptionAr?: string;
   category: "exterior";
 }
 
@@ -34,10 +38,83 @@ const CONFIG = {
   },
 } as const;
 
+const TRANSLATIONS = {
+  en: {
+    brand: "Render Your Plan",
+    home: "Home",
+    interior: "Interior Designs",
+    exterior: "Exterior Designs",
+    videos: "Videos",
+    viewCv: "View CV",
+    myCv: "My CV",
+    quickLinks: "Quick Links",
+    getInTouch: "Get In Touch",
+    ledBy: "Led by Interior Designer Ibrahem Alyan",
+    email: "Email",
+    phone: "Phone",
+    location: "Location",
+    locationValue: "Amman, Jordan",
+    copyright: "© 2026 Ibrahim Alayan Interior Design. All rights reserved.",
+    heroBadge: "ARCHITECTURAL PORTFOLIO",
+    heroTitlePrimary: "Exterior",
+    heroTitleSecondary: "Masterworks",
+    heroDesc:
+      "Where architectural vision meets timeless elegance",
+    projectCount: "ARCHITECTURAL PROJECTS",
+    readMore: "Read More",
+    showLess: "Show Less",
+    galleryLabel: "Architectural Gallery",
+    exploreLabel: "Explore Design",
+    lightboxAlt: "Architectural Masterpiece",
+    lightboxHint: "Use ← → keys or swipe to navigate • ESC to close",
+    cvTitle: "Curriculum Vitae",
+    cvAlt: "Ibrahem Alyan CV",
+    close: "Close",
+    langToggle: "عربي",
+    webDev: "Web Developer",
+  },
+  ar: {
+    brand: "Render Your Plan",
+    home: "الرئيسية",
+    interior: "تصاميم داخلية",
+    exterior: "تصاميم خارجية",
+    videos: "فيديوهات",
+    viewCv: "عرض السيرة",
+    myCv: "السيرة الذاتية",
+    quickLinks: "روابط سريعة",
+    getInTouch: "تواصل معنا",
+    ledBy: "بإشراف المصمم الداخلي إبراهيم عليان",
+    email: "البريد الإلكتروني",
+    phone: "الهاتف",
+    location: "الموقع",
+    locationValue: "عمّان، الأردن",
+    copyright: "© 2026 إبراهيم عليان للتصميم الداخلي. جميع الحقوق محفوظة.",
+    heroBadge: "معرض معماري",
+    heroTitlePrimary: "روائع",
+    heroTitleSecondary: "التصميم الخارجي",
+    heroDesc:
+      "حيث تلتقي الرؤية المعمارية مع الأناقة الخالدة",
+    projectCount: "مشاريع معمارية",
+    readMore: "اقرأ المزيد",
+    showLess: "عرض أقل",
+    galleryLabel: "معرض معماري",
+    exploreLabel: "استكشف التصميم",
+    lightboxAlt: "عمل معماري",
+    lightboxHint: "استخدم الأسهم ← → أو السحب للتنقل • ESC للإغلاق",
+    cvTitle: "السيرة الذاتية",
+    cvAlt: "السيرة الذاتية لإبراهيم عليان",
+    close: "إغلاق",
+    langToggle: "English",
+    webDev: "مطوّر الويب",
+  },
+} as const;
+
 // Header Component
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showCv, setShowCv] = useState(false);
+  const { lang, toggleLang } = useLang();
+  const t = TRANSLATIONS[lang];
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -50,21 +127,27 @@ const Header = () => {
             <div className="flex items-center">
             <Link to="/" className="flex items-center">
   <img src="/logo.jpg" alt="RYP Logo" className="h-10 w-10 rounded-full object-cover" />
-  <span className="ml-3 text-2xl font-bold text-black">Render Your Plan</span>
+  <span className={`${lang === "ar" ? "mr-3" : "ml-3"} text-2xl font-bold text-black`}>{t.brand}</span>
 </Link>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8">
-              <Link to="/" className="text-gray-900 hover:text-gray-600 transition-colors">Home</Link>
-              <Link to="/gallery" className="text-gray-900 hover:text-gray-600 transition-colors">Interior Designs</Link>
-              <Link to="/exterior" className="text-gray-900 hover:text-gray-600 transition-colors">Exterior Designs</Link>
-              <Link to="/line" className="text-gray-900 hover:text-gray-600 transition-colors">Videos</Link>
+              <Link to="/" className="text-gray-900 hover:text-gray-600 transition-colors">{t.home}</Link>
+              <Link to="/gallery" className="text-gray-900 hover:text-gray-600 transition-colors">{t.interior}</Link>
+              <Link to="/exterior" className="text-gray-900 hover:text-gray-600 transition-colors">{t.exterior}</Link>
+              <Link to="/line" className="text-gray-900 hover:text-gray-600 transition-colors">{t.videos}</Link>
               <button
                 onClick={() => setShowCv(true)}
                 className="text-gray-900 hover:text-gray-600 transition-colors"
               >
-                View CV
+                {t.viewCv}
+              </button>
+              <button
+                onClick={toggleLang}
+                className="text-gray-900 hover:text-gray-600 transition-colors"
+              >
+                {t.langToggle}
               </button>
             </nav>
 
@@ -81,15 +164,21 @@ const Header = () => {
           {isMenuOpen && (
             <nav className="md:hidden py-4 border-t border-gray-200">
               <div className="flex flex-col space-y-2">
-                <Link to="/" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Home</Link>
-                <Link to="/gallery" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Interior Designs</Link>
-                <Link to="/exterior" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Exterior Designs</Link>
-                <Link to="/line" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Videos</Link>
+                <Link to="/" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">{t.home}</Link>
+                <Link to="/gallery" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">{t.interior}</Link>
+                <Link to="/exterior" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">{t.exterior}</Link>
+                <Link to="/line" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">{t.videos}</Link>
                 <button
                   onClick={() => setShowCv(true)}
                   className="px-3 py-2 text-gray-900 hover:bg-gray-100 text-left"
                 >
-                  View CV
+                  {t.viewCv}
+                </button>
+                <button
+                  onClick={toggleLang}
+                  className="px-3 py-2 text-gray-900 hover:bg-gray-100 text-left"
+                >
+                  {t.langToggle}
                 </button>
               </div>
             </nav>
@@ -114,7 +203,7 @@ const Header = () => {
               ×
             </button>
             <h2 className="text-xl font-semibold text-center text-black mb-4">
-              My CV
+              {t.myCv}
             </h2>
             <img
               src="/cv.jpeg"
@@ -131,6 +220,8 @@ const Header = () => {
 // Footer Component
 const Footer = () => {
   const [showCv, setShowCv] = useState(false);
+  const { lang } = useLang();
+  const t = TRANSLATIONS[lang];
 
   const socialLinks = [
     {
@@ -192,12 +283,12 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { name: "Home", href: "/" },
-    { name: "Interior Designs", href: "/gallery" },
-    { name: "Exterior Designs", href: "/exterior" },
-    { name: "Videos", href: "/line" },
-    { name: "View CV", onClick: () => setShowCv(true) },
-    { name: "Web Developer", href: "https://cl-hub.netlify.app/", external: true }
+    { name: t.home, href: "/" },
+    { name: t.interior, href: "/gallery" },
+    { name: t.exterior, href: "/exterior" },
+    { name: t.videos, href: "/line" },
+    { name: t.viewCv, onClick: () => setShowCv(true) },
+    { name: t.webDev, href: "https://cl-hub.netlify.app/", external: true }
   ];
 
   return (
@@ -209,16 +300,16 @@ const Footer = () => {
             <div className="lg:col-span-2">
               <div className="mb-6">
                 <span className="text-2xl md:text-3xl font-bold text-white">
-                  Ibrahem Alyan
+                  {t.brand}
                 </span>
               </div>
 
               <p className="text-gray-300 text-base md:text-lg mb-6 leading-relaxed">
-                Transforming spaces into extraordinary experiences through innovative interior design and architectural visualization.
+                {t.heroDesc}
               </p>
 
               <p className="text-gray-400 mb-6 md:mb-8">
-                Led by Interior Designer Ibrahem Alyan
+                {t.ledBy}
               </p>
 
               {/* Social Icons */}
@@ -248,7 +339,7 @@ const Footer = () => {
             {/* Quick Links */}
             <div>
               <h3 className="text-lg md:text-xl font-semibold mb-4 md:mb-6 text-white">
-                Quick Links
+                {t.quickLinks}
               </h3>
               <div className="space-y-2 md:space-y-3">
                 {quickLinks.map((link) => (
@@ -284,7 +375,7 @@ const Footer = () => {
             {/* Get In Touch */}
             <div>
               <h3 className="text-lg md:text-xl font-semibold mb-4 md:mb-6 text-white">
-                Get In Touch
+                {t.getInTouch}
               </h3>
               <div className="space-y-3 md:space-y-4">
                 <div className="flex items-center gap-3 text-gray-300">
@@ -292,7 +383,7 @@ const Footer = () => {
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-xs md:text-sm text-gray-400">Email</p>
+                    <p className="text-xs md:text-sm text-gray-400">{t.email}</p>
                     <a href="mailto:renderyourplan@gmail.com" className="hover:text-white transition-colors text-sm md:text-base">
                       renderyourplan@gmail.com
                     </a>
@@ -304,7 +395,7 @@ const Footer = () => {
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-xs md:text-sm text-gray-400">Phone</p>
+                    <p className="text-xs md:text-sm text-gray-400">{t.phone}</p>
                     <a href="tel:+962790383135" className="hover:text-white transition-colors text-sm md:text-base">
                       +962 7 9038 3135
                     </a>
@@ -316,8 +407,8 @@ const Footer = () => {
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-xs md:text-sm text-gray-400">Location</p>
-                    <p className="text-sm md:text-base">Amman, Jordan</p>
+                    <p className="text-xs md:text-sm text-gray-400">{t.location}</p>
+                    <p className="text-sm md:text-base">{t.locationValue}</p>
                   </div>
                 </div>
               </div>
@@ -327,7 +418,7 @@ const Footer = () => {
           {/* Bottom Bar */}
           <div className="border-t border-gray-800 mt-8 md:mt-12 pt-6 md:pt-8 text-center">
             <p className="text-gray-400 text-sm md:text-base">
-              © 2026 Ibrahem Alayan Interior Design. All rights reserved.
+              {t.copyright}
             </p>
           </div>
         </div>
@@ -345,7 +436,7 @@ const Footer = () => {
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 md:p-6 border-b border-gray-200 bg-white">
-              <h2 className="text-lg md:text-xl font-bold text-black">Curriculum Vitae</h2>
+              <h2 className="text-lg md:text-xl font-bold text-black">{t.cvTitle}</h2>
               <button
                 onClick={() => setShowCv(false)}
                 className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
@@ -358,7 +449,7 @@ const Footer = () => {
             <div className="overflow-auto max-h-[calc(90vh-120px)]">
               <img
                 src="/cv.jpeg"
-                alt="Ibrahem Alyan CV"
+                alt={t.cvAlt}
                 className="w-full h-auto object-contain"
               />
             </div>
@@ -369,7 +460,7 @@ const Footer = () => {
                 onClick={() => setShowCv(false)}
                 className="px-4 md:px-6 py-2 text-gray-600 hover:text-gray-900 transition-colors text-sm md:text-base"
               >
-                Close
+                {t.close}
               </button>
             </div>
           </div>
@@ -381,6 +472,8 @@ const Footer = () => {
 
 // Exterior Component (Main Content)
 const Exterior = () => {
+  const { lang } = useLang();
+  const t = TRANSLATIONS[lang];
   // State management
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [allImages, setAllImages] = useState<string[]>([]);
@@ -398,6 +491,27 @@ const Exterior = () => {
     });
   }, []);
 
+  // Scroll reveal effects (match gallery)
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll<HTMLElement>("[data-animate]"));
+    if (!elements.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.setAttribute("data-in-view", "true");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   // Exterior Projects data - تم التصحيح هنا
   const projects: Project[] = useMemo(() => [
     {
@@ -406,14 +520,20 @@ const Exterior = () => {
       description: "Contemporary architectural design with clean lines and natural integration",
       images: ["ryp(1).JPG"],
       expandedDescription: "A stunning modern villa that seamlessly blends with its natural surroundings. Featuring clean architectural lines, large glass surfaces, and sustainable materials that create a harmonious connection between indoor and outdoor living spaces.",
+      titleAr: "واجهة فيلا حديثة",
+      descriptionAr: "تصميم معماري معاصر بخطوط نظيفة وانسجام مع الطبيعة",
+      expandedDescriptionAr: "فيلا حديثة مميزة تمتزج بسلاسة مع محيطها الطبيعي، بخطوط معمارية نظيفة ومساحات زجاجية واسعة ومواد مستدامة تربط بين الداخل والخارج بانسجام.",
       category: "exterior"
     },
     {
       id: 2,
       title: "Luxury Garden Design",
       description: "Elegant landscape with water features and outdoor entertainment areas",
-      images: ["ryp(3).PNG", "ryp(4).PNG"],
+      images: ["ryp(2).PNG", "ryp(4).PNG"],
       expandedDescription: "An exquisite garden design that transforms outdoor spaces into luxurious retreats. Incorporating water features, carefully curated plant selections, and sophisticated lighting to create an atmosphere of tranquility and elegance for outdoor entertainment and relaxation.",
+      titleAr: "تصميم حديقة فاخرة",
+      descriptionAr: "مناظر طبيعية أنيقة مع عناصر مائية ومساحات للترفيه الخارجي",
+      expandedDescriptionAr: "تصميم حديقة راقٍ يحوّل المساحات الخارجية إلى ملاذ فاخر، مع عناصر مائية ونباتات مختارة بعناية وإضاءة متقنة لخلق أجواء هادئة وأنيقة للترفيه والاسترخاء.",
       category: "exterior"
     },
     {
@@ -422,6 +542,9 @@ const Exterior = () => {
       description: "Modern residential building with innovative architectural elements",
       images: ["a9e3b97c-29e7-4cff-b8ad-67925bc23866.jpeg"],
       expandedDescription: "An innovative residential complex featuring a dynamic facade that plays with light and shadow. The design incorporates sustainable materials and green building principles while maintaining a striking visual appeal that stands as a landmark in urban architecture.",
+      titleAr: "واجهة مجمع سكني",
+      descriptionAr: "مبنى سكني حديث بعناصر معمارية مبتكرة",
+      expandedDescriptionAr: "مجمع سكني مبتكر بواجهة ديناميكية تلعب بالضوء والظل، مع مواد مستدامة ومبادئ البناء الأخضر مع الحفاظ على حضور بصري لافت.",
       category: "exterior"
     },
     {
@@ -430,6 +553,9 @@ const Exterior = () => {
       description: "Neo-Classical Elegance Villa",
       images: ["(1).png", "(4).png"],
       expandedDescription: "A sophisticated villa design blending classical architectural elements with modern touches, featuring grand façades, elegant columns, and balanced proportions to create a timeless and luxurious living space.",
+      titleAr: "فيلا كلاسيكية حديثة",
+      descriptionAr: "فيلا بأناقة كلاسيكية حديثة",
+      expandedDescriptionAr: "تصميم فيلا راقٍ يمزج بين العناصر الكلاسيكية ولمسات معاصرة، بواجهات فخمة وأعمدة أنيقة ونِسب متوازنة لخلق مساحة معيشة فاخرة وخالدة.",
       category: "exterior"
     },
     {
@@ -438,6 +564,9 @@ const Exterior = () => {
       description: "Cozy Cabin in the Woods",
       images: ["(2).png", "(3).png"],
       expandedDescription: "A unique villa inspired by a rustic cabin, nestled in a dense forest, where the surrounding nature harmonizes with wooden and glass architectural elements to create a peaceful and cozy atmosphere, featuring open spaces that allow natural light and enchanting views of the surrounding trees.",
+      titleAr: "كوخ دافئ في الغابة",
+      descriptionAr: "كوخ دافئ وسط الغابة",
+      expandedDescriptionAr: "فيلا فريدة مستوحاة من كوخ ريفي وسط غابة كثيفة، تتناغم فيها الطبيعة مع عناصر الخشب والزجاج لتكوين أجواء هادئة ودافئة ومساحات مفتوحة تسمح بدخول الضوء وإطلالات ساحرة.",
       category: "exterior"
     }
   ], []);
@@ -540,9 +669,9 @@ const Exterior = () => {
   const renderImageGrid = (imgs: string[], startIndex: number, projectId: number) => {
     if (imgs.length > 1) {
       return (
-        <div className="flex gap-0.5 sm:gap-1 aspect-[5/4] relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-0.5 sm:gap-1 aspect-[4/3] sm:aspect-[5/4] relative">
           {imgs.map((imgSrc, index) => (
-            <div key={index} className="relative w-1/2 overflow-hidden">
+            <div key={index} className="relative overflow-hidden">
               <img
                 src={imgSrc}
                 alt={`${projects.find(p => p.id === projectId)?.title} ${index + 1}`}
@@ -553,7 +682,7 @@ const Exterior = () => {
                 draggable={false}
                 onContextMenu={(e) => e.preventDefault()}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none" />
             </div>
           ))}
         </div>
@@ -562,7 +691,7 @@ const Exterior = () => {
 
     if (imgs.length === 1) {
       return (
-        <div className="aspect-[5/4] overflow-hidden relative">
+        <div className="aspect-[4/3] sm:aspect-[5/4] overflow-hidden relative">
           <img
             src={imgs[0]}
             alt={projects.find(p => p.id === projectId)?.title}
@@ -573,7 +702,7 @@ const Exterior = () => {
             draggable={false}
             onContextMenu={(e) => e.preventDefault()}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none" />
         </div>
       );
     }
@@ -581,38 +710,42 @@ const Exterior = () => {
     return null;
   };
 
-  const renderViewButton = () => (
-    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-      <div className="transform translate-y-4 sm:translate-y-8 group-hover:translate-y-0 transition-all duration-700 delay-200">
-        <div className="bg-white/95 backdrop-blur-md border border-white/20 px-4 sm:px-8 py-2 sm:py-4 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105">
-          <div className="flex items-center space-x-2 sm:space-x-3">
-
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  const renderViewButton = () => null;
 
   return (
-    <section id="exterior" className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden">
+    <section id="exterior" className="relative min-h-screen bg-white overflow-hidden">
+      <style>{`
+        .lux-reveal {
+          opacity: 0;
+          transform: translateY(24px) scale(0.98);
+          filter: blur(6px);
+          transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1),
+            transform 700ms cubic-bezier(0.4, 0, 0.2, 1),
+            filter 700ms cubic-bezier(0.4, 0, 0.2, 1);
+          will-change: opacity, transform, filter;
+        }
+        .lux-reveal[data-in-view="true"] {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+          filter: blur(0);
+        }
+        .lux-card[data-in-view="true"] .lux-ring {
+          opacity: 1;
+        }
+        .lux-glow {
+          background: radial-gradient(1200px 600px at 10% -10%, rgba(0, 0, 0, 0.08), transparent 60%),
+            radial-gradient(900px 500px at 90% 10%, rgba(0, 0, 0, 0.06), transparent 55%);
+        }
+      `}</style>
 
-
-      {/* Background */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-100/50 to-transparent animate-pulse"></div>
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `
-              radial-gradient(circle at 25% 25%, rgba(156, 163, 175, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 75% 75%, rgba(209, 213, 219, 0.1) 0%, transparent 50%),
-              linear-gradient(45deg, rgba(243, 244, 246, 0.05) 25%, transparent 25%),
-              linear-gradient(-45deg, rgba(243, 244, 246, 0.05) 25%, transparent 25%)
-            `,
-            backgroundSize: '400px 400px, 300px 300px, 60px 60px, 60px 60px',
-          }}
-        />
+      {/* Minimal Background (match gallery) */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-transparent to-gray-800"></div>
       </div>
+      <div className="absolute inset-0 lux-glow pointer-events-none" />
+      <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-gray-200/60 blur-3xl pointer-events-none" />
+      <div className="absolute top-32 -right-20 h-80 w-80 rounded-full bg-gray-300/40 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-gray-200/50 blur-3xl pointer-events-none" />
 
       <div className="relative z-10 py-16 sm:py-24 md:py-32">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
@@ -621,34 +754,49 @@ const Exterior = () => {
             <div className="absolute -top-8 sm:-top-16 left-1/2 transform -translate-x-1/2 w-20 sm:w-32 h-20 sm:h-32 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full opacity-20 animate-pulse"></div>
 
             <div className="relative">
-              <div className="flex items-center justify-center mb-6 sm:mb-8">
+              <div
+                className="flex items-center justify-center mb-6 sm:mb-8 lux-reveal"
+                data-animate
+                style={{ transitionDelay: "0ms" }}
+              >
                 <div className="h-px w-12 sm:w-24 bg-gradient-to-r from-transparent via-gray-400 to-gray-400"></div>
                 <div className="mx-2 sm:mx-4 w-3 sm:w-4 h-3 sm:h-4 bg-gray-300 rotate-45 shadow-lg"></div>
                 <div className="h-px w-12 sm:w-24 bg-gradient-to-l from-transparent via-gray-400 to-gray-400"></div>
               </div>
 
-              <div className="space-y-1 sm:space-y-2 mb-6 sm:mb-8">
+              <div
+                className="space-y-1 sm:space-y-2 mb-6 sm:mb-8 lux-reveal"
+                data-animate
+                style={{ transitionDelay: "80ms" }}
+              >
                 <span className="text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-gray-600 font-light block">
-                  ✦ Exterior Architecture Collection ✦
+                  ✦ {t.heroBadge} ✦
                 </span>
                 <div className="h-px w-6 sm:w-8 bg-gray-300 mx-auto"></div>
               </div>
 
-              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extralight text-gray-900 mb-6 sm:mb-8 tracking-tighter leading-none">
-                <span className="block font-thin">Exterior</span>
+              <h1
+                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extralight text-gray-900 mb-6 sm:mb-8 tracking-tighter leading-none lux-reveal"
+                data-animate
+                style={{ transitionDelay: "140ms" }}
+              >
+                <span className="block font-thin">{t.heroTitlePrimary}</span>
                 <span className="block font-light italic bg-gradient-to-r from-gray-700 via-gray-900 to-gray-700 bg-clip-text text-transparent">
-                  Architecture
+                  {t.heroTitleSecondary}
                 </span>
               </h1>
 
-              <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
+              <div
+                className="max-w-4xl mx-auto space-y-4 sm:space-y-6 lux-reveal"
+                data-animate
+                style={{ transitionDelay: "200ms" }}
+              >
                 <p className="text-lg sm:text-xl md:text-2xl text-gray-600 font-extralight leading-relaxed tracking-wide px-4">
-                  Where <em className="italic font-light">architectural vision</em> meets
-                  <em className="italic font-light"> timeless elegance</em>
+                  {t.heroDesc}
                 </p>
                 <div className="flex items-center justify-center space-x-4 sm:space-x-6 text-gray-400">
                   <div className="h-px w-8 sm:w-16 bg-gray-300"></div>
-                  <span className="text-xs sm:text-sm tracking-widest font-light">{projects.length} ARCHITECTURAL PROJECTS</span>
+                  <span className="text-xs sm:text-sm tracking-widest font-light">{projects.length} {t.projectCount}</span>
                   <div className="h-px w-8 sm:w-16 bg-gray-300"></div>
                 </div>
               </div>
@@ -661,6 +809,9 @@ const Exterior = () => {
               const images = project.images ?? [];
               const startIndex = getImageStartIndex(projectIndex);
               const isExpanded = expandedCard === project.id;
+              const displayTitle = lang === "ar" && project.titleAr ? project.titleAr : project.title;
+              const displayDescription = lang === "ar" && project.descriptionAr ? project.descriptionAr : project.description;
+              const displayExpanded = lang === "ar" && project.expandedDescriptionAr ? project.expandedDescriptionAr : project.expandedDescription;
 
               return (
                 <div
@@ -670,11 +821,14 @@ const Exterior = () => {
                   onMouseLeave={() => setHoveredCard(null)}
                 >
                   <Card
-                    className={`relative overflow-hidden bg-white/80 backdrop-blur-xl border-0 rounded-2xl sm:rounded-3xl shadow-2xl hover:shadow-4xl transition-all duration-700 transform hover:-translate-y-2 sm:hover:-translate-y-8 hover:rotate-1 group-hover:bg-white/90 cursor-pointer ${
+                    data-animate
+                    style={{ transitionDelay: `${Math.min(projectIndex * 60, 360)}ms` }}
+                    className={`lux-reveal lux-card relative overflow-hidden bg-white/80 backdrop-blur-xl border-0 rounded-2xl sm:rounded-3xl shadow-2xl hover:shadow-4xl transition-all duration-700 transform hover:-translate-y-2 sm:hover:-translate-y-8 hover:rotate-1 group-hover:bg-white/90 cursor-pointer ${
                       isExpanded ? 'scale-105 -translate-y-2 sm:-translate-y-4 shadow-4xl bg-white/95' : ''
                     }`}
                     onClick={() => handleCardClick(project.id)}
                   >
+                    <div className="lux-ring pointer-events-none absolute inset-0 rounded-2xl sm:rounded-3xl ring-1 ring-black/5 opacity-0 transition-opacity duration-700" />
 
                     {/* Image Container */}
                     <div className="relative overflow-hidden rounded-t-2xl sm:rounded-t-3xl">
@@ -699,22 +853,19 @@ const Exterior = () => {
                         <h3 className={`text-xl sm:text-2xl md:text-3xl font-extralight text-gray-900 tracking-wide leading-tight group-hover:text-gray-700 transition-all duration-500 ${
                           isExpanded ? 'text-xl sm:text-2xl mb-2' : ''
                         }`}>
-                          {project.title}
+                          {displayTitle}
                         </h3>
 
                         <p className={`text-gray-600 leading-relaxed sm:leading-loose font-light tracking-wide transition-all duration-500 ${
                           isExpanded ? 'text-sm sm:text-base' : 'text-base sm:text-lg'
                         }`}>
-                          {isExpanded && project.expandedDescription ?
-                            project.expandedDescription :
-                            project.description
-                          }
+                          {isExpanded && displayExpanded ? displayExpanded : displayDescription}
                         </p>
 
                         {/* Expand/Collapse Button */}
                         <div className="flex items-center justify-center pt-3 sm:pt-4">
                           <button className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors duration-300 text-xs sm:text-sm uppercase tracking-wide">
-                            <span>{isExpanded ? 'Show Less' : 'Read More'}</span>
+                            <span>{isExpanded ? t.showLess : t.readMore}</span>
                             <svg
                               className={`w-3 sm:w-4 h-3 sm:h-4 transition-transform duration-300 ${
                                 isExpanded ? 'rotate-180' : ''
@@ -735,7 +886,7 @@ const Exterior = () => {
                           <div className="flex items-center justify-between">
                             <div className="flex items-center space-x-2 sm:space-x-3 text-gray-600 group-hover:text-gray-800 transition-colors duration-500">
                               <span className="text-xs sm:text-sm uppercase tracking-[0.15em] sm:tracking-[0.2em] font-light">
-                                {isExpanded ? 'Architectural Gallery' : 'Explore Design'}
+                                {isExpanded ? t.galleryLabel : t.exploreLabel}
                               </span>
                               <div className="transform group-hover:translate-x-1 sm:group-hover:translate-x-2 transition-transform duration-500">
                                 <svg className="w-4 sm:w-5 h-4 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -768,6 +919,7 @@ const Exterior = () => {
       {lightboxOpen && (
         <div
           className="fixed inset-0 bg-black/96 backdrop-blur-2xl flex items-center justify-center z-50 transition-all duration-500"
+          onClick={closeLightbox}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
@@ -775,24 +927,30 @@ const Exterior = () => {
 
           {/* Navigation Buttons */}
           <button
-            className="absolute left-2 sm:left-4 md:left-12 top-1/2 transform -translate-y-1/2 group z-20"
-            onClick={prevImage}
+            className="absolute left-2 sm:left-4 md:left-12 lg:left-16 xl:left-20 top-1/2 transform -translate-y-1/2 group z-20"
+            onClick={(e) => {
+              e.stopPropagation();
+              prevImage();
+            }}
             aria-label="Previous image"
           >
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full p-3 sm:p-4 md:p-6 hover:bg-white/20 transition-all duration-300 hover:scale-110">
-              <svg className="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 text-white/80 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white/20 backdrop-blur-md border border-white/30 rounded-full p-3 sm:p-4 md:p-6 lg:p-7 xl:p-8 hover:bg-white/30 transition-all duration-300 hover:scale-110 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+              <svg className="w-5 sm:w-6 md:w-8 lg:w-9 xl:w-10 h-5 sm:h-6 md:h-8 lg:h-9 xl:h-10 text-white/90 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
               </svg>
             </div>
           </button>
 
           {/* Image Display */}
-          <div className="relative max-w-[90vw] sm:max-w-[85vw] max-h-[70vh] sm:max-h-[85vh] flex items-center justify-center z-10 px-4 sm:px-0">
+          <div
+            className="relative max-w-[90vw] sm:max-w-[85vw] max-h-[70vh] sm:max-h-[85vh] flex items-center justify-center z-10 px-4 sm:px-0"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="relative">
               <div className="relative p-1 sm:p-2 bg-gradient-to-br from-white/10 to-white/5 rounded-2xl sm:rounded-3xl backdrop-blur-sm border border-white/20">
                 <img
                   src={allImages[currentImageIndex]}
-                  alt="Architectural Masterpiece"
+                  alt={t.lightboxAlt}
                   className={`max-w-full max-h-full rounded-xl sm:rounded-2xl shadow-4xl transition-all duration-700 ease-out ${
                     isLoading ? 'opacity-0 scale-95 blur-sm' : 'opacity-100 scale-100 blur-0'
                   }`}
@@ -812,12 +970,15 @@ const Exterior = () => {
           </div>
 
           <button
-            className="absolute right-2 sm:right-4 md:right-12 top-1/2 transform -translate-y-1/2 group z-20"
-            onClick={nextImage}
+            className="absolute right-2 sm:right-4 md:right-12 lg:right-16 xl:right-20 top-1/2 transform -translate-y-1/2 group z-20"
+            onClick={(e) => {
+              e.stopPropagation();
+              nextImage();
+            }}
             aria-label="Next image"
           >
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full p-3 sm:p-4 md:p-6 hover:bg-white/20 transition-all duration-300 hover:scale-110">
-              <svg className="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 text-white/80 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white/20 backdrop-blur-md border border-white/30 rounded-full p-3 sm:p-4 md:p-6 lg:p-7 xl:p-8 hover:bg-white/30 transition-all duration-300 hover:scale-110 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+              <svg className="w-5 sm:w-6 md:w-8 lg:w-9 xl:w-10 h-5 sm:h-6 md:h-8 lg:h-9 xl:h-10 text-white/90 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
               </svg>
             </div>
@@ -825,12 +986,15 @@ const Exterior = () => {
 
           {/* Close Button */}
           <button
-            className="absolute top-4 sm:top-8 md:top-12 right-4 sm:right-8 md:right-12 group z-20"
-            onClick={closeLightbox}
+            className="absolute top-4 sm:top-8 md:top-12 lg:top-14 xl:top-16 right-4 sm:right-8 md:right-12 lg:right-14 xl:right-16 group z-20"
+            onClick={(e) => {
+              e.stopPropagation();
+              closeLightbox();
+            }}
             aria-label="Close lightbox"
           >
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full p-3 sm:p-4 hover:bg-white/20 transition-all duration-300 hover:scale-110 hover:rotate-90">
-              <svg className="w-5 sm:w-6 h-5 sm:h-6 text-white/80 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white/20 backdrop-blur-md border border-white/30 rounded-full p-3 sm:p-4 md:p-5 lg:p-6 hover:bg-white/30 transition-all duration-300 hover:scale-110 hover:rotate-90 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+              <svg className="w-5 sm:w-6 md:w-7 lg:w-8 h-5 sm:h-6 md:h-7 lg:h-8 text-white/90 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </div>
@@ -840,7 +1004,7 @@ const Exterior = () => {
           <div className="absolute bottom-6 sm:bottom-12 left-1/2 transform -translate-x-1/2 text-center hidden sm:block">
             <div className="bg-black/30 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full">
               <span className="text-white/70 text-xs font-light tracking-wide">
-                Use ← → keys or swipe to navigate • ESC to close
+                {t.lightboxHint}
               </span>
             </div>
           </div>

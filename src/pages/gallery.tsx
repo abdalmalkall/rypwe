@@ -1,9 +1,8 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Menu, X, Home, ArrowLeft, Star, Eye, ChevronDown, ChevronUp } from "lucide-react";
+import { Menu, X, Star, ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "react-router-dom";
-
-type Lang = "en" | "ar";
+import { useLang, type Lang } from "@/lib/lang";
 
 interface Project {
   id: number;
@@ -450,32 +449,20 @@ const Gallery = ({ lang }: { lang: Lang }) => {
 
   // Interior Projects data
   const projects: Project[] = useMemo(() => [
+
     {
-      id: 9,
-      title: "Modern Bedroom Interior Design",
-      description: "Calm and Elegant Bedroom with Warm Natural Materials",
-      images: ["modern-bedroom-loft.jpg", "bedroom2.jpg"],
-      expandedDescription: "A serene modern bedroom designed to create a sense of comfort and balance. Soft natural tones, warm wood textures, and minimalist furniture shape a relaxing atmosphere ideal for rest. Integrated lighting and clean architectural lines enhance the spatial harmony, while carefully selected materials add depth and warmth to the design. The result is a refined contemporary bedroom that blends simplicity, functionality, and timeless elegance.",
-      titleAr: "تصميم غرفة نوم حديثة",
-      descriptionAr: "غرفة نوم هادئة وأنيقة بخامات طبيعية دافئة",
-      expandedDescriptionAr: "غرفة نوم حديثة هادئة صُممت لتمنح شعورًا بالراحة والتوازن. ألوان طبيعية ناعمة وخامات خشبية دافئة وأثاث بسيط تُكوّن أجواءً مريحة مثالية للراحة. إضاءة مدمجة وخطوط معمارية نظيفة تُعزز انسجام الفراغ، بينما تضيف المواد المختارة بعناية عمقًا ودفئًا للتصميم. النتيجة غرفة نوم معاصرة راقية تجمع بين البساطة والوظيفة والأناقة الخالدة.",
+      id: 1,
+      title: "Modern Living Room Interior Design",
+      description: "Elegant Living Space with Contemporary Comfor",
+      images: ["newphoto/living.png"],
+      expandedDescription: "A sophisticated modern living room designed to balance comfort and visual elegance. Clean architectural lines, warm lighting, and refined materials create a welcoming and harmonious atmosphere. The space features minimalist furniture, carefully curated decor, and an open layout that enhances both functionality and flow. Natural light highlights the textures of wood, fabric, and stone, resulting in a contemporary living environment that feels both stylish and relaxing.",
       category: "interior",
       rating: 5,
-      features: ["Warm Woods", "Natural Tones", "Integrated Lighting", "Minimalist Style"],
-      featuresAr: ["خشب دافئ", "درجات طبيعية", "إضاءة مدمجة", "أسلوب بسيط"]
+      features: ["Clean Lines", "Neutral Palette", "Functional Furniture", "Tranquil Atmosphere"]
     },
+
     {
-      id: 7,
-      title: "Modern Interior Design",
-      description: "Open Kitchen & Living Space with Elegant Details",
-      images: ["rypimges/a-(1).jpg", "rypimges/rypimg.jpeg", "rypimges/a(2).jpeg", "rypimges/a(2).jpg"],
-      expandedDescription: "A sleek modern interior combining kitchen and living area in perfect harmony. Artistic cabinet patterns, warm lighting, and minimalist furniture create a refined contemporary feel, enhanced by a touch of nature with an indoor box tree and soft ambient glow.",
-      category: "interior",
-      rating: 5,
-      features: ["Open Concept", "Minimalist Design", "Natural Lighting", "Premium Materials"]
-    },
-    {
-      id: 8,
+      id: 2,
       title: "Stylish Bedroom",
       description: "Modern Bedroom with Timeless Charm",
       images: ["bedroom3.jpg", "bedroom2.jpg"],
@@ -485,7 +472,7 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       features: ["Luxury Materials", "Calm Atmosphere", "Smart Lighting", "Comfort Focus"]
     },
     {
-      id: 1,
+      id: 3,
       title: "Minimalist Living Room",
       description: "Clean lines and neutral tones create serenity",
       images: ["Living.jpeg", "Living2.jpg"],
@@ -495,7 +482,7 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       features: ["Clean Lines", "Neutral Palette", "Functional Furniture", "Tranquil Atmosphere"]
     },
     {
-      id: 2,
+      id: 4,
       title: "Contemporary Kitchen",
       description: "Sleek functionality meets elegant aesthetics",
       images: ["Kitchen.png"],
@@ -505,7 +492,7 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       features: ["Smart Technology", "High-end Materials", "Efficient Layout", "Ambient Lighting"]
     },
     {
-      id: 3,
+      id: 5,
       title: "Luxury Kids Bedroom",
       description: "Sophisticated comfort in perfect harmony",
       images: ["Bedroom.webp"],
@@ -515,7 +502,7 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       features: ["Child-Safe", "Creative Elements", "Calm Colors", "Interactive Design"]
     },
     {
-      id: 4,
+      id: 6,
       title: "Executive Office",
       description: "Professional environment with modern excellence",
       images: ["4.png"],
@@ -525,7 +512,7 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       features: ["Productivity Focus", "Luxury Materials", "Advanced Lighting", "Professional Style"]
     },
     {
-      id: 5,
+      id: 7,
       title: "Elegant Dining Room",
       description: "Where style meets memorable gatherings",
       images: ["Dining.webp"],
@@ -535,7 +522,7 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       features: ["Entertainment Ready", "Luxurious Table", "Atmospheric Lighting", "Family Focus"]
     },
     {
-      id: 6,
+      id: 8,
       title: "Spa Bathroom",
       description: "Luxury retreat with contemporary fixtures",
       images: ["Bathroom.png"],
@@ -545,7 +532,7 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       features: ["Spa-like", "Luxury Materials", "Modern Tech", "Relaxation Focus"]
     },
     {
-      id: 7,
+      id:  9,
       title: "Spa Bathroom",
       description: "Luxury retreat with contemporary fixtures",
       images: ["lurom.jpeg"],
@@ -553,7 +540,37 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       category: "interior",
       rating: 5,
       features: ["Spa-like", "Luxury Materials", "Modern Tech", "Relaxation Focus"]
-    }
+    },
+    {
+      id: 10,
+      title: "Modern Bedroom Interior Design",
+      description: "Calm and Elegant Bedroom with Warm Natural Materials",
+      images: ["newphoto/image.png", "newphoto/im1.png"],
+      expandedDescription: "A serene modern bedroom designed to create a sense of comfort and balance. Soft natural tones, warm wood textures, and minimalist furniture shape a relaxing atmosphere ideal for rest. Integrated lighting and clean architectural lines enhance the spatial harmony, while carefully selected materials add depth and warmth to the design. The result is a refined contemporary bedroom that blends simplicity, functionality, and timeless elegance.",
+      category: "interior",
+      rating: 4,
+      features: ["Clean Lines", "Neutral Palette", "Functional Furniture", "Tranquil Atmosphere"]
+    },
+    {
+      id: 11,
+      title: "Modern Interior Design",
+      description: "Open Kitchen & Living Space with Elegant Details",
+      images: ["rypimges/a-(1).jpg", "rypimges/rypimg.jpeg", "rypimges/a(2).jpeg", "rypimges/a(2).jpg"],
+      expandedDescription: "A sleek modern interior combining kitchen and living area in perfect harmony. Artistic cabinet patterns, warm lighting, and minimalist furniture create a refined contemporary feel, enhanced by a touch of nature with an indoor box tree and soft ambient glow.",
+      category: "interior",
+      rating: 5,
+      features: ["Open Concept", "Minimalist Design", "Natural Lighting", "Premium Materials"]
+    },
+    {
+      id: 12,
+      title: "Modern Bedroom Interior Design",
+      description: "Open Kitchen & Living Space with Elegant Details",
+      images: ["newphoto/bedroom1.png", "newphoto/bedroom2.png"],
+      expandedDescription: "A serene modern bedroom designed to create a sense of comfort and balance. Soft natural tones, warm wood textures, and minimalist furniture shape a relaxing atmosphere ideal for rest. Integrated lighting and clean architectural lines enhance the spatial harmony, while carefully selected materials add depth and warmth to the design. The result is a refined contemporary bedroom that blends simplicity, functionality, and timeless elegance..",
+      category: "interior",
+      rating: 5,
+      features: ["Open Concept", "Minimalist Design", "Natural Lighting", "Premium Materials"]
+    },
   ], []);
 
   // Image index calculation
@@ -658,8 +675,9 @@ const Gallery = ({ lang }: { lang: Lang }) => {
                 className="w-full h-full object-cover transition-all duration-700 cursor-pointer hover:scale-110"
                 draggable={false}
                 onContextMenu={(e) => e.preventDefault()}
+                onClick={() => openLightbox(startIndex + index)}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-all duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-all duration-500 pointer-events-none" />
             </div>
           ))}
         </div>
@@ -677,8 +695,9 @@ const Gallery = ({ lang }: { lang: Lang }) => {
                 className="w-full h-full object-cover transition-all duration-700 cursor-pointer hover:scale-110"
                 draggable={false}
                 onContextMenu={(e) => e.preventDefault()}
+                onClick={() => openLightbox(startIndex + index)}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-all duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-all duration-500 pointer-events-none" />
             </div>
           ))}
         </div>
@@ -694,8 +713,9 @@ const Gallery = ({ lang }: { lang: Lang }) => {
             className="w-full h-full object-cover transition-all duration-700 cursor-pointer hover:scale-110"
             draggable={false}
             onContextMenu={(e) => e.preventDefault()}
+            onClick={() => openLightbox(startIndex)}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-all duration-500" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-all duration-500 pointer-events-none" />
         </div>
       );
     }
@@ -704,10 +724,8 @@ const Gallery = ({ lang }: { lang: Lang }) => {
   };
 
   const renderViewButton = () => (
-    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/30 rounded-lg">
-      <div className="transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-
-      </div>
+    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/30 rounded-lg pointer-events-none">
+      <div className="transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 pointer-events-none"></div>
     </div>
   );
 
@@ -925,13 +943,17 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       {lightboxOpen && (
         <div
           className="fixed inset-0 bg-black/95 backdrop-blur-xl flex items-center justify-center z-50 transition-all duration-500"
+          onClick={closeLightbox}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
           {/* Navigation Buttons */}
           <button
             className="absolute left-2 sm:left-4 md:left-8 top-1/2 transform -translate-y-1/2 group z-20 touch-manipulation"
-            onClick={prevImage}
+            onClick={(e) => {
+              e.stopPropagation();
+              prevImage();
+            }}
             aria-label="Previous image"
           >
             <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl md:rounded-2xl p-2 md:p-3 lg:p-4 hover:bg-white/20 transition-all duration-300 hover:scale-110 shadow-2xl">
@@ -942,7 +964,10 @@ const Gallery = ({ lang }: { lang: Lang }) => {
           </button>
 
           {/* Image Display */}
-          <div className="relative max-w-[95vw] sm:max-w-[90vw] md:max-w-[80vw] max-h-[80vh] flex items-center justify-center z-10 px-2 sm:px-4 md:px-0">
+          <div
+            className="relative max-w-[95vw] sm:max-w-[90vw] md:max-w-[80vw] max-h-[80vh] flex items-center justify-center z-10 px-2 sm:px-4 md:px-0"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="relative">
               <div className="relative p-1 md:p-2 bg-gradient-to-br from-white/10 to-white/5 rounded-2xl md:rounded-3xl backdrop-blur-lg border border-white/20 shadow-2xl">
                 <img
@@ -969,7 +994,10 @@ const Gallery = ({ lang }: { lang: Lang }) => {
 
           <button
             className="absolute right-2 sm:right-4 md:right-8 top-1/2 transform -translate-y-1/2 group z-20 touch-manipulation"
-            onClick={nextImage}
+            onClick={(e) => {
+              e.stopPropagation();
+              nextImage();
+            }}
             aria-label="Next image"
           >
             <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl md:rounded-2xl p-2 md:p-3 lg:p-4 hover:bg-white/20 transition-all duration-300 hover:scale-110 shadow-2xl">
@@ -982,7 +1010,10 @@ const Gallery = ({ lang }: { lang: Lang }) => {
           {/* Close Button */}
           <button
             className="absolute top-2 sm:top-4 md:top-8 right-2 sm:right-4 md:right-8 group z-20 touch-manipulation"
-            onClick={closeLightbox}
+            onClick={(e) => {
+              e.stopPropagation();
+              closeLightbox();
+            }}
             aria-label="Close lightbox"
           >
             <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl md:rounded-2xl p-2 md:p-3 lg:p-4 hover:bg-white/20 transition-all duration-300 hover:scale-110 shadow-2xl">
@@ -1008,8 +1039,7 @@ const Gallery = ({ lang }: { lang: Lang }) => {
 
 // Main App Component
 const GalleryPage = () => {
-  const [lang, setLang] = useState<Lang>("en");
-  const toggleLang = () => setLang((prev) => (prev === "en" ? "ar" : "en"));
+  const { lang, toggleLang } = useLang();
 
   return (
     <div className="min-h-screen flex flex-col bg-white" dir={lang === "ar" ? "rtl" : "ltr"}>

@@ -1,9 +1,39 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useLang } from "@/lib/lang";
+
+const TRANSLATIONS = {
+  en: {
+    brand: "Render Your Plan",
+    home: "Home",
+    about: "About",
+    designs: "Designs",
+    videos: "Videos",
+    exterior: "Exterior",
+    contact: "Contact",
+    viewCv: "View CV",
+    langToggle: "عربي",
+    cvTitle: "My CV",
+  },
+  ar: {
+    brand: "Render Your Plan",
+    home: "الرئيسية",
+    about: "من نحن",
+    designs: "التصاميم",
+    videos: "فيديوهات",
+    exterior: "التصاميم الخارجية",
+    contact: "تواصل",
+    viewCv: "عرض السيرة",
+    langToggle: "English",
+    cvTitle: "السيرة الذاتية",
+  },
+} as const;
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showCv, setShowCv] = useState(false);
+  const { lang, toggleLang } = useLang();
+  const t = TRANSLATIONS[lang];
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -15,25 +45,33 @@ const Header = () => {
             {/* Logo */}
             <div className="flex items-center">
               <img src="/logo.jpg" alt="RYP Logo" className="h-10 w-10 rounded-full object-cover" />
-              <span className="ml-3 text-2xl font-bold text-black">Render Your Plan</span>
+              <span className={`${lang === "ar" ? "mr-3" : "ml-3"} text-2xl font-bold text-black`}>
+                {t.brand}
+              </span>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8">
-              <a href="#home" className="text-gray-900 hover:text-gray-600 transition-colors">Home</a>
-              <a href="#about" className="text-gray-900 hover:text-gray-600 transition-colors">About</a>
-              <a href="/gallery" className="text-gray-900 hover:text-gray-600 transition-colors">Designs</a>
-              <a href="/line" className="text-gray-900 hover:text-gray-600 transition-colors">Videos</a>
-            <a href="/exterior" className="text-gray-900 hover:text-gray-600 transition-colors">Exterior</a>
+              <a href="#home" className="text-gray-900 hover:text-gray-600 transition-colors">{t.home}</a>
+              <a href="#about" className="text-gray-900 hover:text-gray-600 transition-colors">{t.about}</a>
+              <a href="/gallery" className="text-gray-900 hover:text-gray-600 transition-colors">{t.designs}</a>
+              <a href="/line" className="text-gray-900 hover:text-gray-600 transition-colors">{t.videos}</a>
+              <a href="/exterior" className="text-gray-900 hover:text-gray-600 transition-colors">{t.exterior}</a>
               {/* <a href="#courses" className="text-gray-900 hover:text-gray-600 transition-colors">Courses</a> */}
-              <a href="#contact" className="text-gray-900 hover:text-gray-600 transition-colors">Contact</a>
+              <a href="#contact" className="text-gray-900 hover:text-gray-600 transition-colors">{t.contact}</a>
                  
 
               <button
                 onClick={() => setShowCv(true)}
                 className="text-gray-900 hover:text-gray-600 transition-colors"
               >
-                View CV
+                {t.viewCv}
+              </button>
+              <button
+                onClick={toggleLang}
+                className="text-gray-900 hover:text-gray-600 transition-colors"
+              >
+                {t.langToggle}
               </button>
             </nav>
 
@@ -50,18 +88,24 @@ const Header = () => {
           {isMenuOpen && (
             <nav className="md:hidden py-4 border-t border-gray-200">
               <div className="flex flex-col space-y-2">
-                <a href="#home" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Home</a>
-                <a href="#gallery" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Designs</a>
-                <a href="/line" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Videos</a>
+                <a href="#home" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">{t.home}</a>
+                <a href="#gallery" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">{t.designs}</a>
+                <a href="/line" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">{t.videos}</a>
                 {/* <a href="#courses" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Courses</a> */}
-                <a href="#contact" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">Contact</a>
-                                <a href="/exterior" className="block text-gray-300 hover:text-white transition">Exterior</a>
+                <a href="#contact" className="px-3 py-2 text-gray-900 hover:bg-gray-100 rounded-md">{t.contact}</a>
+                <a href="/exterior" className="block text-gray-300 hover:text-white transition">{t.exterior}</a>
 
                 <button
                   onClick={() => setShowCv(true)}
                   className="px-3 py-2 text-gray-900 hover:bg-gray-100 text-left"
                 >
-                  View CV
+                  {t.viewCv}
+                </button>
+                <button
+                  onClick={toggleLang}
+                  className="px-3 py-2 text-gray-900 hover:bg-gray-100 text-left"
+                >
+                  {t.langToggle}
                 </button>
               </div>
             </nav>
@@ -89,7 +133,7 @@ const Header = () => {
 
             {/* عنوان اختياري */}
             <h2 className="text-xl font-semibold text-center text-black mb-4">
-            My cv
+              {t.cvTitle}
             </h2>
 
             {/* صورة CV */}

@@ -5,19 +5,100 @@ import About from "@/components/About";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { ArrowRight, Star, Play, Home } from "lucide-react";
+import { useLang, type Lang } from "@/lib/lang";
 
 interface StatItem{icon:ComponentType<{className?:string}>;number:string;label:string;}
 type SectionType="gallery"|"video"|"exterior";
-interface SectionCardProps{title:string;description:string;mainImage:string;previewItems:string[];stats:StatItem[];linkTo:string;type?:SectionType;}
+interface SectionCardProps{title:string;description:string;mainImage:string;previewItems:string[];stats:StatItem[];linkTo:string;type?:SectionType;lang:Lang;}
 interface SectionHeaderProps{title:string;description:string;}
 interface StatsGridProps{stats:StatItem[];}
 
 const galleryData={images:["bedroom3.jpg","Living.jpeg","bedroom2.jpg"],stats:[]}as const;
 const videoData={thumbnails:["a9e3b97c-29e7-4cff-b8ad-67925bc23866.jpeg","Dining.webp","2_2 - Photo.jpg"],stats:[]}as const;
-const exteriorData={images:["architectural.jpg","a-(1).jpg","a-(2).jpg"],stats:[]}as const;
+const exteriorData={images:["architectural.jpg","ryp(2).PNG","ryp(1).JPG"],stats:[]}as const;
 
-const SectionCard:FC<SectionCardProps>=memo(({title,description,mainImage,previewItems,stats,linkTo,type="gallery"})=>{
-const isVideo=type==="video";const isExterior=type==="exterior";
+const SECTION_TEXT = {
+  en: {
+    galleryPreview: "Gallery Preview",
+    videoPreview: "Video Previews",
+    exteriorPreview: "Exterior Designs Preview",
+    images: "images",
+    videos: "videos",
+    designs: "designs",
+    liveUpdates: "Live Updates",
+    newVideos: "New Videos",
+    latestProjects: "Latest Projects",
+    newProjectsWeekly: "New projects weekly",
+    updatedRegularly: "Updated regularly",
+    ongoingDevelopments: "Ongoing developments",
+    exploreGallery: "Explore Gallery",
+    watchVideos: "Watch Videos",
+    viewExteriors: "View Exteriors",
+    collectionProgress: "Collection Progress",
+    contentProgress: "Content Progress",
+    projectsProgress: "Projects Progress",
+    premiumCollection: "Premium Collection",
+    premiumContent: "Premium Content",
+    premiumArchitecture: "Premium Architecture",
+  },
+  ar: {
+    galleryPreview: "لمحة عن المعرض",
+    videoPreview: "لمحات فيديو",
+    exteriorPreview: "لمحة عن التصاميم الخارجية",
+    images: "صور",
+    videos: "فيديوهات",
+    designs: "تصاميم",
+    liveUpdates: "تحديثات مباشرة",
+    newVideos: "فيديوهات جديدة",
+    latestProjects: "أحدث المشاريع",
+    newProjectsWeekly: "مشاريع جديدة أسبوعيًا",
+    updatedRegularly: "يتم التحديث باستمرار",
+    ongoingDevelopments: "مشاريع قيد التطوير",
+    exploreGallery: "استكشف المعرض",
+    watchVideos: "شاهد الفيديوهات",
+    viewExteriors: "عرض الخارجي",
+    collectionProgress: "تقدّم المعرض",
+    contentProgress: "تقدّم المحتوى",
+    projectsProgress: "تقدّم المشاريع",
+    premiumCollection: "مجموعة مميزة",
+    premiumContent: "محتوى مميز",
+    premiumArchitecture: "عمارة مميزة",
+  },
+} as const;
+
+const INDEX_TEXT = {
+  en: {
+    portfolioTitle: "Design Portfolio",
+    portfolioDesc: "Discover our curated collection of modern interior designs where innovation meets comfort",
+    galleryTitle: "Elevating Interior Design",
+    galleryDesc: "Where aesthetics meet comfort in perfect harmony",
+    exteriorTitle: "Exterior Designs",
+    exteriorDesc: "Transform your outdoor spaces with stunning architectural facades and landscape designs",
+    exteriorCardTitle: "Architectural Excellence",
+    exteriorCardDesc: "Creating captivating exteriors that blend with nature",
+    videosTitle: "Design Videos",
+    videosDesc: "Watch our design process come to life through captivating videos",
+    videosCardTitle: "Behind The Design",
+    videosCardDesc: "Exclusive look at our creative process",
+  },
+  ar: {
+    portfolioTitle: "معرض التصاميم",
+    portfolioDesc: "اكتشف مجموعتنا المختارة من التصاميم الداخلية الحديثة حيث يلتقي الإبداع مع الراحة",
+    galleryTitle: "تصميمات داخلية راقية",
+    galleryDesc: "حيث تلتقي الجماليات بالراحة في انسجام مثالي",
+    exteriorTitle: "التصاميم الخارجية",
+    exteriorDesc: "حوّل مساحاتك الخارجية بواجهات معمارية ومناظر طبيعية مذهلة",
+    exteriorCardTitle: "تميّز معماري",
+    exteriorCardDesc: "تصاميم خارجية آسرة تمتزج مع الطبيعة",
+    videosTitle: "فيديوهات التصميم",
+    videosDesc: "تابع عملية التصميم عبر فيديوهات ملهمة",
+    videosCardTitle: "خلف التصميم",
+    videosCardDesc: "نظرة حصرية على عملية الإبداع",
+  },
+} as const;
+
+const SectionCard:FC<SectionCardProps>=memo(({title,description,mainImage,previewItems,stats,linkTo,type="gallery",lang})=>{
+const isVideo=type==="video";const isExterior=type==="exterior";const t=SECTION_TEXT[lang];
 return(
 <div className="flex justify-center mb-8">
 <Link to={linkTo} className="group block w-full max-w-4xl overflow-hidden rounded-2xl bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300 shadow-sm">
@@ -42,7 +123,7 @@ return(
 <p className="text-gray-300 text-lg mb-2 hidden md:block">{description}</p>
 <div className="flex items-center gap-2">
 <div className="flex">{[1,2,3,4,5].map(s=><Star key={s} className="w-4 h-4 fill-white text-white"/>)}</div>
-<span className="text-gray-300 text-sm">Premium {type==="gallery"?"Collection":type==="video"?"Content":"Architecture"}</span>
+<span className="text-gray-300 text-sm">{type==="gallery"?t.premiumCollection:type==="video"?t.premiumContent:t.premiumArchitecture}</span>
 </div>
 </div>
 <div className={`p-3 rounded-full border transition-all duration-300 ${type==="gallery"?"bg-white/20 backdrop-blur-sm border-white/30 group-hover:bg-white/30":type==="video"?"bg-white/10 backdrop-blur-sm border-white/20 group-hover:bg-white/20":"bg-green-500/20 backdrop-blur-sm border-green-400/30 group-hover:bg-green-500/30"}`}>
@@ -54,8 +135,8 @@ return(
 
 <div className="p-4 bg-gray-50 border-t border-gray-200">
 <div className="flex items-center justify-between mb-2">
-<span className="text-sm font-medium text-gray-800">{type==="gallery"?"Gallery Preview":type==="video"?"Video Previews":"Exterior Designs Preview"}</span>
-<span className="text-xs text-gray-600">{previewItems.length} {type==="gallery"?"images":type==="video"?"videos":"designs"}</span>
+<span className="text-sm font-medium text-gray-800">{type==="gallery"?t.galleryPreview:type==="video"?t.videoPreview:t.exteriorPreview}</span>
+<span className="text-xs text-gray-600">{previewItems.length} {type==="gallery"?t.images:type==="video"?t.videos:t.designs}</span>
 </div>
 <div className="grid grid-cols-3 gap-3">
 {previewItems.map((item,i)=>(
@@ -76,12 +157,12 @@ return(
 <div className="flex items-center gap-3">
 <div className="flex items-center gap-2">
 <div className={`w-2 h-2 rounded-full ${type==="gallery"?"bg-green-500":type==="video"?"bg-blue-500":"bg-emerald-500"}`}/>
-<span className="text-sm font-medium text-gray-800">{type==="gallery"?"Live Updates":type==="video"?"New Videos":"Latest Projects"}</span>
+<span className="text-sm font-medium text-gray-800">{type==="gallery"?t.liveUpdates:type==="video"?t.newVideos:t.latestProjects}</span>
 </div>
 <div className="w-px h-4 bg-gray-300"/>
-<span className="text-sm text-gray-600">{type==="gallery"?"New projects weekly":type==="video"?"Updated regularly":"Ongoing developments"}</span>
+<span className="text-sm text-gray-600">{type==="gallery"?t.newProjectsWeekly:type==="video"?t.updatedRegularly:t.ongoingDevelopments}</span>
 </div>
-<span className="text-sm font-medium text-gray-800">{type==="gallery"?"Explore Gallery":type==="video"?"Watch Videos":"View Exteriors"}</span>
+<span className="text-sm font-medium text-gray-800">{type==="gallery"?t.exploreGallery:type==="video"?t.watchVideos:t.viewExteriors}</span>
 </div>
 
 <div className="space-y-1">
@@ -89,7 +170,7 @@ return(
 <div className={`h-2 rounded-full transition-all duration-500 ${type==="gallery"?"bg-gray-800 w-4/5":type==="video"?"bg-blue-600 w-3/4":"bg-emerald-600 w-2/3"}`}/>
 </div>
 <div className="flex justify-between text-xs text-gray-600">
-<span>{type==="gallery"?"Collection Progress":type==="video"?"Content Progress":"Projects Progress"}</span>
+<span>{type==="gallery"?t.collectionProgress:type==="video"?t.contentProgress:t.projectsProgress}</span>
 <span>{type==="gallery"?"80%":type==="video"?"75%":"65%"}</span>
 </div>
 </div>
@@ -129,6 +210,8 @@ return(
 StatsGrid.displayName="StatsGrid";
 
 const Index:FC=()=>{
+const { lang } = useLang();
+const t = INDEX_TEXT[lang];
 useEffect(()=>{
 const elements=Array.from(document.querySelectorAll<HTMLElement>("[data-animate]"));
 if(!elements.length)return;
@@ -169,10 +252,10 @@ return(
 <section id="gallery" className="py-8 px-4 bg-white">
 <div className="max-w-6xl mx-auto">
 <div data-animate className="lux-reveal" style={{transitionDelay:"0ms"}}>
-<SectionHeader title="Design Portfolio" description="Discover our curated collection of modern interior designs where innovation meets comfort"/>
+<SectionHeader title={t.portfolioTitle} description={t.portfolioDesc}/>
 </div>
 <div data-animate className="lux-reveal" style={{transitionDelay:"120ms"}}>
-<SectionCard title="Elevating Interior Design" description="Where aesthetics meet comfort in perfect harmony" mainImage="Living.jpeg" previewItems={[...galleryData.images]} stats={[...galleryData.stats]} linkTo="/gallery" type="gallery"/>
+<SectionCard title={t.galleryTitle} description={t.galleryDesc} mainImage="Living.jpeg" previewItems={[...galleryData.images]} stats={[...galleryData.stats]} linkTo="/gallery" type="gallery" lang={lang}/>
 </div>
 <StatsGrid stats={[...galleryData.stats]}/>
 </div>
@@ -181,10 +264,10 @@ return(
 <section id="exterior" className="py-8 bg-gradient-to-br from-gray-50 to-emerald-50">
 <div className="max-w-6xl mx-auto px-4">
 <div data-animate className="lux-reveal" style={{transitionDelay:"0ms"}}>
-<SectionHeader title="Exterior Designs" description="Transform your outdoor spaces with stunning architectural facades and landscape designs"/>
+<SectionHeader title={t.exteriorTitle} description={t.exteriorDesc}/>
 </div>
 <div data-animate className="lux-reveal" style={{transitionDelay:"120ms"}}>
-<SectionCard title="Architectural Excellence" description="Creating captivating exteriors that blend with nature" mainImage={exteriorData.images[0]} previewItems={[...exteriorData.images]} stats={[...exteriorData.stats]} linkTo="/exterior" type="exterior"/>
+<SectionCard title={t.exteriorCardTitle} description={t.exteriorCardDesc} mainImage={exteriorData.images[0]} previewItems={[...exteriorData.images]} stats={[...exteriorData.stats]} linkTo="/exterior" type="exterior" lang={lang}/>
 </div>
 <StatsGrid stats={[...exteriorData.stats]}/>
 </div>
@@ -193,10 +276,10 @@ return(
 <section id="line" className="py-8 bg-gray-50">
 <div className="max-w-6xl mx-auto px-4">
 <div data-animate className="lux-reveal" style={{transitionDelay:"0ms"}}>
-<SectionHeader title="Design Videos" description="Watch our design process come to life through captivating videos"/>
+<SectionHeader title={t.videosTitle} description={t.videosDesc}/>
 </div>
 <div data-animate className="lux-reveal" style={{transitionDelay:"120ms"}}>
-<SectionCard title="Behind The Design" description="Exclusive look at our creative process" mainImage={videoData.thumbnails[0]} previewItems={[...videoData.thumbnails]} stats={[...videoData.stats]} linkTo="/line" type="video"/>
+<SectionCard title={t.videosCardTitle} description={t.videosCardDesc} mainImage={videoData.thumbnails[0]} previewItems={[...videoData.thumbnails]} stats={[...videoData.stats]} linkTo="/line" type="video" lang={lang}/>
 </div>
 <StatsGrid stats={[...videoData.stats]}/>
 </div>
