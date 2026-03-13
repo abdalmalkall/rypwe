@@ -62,15 +62,15 @@ const Header = () => {
             {/* Logo */}
             <div className="flex items-center">
               <div className="relative">
-                <img 
-                  src="/logo.jpg" 
-                  alt="RYP Logo" 
+                <img
+                  src="/logo.jpg"
+                  alt="RYP Logo"
                   className="h-10 w-10 md:h-12 md:w-12 rounded-full object-cover border-2 border-white shadow-lg"
                 />
                 <div className="absolute inset-0 rounded-full border-2 border-black/10 animate-pulse"></div>
               </div>
               <Link to="/" className="flex items-center">
-  
+
   <span className="ml-3 text-2xl font-bold text-black">Render Your Plan</span>
 </Link>
             </div>
@@ -83,9 +83,9 @@ const Header = () => {
                 { to: "/exterior", label: "Exterior Designs" },
                 { to: "/line", label: "Videos" }
               ].map((item) => (
-                <Link 
+                <Link
                   key={item.to}
-                  to={item.to} 
+                  to={item.to}
                   className="relative text-gray-700 hover:text-black transition-colors duration-300 font-medium group"
                 >
                   {item.label}
@@ -120,9 +120,9 @@ const Header = () => {
                   { to: "/exterior", label: "Exterior Designs" },
                   { to: "/line", label: "Videos" }
                 ].map((item) => (
-                  <Link 
+                  <Link
                     key={item.to}
-                    to={item.to} 
+                    to={item.to}
                     className="px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-black rounded-xl transition-all duration-300 font-medium active:bg-gray-200"
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -202,7 +202,7 @@ const Footer = () => {
                 </span>
               </div>
               <p className="text-gray-300 text-base md:text-lg mb-4 md:mb-6 leading-relaxed">
-                Transforming spaces into extraordinary experiences through innovative interior design. 
+                Transforming spaces into extraordinary experiences through innovative interior design.
                 We create environments that inspire and delight.
               </p>
               <p className="text-white font-semibold text-sm md:text-base">
@@ -220,9 +220,9 @@ const Footer = () => {
                   { to: "/exterior", label: "Exterior Designs" },
                   { to: "/line", label: "Videos" }
                 ].map((item) => (
-                  <Link 
+                  <Link
                     key={item.to}
-                    to={item.to} 
+                    to={item.to}
                     className="block text-gray-300 hover:text-white transition-colors duration-300 hover:translate-x-1 md:hover:translate-x-2 transform active:text-white"
                   >
                     {item.label}
@@ -232,7 +232,7 @@ const Footer = () => {
                   onClick={() => setShowCv(true)}
                   className="block text-gray-300 hover:text-white transition-colors duration-300 hover:translate-x-1 md:hover:translate-x-2 transform text-left active:text-white"
                 >
-                  View CV 
+                  View CV
                 </button>
               </div>
             </div>
@@ -344,81 +344,91 @@ const Gallery = () => {
 
   // Interior Projects data
   const projects: Project[] = useMemo(() => [
-    { 
-      id: 7, 
-      title: "Modern Interior Design", 
-      description: "Open Kitchen & Living Space with Elegant Details", 
+    {
+      id: 7,
+      title: "Modern Interior Design",
+      description: "Open Kitchen & Living Space with Elegant Details",
       images: ["rypimges/a-(1).jpg", "rypimges/rypimg.jpeg", "rypimges/a(2).jpeg", "rypimges/a(2).jpg"],
       expandedDescription: "A sleek modern interior combining kitchen and living area in perfect harmony. Artistic cabinet patterns, warm lighting, and minimalist furniture create a refined contemporary feel, enhanced by a touch of nature with an indoor box tree and soft ambient glow.",
       category: "interior",
       rating: 5,
       features: ["Open Concept", "Minimalist Design", "Natural Lighting", "Premium Materials"]
     },
-    { 
-      id: 8, 
-      title: "Stylish Bedroom", 
-      description: "Modern Bedroom with Timeless Charm", 
+    {
+      id: 8,
+      title: "Stylish Bedroom",
+      description: "Modern Bedroom with Timeless Charm",
       images: ["bedroom3.jpg", "bedroom2.jpg"],
       expandedDescription: "A modern bedroom design that combines luxury and comfort, using warm colors and natural materials to create an atmosphere of calm and relaxation. Features carefully planned lighting and decorative touches that reflect refined taste.",
       category: "interior",
       rating: 5,
       features: ["Luxury Materials", "Calm Atmosphere", "Smart Lighting", "Comfort Focus"]
     },
-    { 
-      id: 1, 
-      title: "Minimalist Living Room", 
-      description: "Clean lines and neutral tones create serenity", 
+    {
+      id: 1,
+      title: "Minimalist Living Room",
+      description: "Clean lines and neutral tones create serenity",
       images: ["Living.jpeg", "Living2.jpg"],
       expandedDescription: "An elegant living space based on thoughtful simplicity and clean lines. Neutral colors were carefully chosen to create a sense of tranquility and harmony, with furniture pieces that combine beauty and practical functionality.",
       category: "interior",
       rating: 4,
       features: ["Clean Lines", "Neutral Palette", "Functional Furniture", "Tranquil Atmosphere"]
     },
-    { 
-      id: 2, 
-      title: "Contemporary Kitchen", 
-      description: "Sleek functionality meets elegant aesthetics", 
+    {
+      id: 2,
+      title: "Contemporary Kitchen",
+      description: "Sleek functionality meets elegant aesthetics",
       images: ["Kitchen.png"],
       expandedDescription: "A modern kitchen that embodies perfection in design and functionality, where advanced technology meets elegant design. High-quality materials and smart lighting systems were used to create an exceptional cooking environment.",
       category: "interior",
       rating: 5,
       features: ["Smart Technology", "High-end Materials", "Efficient Layout", "Ambient Lighting"]
     },
-    { 
-      id: 3, 
-      title: "Luxury Kids Bedroom", 
-      description: "Sophisticated comfort in perfect harmony", 
+    {
+      id: 3,
+      title: "Luxury Kids Bedroom",
+      description: "Sophisticated comfort in perfect harmony",
       images: ["Bedroom.webp"],
       expandedDescription: "A luxurious children's bedroom that achieves the perfect balance between fun and elegance. Designed to nurture a child's imagination while providing a safe and comfortable environment, using calm colors and interactive elements that stimulate creativity.",
       category: "interior",
       rating: 4,
       features: ["Child-Safe", "Creative Elements", "Calm Colors", "Interactive Design"]
     },
-    { 
-      id: 4, 
-      title: "Executive Office", 
-      description: "Professional environment with modern excellence", 
+    {
+      id: 4,
+      title: "Executive Office",
+      description: "Professional environment with modern excellence",
       images: ["4.png"],
       expandedDescription: "A sophisticated executive office that reflects success and professionalism, designed to enhance productivity and creativity. Combines luxury with practical functionality using high-quality materials and advanced lighting technologies.",
       category: "interior",
       rating: 5,
       features: ["Productivity Focus", "Luxury Materials", "Advanced Lighting", "Professional Style"]
     },
-    { 
-      id: 5, 
-      title: "Elegant Dining Room", 
-      description: "Where style meets memorable gatherings", 
+    {
+      id: 5,
+      title: "Elegant Dining Room",
+      description: "Where style meets memorable gatherings",
       images: ["Dining.webp"],
       expandedDescription: "An elegant dining room designed to host special moments and warm family gatherings. Features a luxurious table and distinctive lighting that creates intimate and sophisticated atmospheres for unforgettable dining experiences.",
       category: "interior",
       rating: 4,
       features: ["Entertainment Ready", "Luxurious Table", "Atmospheric Lighting", "Family Focus"]
     },
-    { 
-      id: 6, 
-      title: "Spa Bathroom", 
-      description: "Luxury retreat with contemporary fixtures", 
+    {
+      id: 6,
+      title: "Spa Bathroom",
+      description: "Luxury retreat with contemporary fixtures",
       images: ["Bathroom.png"],
+      expandedDescription: "A luxurious bathroom that mimics the atmosphere of world-class health resorts, where relaxation and well-being meet. Natural luxury materials and modern technologies were used to create a personal sanctuary for relaxation and renewal.",
+      category: "interior",
+      rating: 5,
+      features: ["Spa-like", "Luxury Materials", "Modern Tech", "Relaxation Focus"]
+    }
+      {
+      id: 7,
+      title: "Spa Bathroom",
+      description: "Luxury retreat with contemporary fixtures",
+      images: ["lurom.jpeg"],
       expandedDescription: "A luxurious bathroom that mimics the atmosphere of world-class health resorts, where relaxation and well-being meet. Natural luxury materials and modern technologies were used to create a personal sanctuary for relaxation and renewal.",
       category: "interior",
       rating: 5,
@@ -468,7 +478,7 @@ const Gallery = () => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!lightboxOpen) return;
-      
+
       switch (e.key) {
         case "ArrowLeft":
           prevImage();
@@ -495,10 +505,10 @@ const Gallery = () => {
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (touchStartX === null) return;
-    
+
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchStartX - touchEndX;
-    
+
     if (Math.abs(diff) > CONFIG.touch.swipeThreshold) {
       if (diff > 0) {
         nextImage();
@@ -506,7 +516,7 @@ const Gallery = () => {
         prevImage();
       }
     }
-    
+
     setTouchStartX(null);
   };
 
@@ -584,14 +594,14 @@ const Gallery = () => {
   const renderViewButton = () => (
     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/30 rounded-lg">
       <div className="transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-       
+
       </div>
     </div>
   );
 
   return (
     <section id="portfolio" className="relative min-h-screen bg-white overflow-hidden">
-     
+
 
       {/* Minimal Background */}
       <div className="absolute inset-0 opacity-5">
@@ -609,7 +619,7 @@ const Gallery = () => {
                 <div className="mx-3 sm:mx-4 md:mx-6 w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6 bg-gray-400 rotate-45 shadow-lg"></div>
                 <div className="h-px w-12 sm:w-16 md:w-32 bg-gradient-to-l from-transparent via-gray-400 to-gray-400"></div>
               </div>
-              
+
               {/* Category badge */}
               <div className="inline-flex items-center px-4 py-2 md:px-6 md:py-3 bg-white backdrop-blur-sm rounded-full border border-gray-300 shadow-lg mb-6 md:mb-8">
                 <span className="text-xs md:text-sm font-semibold text-gray-700 uppercase tracking-wider">
@@ -626,11 +636,11 @@ const Gallery = () => {
               {/* Description */}
               <div className="max-w-3xl mx-auto space-y-4 md:space-y-6">
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 font-light leading-relaxed">
-                  Where <span className="font-semibold text-black">elegant interiors</span> meet 
-                  <span className="font-semibold text-black"> functional sophistication</span>. 
+                  Where <span className="font-semibold text-black">elegant interiors</span> meet
+                  <span className="font-semibold text-black"> functional sophistication</span>.
                   Discover spaces designed to inspire.
                 </p>
-                
+
                 {/* Stats */}
                 <div className="flex items-center justify-center space-x-6 md:space-x-8 text-xs md:text-sm text-gray-500">
                   <div className="flex items-center space-x-2">
@@ -654,25 +664,25 @@ const Gallery = () => {
               const isExpanded = expandedCard === project.id;
 
               return (
-                <div 
-                  key={project.id} 
+                <div
+                  key={project.id}
                   className="group relative"
                   onMouseEnter={() => setHoveredCard(project.id)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
-                  <Card 
+                  <Card
                     className={`relative overflow-hidden bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 md:hover:-translate-y-2 cursor-pointer touch-manipulation ${
                       isExpanded ? 'scale-105 -translate-y-1 md:-translate-y-2 shadow-xl' : ''
                     }`}
                     onClick={() => handleCardClick(project.id)}
                   >
-                    
+
                     {/* Image Container */}
                     <div className="relative p-3 md:p-4 pb-0">
                       <div className="relative overflow-hidden rounded-xl">
                         {renderImageGrid(images, startIndex, project.id)}
                         {renderViewButton()}
-                        
+
                         {/* Rating badge */}
                         <div className="absolute top-3 left-3 md:top-4 md:left-4 bg-white/90 backdrop-blur-sm px-2 py-1 md:px-3 md:py-2 rounded-full shadow-lg">
                           <div className="flex items-center space-x-1">
@@ -700,7 +710,7 @@ const Gallery = () => {
                         {project.features && (
                           <div className="flex flex-wrap gap-1 md:gap-2">
                             {project.features.slice(0, 3).map((feature, index) => (
-                              <span 
+                              <span
                                 key={index}
                                 className="px-2 py-1 md:px-3 md:py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full border border-gray-200"
                               >
@@ -734,7 +744,7 @@ const Gallery = () => {
                               <ChevronDown className="w-3 h-3 md:w-4 md:h-4" />
                             )}
                           </button>
-                          
+
                           <div className="text-gray-400 text-xs md:text-sm font-medium">
                             {String(projectIndex + 1).padStart(2, '0')}
                           </div>
@@ -757,8 +767,8 @@ const Gallery = () => {
           onTouchEnd={handleTouchEnd}
         >
           {/* Navigation Buttons */}
-          <button 
-            className="absolute left-2 sm:left-4 md:left-8 top-1/2 transform -translate-y-1/2 group z-20 touch-manipulation" 
+          <button
+            className="absolute left-2 sm:left-4 md:left-8 top-1/2 transform -translate-y-1/2 group z-20 touch-manipulation"
             onClick={prevImage}
             aria-label="Previous image"
           >
@@ -768,7 +778,7 @@ const Gallery = () => {
               </svg>
             </div>
           </button>
-          
+
           {/* Image Display */}
           <div className="relative max-w-[95vw] sm:max-w-[90vw] md:max-w-[80vw] max-h-[80vh] flex items-center justify-center z-10 px-2 sm:px-4 md:px-0">
             <div className="relative">
@@ -783,7 +793,7 @@ const Gallery = () => {
                   onContextMenu={(e) => e.preventDefault()}
                 />
               </div>
-              
+
               {/* Image counter */}
               <div className="absolute -bottom-12 md:-bottom-16 left-1/2 transform -translate-x-1/2">
                 <div className="bg-black/50 backdrop-blur-lg border border-white/10 px-4 py-2 md:px-6 md:py-3 rounded-full">
@@ -794,9 +804,9 @@ const Gallery = () => {
               </div>
             </div>
           </div>
-          
-          <button 
-            className="absolute right-2 sm:right-4 md:right-8 top-1/2 transform -translate-y-1/2 group z-20 touch-manipulation" 
+
+          <button
+            className="absolute right-2 sm:right-4 md:right-8 top-1/2 transform -translate-y-1/2 group z-20 touch-manipulation"
             onClick={nextImage}
             aria-label="Next image"
           >
@@ -806,10 +816,10 @@ const Gallery = () => {
               </svg>
             </div>
           </button>
-          
+
           {/* Close Button */}
-          <button 
-            className="absolute top-2 sm:top-4 md:top-8 right-2 sm:right-4 md:right-8 group z-20 touch-manipulation" 
+          <button
+            className="absolute top-2 sm:top-4 md:top-8 right-2 sm:right-4 md:right-8 group z-20 touch-manipulation"
             onClick={closeLightbox}
             aria-label="Close lightbox"
           >
@@ -819,7 +829,7 @@ const Gallery = () => {
               </svg>
             </div>
           </button>
-          
+
           {/* Instructions */}
           <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 text-center">
             <div className="bg-black/50 backdrop-blur-lg border border-white/10 px-4 py-2 md:px-6 md:py-3 rounded-full">
