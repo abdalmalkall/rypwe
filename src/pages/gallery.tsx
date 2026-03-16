@@ -264,6 +264,72 @@ const Footer = ({ lang }: { lang: Lang }) => {
   const [showCv, setShowCv] = useState(false);
   const t = TRANSLATIONS[lang];
 
+  const socialLinks = [
+    {
+      name: "YouTube",
+      href: "https://youtube.com/@renderyourplan?si=OHzNBW5WbcNNixl0",
+      icon: (
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M23.498 6.186a2.978 2.978 0 0 0-2.096-2.104C19.63 3.5 12 3.5 12 3.5s-7.63 0-9.402.582a2.978 2.978 0 0 0-2.096 2.104A31.03 31.03 0 0 0 0 12a31.03 31.03 0 0 0 .502 5.814 2.978 2.978 0 0 0 2.096 2.104C4.37 20.5 12 20.5 12 20.5s7.63 0 9.402-.582a2.978 2.978 0 0 0 2.096-2.104A31.03 31.03 0 0 0 24 12a31.03 31.03 0 0 0-.502-5.814zM9.546 15.568V8.432l6.18 3.568-6.18 3.568z" />
+        </svg>
+      )
+    },
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/render_your_plan/profilecard/?igsh=MWc3ZWF3dTUwMTlodA==",
+      icon: (
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .3 2.5.5.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.5.4 1.3.5 2.5.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.5 2.5-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.5.2-1.3.4-2.5.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.5-.5-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.5-.4-1.3-.5-2.5-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-2 .5-2.5.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .5-.2 1.3-.4 2.5-.5 1.3-.1 1.7-.1 4.9-.1zm0-2.2C8.7 0 8.3 0 7 0.1 5.7 0.2 4.6 0.4 3.8 0.7 2.9 1 2.1 1.5 1.5 2.1.9 2.7.4 3.4.1 4.3c-.3.8-.5 1.9-.6 3.2C0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.4.6 3.2.3.9.8 1.6 1.4 2.2.6.6 1.3 1.1 2.2 1.4.8.3 1.9.5 3.2.6C8.3 24 8.7 24 12 24s3.7 0 4.9-.1c1.3-.1 2.4-.3 3.2-.6.9-.3 1.6-.8 2.2-1.4.6-.6 1.1-1.3 1.4-2.2.3-.8.5-1.9.6-3.2.1-1.3.1-1.7.1-4.9s0-3.7-.1-4.9c-.1-1.3-.3-2.4-.6-3.2-.3-.9-.8-1.6-1.4-2.2-.6-.6-1.3-1.1-2.2-1.4-.8-.3-1.9-.5-3.2-.6C15.7 0 15.3 0 12 0zM12 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.4a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/>
+        </svg>
+      )
+    },
+    {
+      name: "WhatsApp",
+      href: "https://wa.me/962790383135",
+      icon: (
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.373 0 0 5.373 0 12c0 2.11.55 4.07 1.51 5.82L0 24l6.33-1.5a11.937 11.937 0 0 0 5.67 1.44c6.627 0 12-5.373 12-12 0-3.21-1.27-6.22-3.48-8.46zM12 21.75a9.64 9.64 0 0 1-4.87-1.34l-.35-.21-3.75.89.89-3.66-.23-.37A9.52 9.52 0 0 1 2.25 12c0-5.2 4.23-9.44 9.44-9.44 2.52 0 4.88.98 6.64 2.75a9.352 9.352 0 0 1 2.75 6.7c0 5.2-4.23 9.44-9.44 9.44zm5.3-7.5c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.15-.19.29-.73.93-.9 1.12-.17.19-.35.21-.64.07-.29-.15-1.22-.45-2.32-1.43-.86-.77-1.44-1.72-1.6-2-.17-.29-.02-.44.13-.59.14-.14.29-.35.43-.52.14-.17.19-.29.29-.48.1-.19.05-.35-.02-.5-.07-.15-.63-1.5-.86-2.06-.23-.54-.46-.47-.64-.47-.17 0-.37-.02-.57-.02s-.52.07-.79.35c-.26.29-1 1-1 2.44 0 1.44 1.02 2.84 1.16 3.04.14.19 2 3.05 4.84 4.27.68.29 1.21.46 1.62.59.68.22 1.3.19 1.79.12.55-.08 1.7-.7 1.94-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z" />
+        </svg>
+      )
+    },
+    {
+      name: "Email",
+      href: "mailto:renderyourplan@gmail.com",
+      icon: (
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+        </svg>
+      )
+    },
+    {
+      name: "Facebook",
+      href: "https://www.facebook.com/share/1FdEvP3idd/?mibextid=wwXIfr",
+      icon: (
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M22.675 0H1.325C.593 0 0 .592 0 1.324v21.352C0 23.406.592 24 1.324 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.466.099 2.797.143v3.243l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.313h3.59l-.467 3.622h-3.123V24h6.116c.73 0 1.324-.594 1.324-1.324V1.324C24 .592 23.406 0 22.675 0z" />
+        </svg>
+      )
+    },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/ibrahem-alyan-a885a7387?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+      icon: (
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      )
+    },
+    {
+      name: "Phone",
+      href: "tel:+962790383135",
+      icon: (
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.2 2.2z" />
+        </svg>
+      )
+    }
+  ];
+
   return (
     <>
       <footer id="contact" className="bg-black text-white pt-12 pb-6 md:pt-16 md:pb-8">
@@ -289,6 +355,20 @@ const Footer = ({ lang }: { lang: Lang }) => {
               <p className="text-white font-semibold text-sm md:text-base">
                 {t.ledBy}
               </p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.name}
+                    className="w-10 h-10 md:w-12 md:h-12 bg-gray-800 rounded-lg border border-gray-700 flex items-center justify-center transition-all duration-300 hover:scale-105 hover:bg-gray-700"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
             </div>
 
             {/* Quick Links */}
@@ -454,8 +534,10 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       id: 1,
       title: "Modern Living Room Interior Design",
       description: "Elegant Living Space with Contemporary Comfor",
+      descriptionAr: "مساحة معيشة أنيقة بطابع معاصر ومريح",
       images: ["newphoto/living.png"],
       expandedDescription: "A sophisticated modern living room designed to balance comfort and visual elegance. Clean architectural lines, warm lighting, and refined materials create a welcoming and harmonious atmosphere. The space features minimalist furniture, carefully curated decor, and an open layout that enhances both functionality and flow. Natural light highlights the textures of wood, fabric, and stone, resulting in a contemporary living environment that feels both stylish and relaxing.",
+      expandedDescriptionAr: "غرفة معيشة عصرية راقية صُممت لتحقيق توازن بين الراحة والأناقة البصرية. خطوط معمارية نظيفة وإضاءة دافئة ومواد مختارة بعناية تمنح المكان أجواء ترحيبية متناغمة. يضم التصميم أثاثًا بسيطًا وديكورًا منتقى بعناية مع مخطط مفتوح يعزز الوظيفة وسلاسة الحركة. يبرز الضوء الطبيعي خامات الخشب والقماش والحجر لينتج فضاءً معاصرًا يجمع بين الأناقة والهدوء.",
       category: "interior",
       rating: 5,
       features: ["Clean Lines", "Neutral Palette", "Functional Furniture", "Tranquil Atmosphere"]
@@ -465,8 +547,10 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       id: 2,
       title: "Stylish Bedroom",
       description: "Modern Bedroom with Timeless Charm",
+      descriptionAr: "غرفة نوم عصرية بسحر خالد",
       images: ["bedroom3.jpg", "bedroom2.jpg"],
       expandedDescription: "A modern bedroom design that combines luxury and comfort, using warm colors and natural materials to create an atmosphere of calm and relaxation. Features carefully planned lighting and decorative touches that reflect refined taste.",
+      expandedDescriptionAr: "تصميم غرفة نوم حديثة يجمع بين الفخامة والراحة، بألوان دافئة ومواد طبيعية لخلق أجواء هادئة ومريحة. إضاءة مدروسة ولمسات ديكورية تعكس ذوقًا راقيًا.",
       category: "interior",
       rating: 5,
       features: ["Luxury Materials", "Calm Atmosphere", "Smart Lighting", "Comfort Focus"]
@@ -475,8 +559,10 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       id: 3,
       title: "Minimalist Living Room",
       description: "Clean lines and neutral tones create serenity",
+      descriptionAr: "خطوط نظيفة وألوان حيادية تصنع الهدوء",
       images: ["Living.jpeg", "Living2.jpg"],
       expandedDescription: "An elegant living space based on thoughtful simplicity and clean lines. Neutral colors were carefully chosen to create a sense of tranquility and harmony, with furniture pieces that combine beauty and practical functionality.",
+      expandedDescriptionAr: "مساحة معيشة أنيقة تعتمد على بساطة مدروسة وخطوط نظيفة. ألوان حيادية مختارة بعناية لخلق إحساس بالسكينة والانسجام، مع قطع أثاث تجمع بين الجمال والوظيفة العملية.",
       category: "interior",
       rating: 4,
       features: ["Clean Lines", "Neutral Palette", "Functional Furniture", "Tranquil Atmosphere"]
@@ -485,8 +571,10 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       id: 4,
       title: "Contemporary Kitchen",
       description: "Sleek functionality meets elegant aesthetics",
+      descriptionAr: "وظائف سلسة مع جمالية أنيقة",
       images: ["Kitchen.png"],
       expandedDescription: "A modern kitchen that embodies perfection in design and functionality, where advanced technology meets elegant design. High-quality materials and smart lighting systems were used to create an exceptional cooking environment.",
+      expandedDescriptionAr: "مطبخ حديث يجسّد الكمال في التصميم والوظيفة، حيث تلتقي التقنية المتقدمة بالتصميم الأنيق. تم اعتماد مواد عالية الجودة وأنظمة إضاءة ذكية لخلق بيئة طهي استثنائية.",
       category: "interior",
       rating: 5,
       features: ["Smart Technology", "High-end Materials", "Efficient Layout", "Ambient Lighting"]
@@ -495,8 +583,10 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       id: 5,
       title: "Luxury Kids Bedroom",
       description: "Sophisticated comfort in perfect harmony",
+      descriptionAr: "راحة راقية في تناغم تام",
       images: ["Bedroom.webp"],
       expandedDescription: "A luxurious children's bedroom that achieves the perfect balance between fun and elegance. Designed to nurture a child's imagination while providing a safe and comfortable environment, using calm colors and interactive elements that stimulate creativity.",
+      expandedDescriptionAr: "غرفة أطفال فاخرة تحقق التوازن المثالي بين المتعة والأناقة. صُممت لتنمية خيال الطفل مع توفير بيئة آمنة ومريحة، بألوان هادئة وعناصر تفاعلية تحفّز الإبداع.",
       category: "interior",
       rating: 4,
       features: ["Child-Safe", "Creative Elements", "Calm Colors", "Interactive Design"]
@@ -505,8 +595,10 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       id: 6,
       title: "Executive Office",
       description: "Professional environment with modern excellence",
+      descriptionAr: "بيئة احترافية بلمسة عصرية متقنة",
       images: ["4.png"],
       expandedDescription: "A sophisticated executive office that reflects success and professionalism, designed to enhance productivity and creativity. Combines luxury with practical functionality using high-quality materials and advanced lighting technologies.",
+      expandedDescriptionAr: "مكتب تنفيذي راقٍ يعكس النجاح والاحتراف، صُمم لتعزيز الإنتاجية والإبداع. يجمع بين الفخامة والوظيفة العملية باستخدام مواد عالية الجودة وتقنيات إضاءة متقدمة.",
       category: "interior",
       rating: 5,
       features: ["Productivity Focus", "Luxury Materials", "Advanced Lighting", "Professional Style"]
@@ -515,8 +607,10 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       id: 7,
       title: "Elegant Dining Room",
       description: "Where style meets memorable gatherings",
+      descriptionAr: "حيث يلتقي الذوق بجلسات لا تُنسى",
       images: ["Dining.webp"],
       expandedDescription: "An elegant dining room designed to host special moments and warm family gatherings. Features a luxurious table and distinctive lighting that creates intimate and sophisticated atmospheres for unforgettable dining experiences.",
+      expandedDescriptionAr: "غرفة طعام أنيقة صُممت لاحتضان اللحظات الخاصة واللقاءات العائلية الدافئة. تتضمن طاولة فاخرة وإضاءة مميزة تخلق أجواء حميمة وراقية لتجارب طعام لا تُنسى.",
       category: "interior",
       rating: 4,
       features: ["Entertainment Ready", "Luxurious Table", "Atmospheric Lighting", "Family Focus"]
@@ -525,8 +619,10 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       id: 8,
       title: "Spa Bathroom",
       description: "Luxury retreat with contemporary fixtures",
+      descriptionAr: "ملاذ فاخر بتجهيزات عصرية",
       images: ["Bathroom.png",],
       expandedDescription: "A luxurious bathroom that mimics the atmosphere of world-class health resorts, where relaxation and well-being meet. Natural luxury materials and modern technologies were used to create a personal sanctuary for relaxation and renewal.",
+      expandedDescriptionAr: "حمّام فاخر يحاكي أجواء المنتجعات الصحية العالمية، حيث تلتقي الراحة بالعناية الذاتية. تم استخدام مواد طبيعية فاخرة وتقنيات حديثة لخلق ملاذ شخصي للاسترخاء والتجدد.",
       category: "interior",
       rating: 5,
       features: ["Spa-like", "Luxury Materials", "Modern Tech", "Relaxation Focus"]
@@ -535,8 +631,10 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       id:  9,
       title: "Spa Bathroom",
       description: "Luxury retreat with contemporary fixtures",
+      descriptionAr: "ملاذ فاخر بتجهيزات عصرية",
       images: ["lurom.jpeg", "bathroom2.png", "bathroom3.png", "bathroom1.png"],
       expandedDescription: "A luxurious bathroom that mimics the atmosphere of world-class health resorts, where relaxation and well-being meet. Natural luxury materials and modern technologies were used to create a personal sanctuary for relaxation and renewal.",
+      expandedDescriptionAr: "حمّام فاخر يحاكي أجواء المنتجعات الصحية العالمية، حيث تلتقي الراحة بالعناية الذاتية. تم استخدام مواد طبيعية فاخرة وتقنيات حديثة لخلق ملاذ شخصي للاسترخاء والتجدد.",
       category: "interior",
       rating: 5,
       features: ["Spa-like", "Luxury Materials", "Modern Tech", "Relaxation Focus"]
@@ -545,8 +643,10 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       id: 10,
       title: "Modern Bedroom Interior Design",
       description: "Calm and Elegant Bedroom with Warm Natural Materials",
+      descriptionAr: "غرفة نوم هادئة وأنيقة بمواد طبيعية دافئة",
       images: ["newphoto/image.png", "newphoto/im1.png"],
       expandedDescription: "A serene modern bedroom designed to create a sense of comfort and balance. Soft natural tones, warm wood textures, and minimalist furniture shape a relaxing atmosphere ideal for rest. Integrated lighting and clean architectural lines enhance the spatial harmony, while carefully selected materials add depth and warmth to the design. The result is a refined contemporary bedroom that blends simplicity, functionality, and timeless elegance.",
+      expandedDescriptionAr: "غرفة نوم عصرية هادئة صُممت لإحساس بالراحة والتوازن. ألوان طبيعية ناعمة وملامس خشب دافئة وأثاث بسيط تشكّل أجواء مثالية للراحة. إضاءة مدمجة وخطوط معمارية نظيفة تعزز انسجام المكان، مع مواد مختارة بعناية تضيف عمقًا ودفئًا. النتيجة غرفة نوم معاصرة راقية تجمع بين البساطة والوظيفة والأناقة الخالدة.",
       category: "interior",
       rating: 4,
       features: ["Clean Lines", "Neutral Palette", "Functional Furniture", "Tranquil Atmosphere"]
@@ -555,8 +655,10 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       id: 11,
       title: "Modern Interior Design",
       description: "Open Kitchen & Living Space with Elegant Details",
+      descriptionAr: "مطبخ مفتوح وغرفة معيشة بتفاصيل أنيقة",
       images: ["rypimges/a-(1).jpg", "rypimges/rypimg.jpeg", "rypimges/a(2).jpeg", "rypimges/a(2).jpg"],
       expandedDescription: "A sleek modern interior combining kitchen and living area in perfect harmony. Artistic cabinet patterns, warm lighting, and minimalist furniture create a refined contemporary feel, enhanced by a touch of nature with an indoor box tree and soft ambient glow.",
+      expandedDescriptionAr: "تصميم داخلي حديث وأنيق يجمع المطبخ وغرفة المعيشة بتناغم مثالي. نقوش خزائن فنية وإضاءة دافئة وأثاث بسيط تمنح إحساسًا معاصرًا راقيًا، مع لمسة طبيعية عبر شجرة داخلية وإضاءة محيطية ناعمة.",
       category: "interior",
       rating: 5,
       features: ["Open Concept", "Minimalist Design", "Natural Lighting", "Premium Materials"]
@@ -565,8 +667,10 @@ const Gallery = ({ lang }: { lang: Lang }) => {
       id: 12,
       title: "Modern Bedroom Interior Design",
       description: "Open Kitchen & Living Space with Elegant Details",
+      descriptionAr: "مطبخ مفتوح وغرفة معيشة بتفاصيل أنيقة",
       images: ["newphoto/bedroom1.png", "newphoto/bedroom2.png"],
       expandedDescription: "A serene modern bedroom designed to create a sense of comfort and balance. Soft natural tones, warm wood textures, and minimalist furniture shape a relaxing atmosphere ideal for rest. Integrated lighting and clean architectural lines enhance the spatial harmony, while carefully selected materials add depth and warmth to the design. The result is a refined contemporary bedroom that blends simplicity, functionality, and timeless elegance..",
+      expandedDescriptionAr: "غرفة نوم عصرية هادئة صُممت لإحساس بالراحة والتوازن. ألوان طبيعية ناعمة وملامس خشب دافئة وأثاث بسيط تشكّل أجواء مثالية للراحة. إضاءة مدمجة وخطوط معمارية نظيفة تعزز انسجام المكان، مع مواد مختارة بعناية تضيف عمقًا ودفئًا. النتيجة غرفة نوم معاصرة راقية تجمع بين البساطة والوظيفة والأناقة الخالدة.",
       category: "interior",
       rating: 5,
       features: ["Open Concept", "Minimalist Design", "Natural Lighting", "Premium Materials"]
@@ -723,12 +827,6 @@ const Gallery = ({ lang }: { lang: Lang }) => {
     return null;
   };
 
-  const renderViewButton = () => (
-    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/30 rounded-lg pointer-events-none">
-      <div className="transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 pointer-events-none"></div>
-    </div>
-  );
-
   return (
     <section id="portfolio" className="relative min-h-screen bg-white overflow-hidden">
       <style>{`
@@ -856,7 +954,6 @@ const Gallery = ({ lang }: { lang: Lang }) => {
                     <div className="relative p-3 md:p-4 pb-0">
                       <div className="relative overflow-hidden rounded-xl">
                         {renderImageGrid(images, startIndex, project.id)}
-                        {renderViewButton()}
 
                         {/* Rating badge */}
                         <div className="absolute top-3 left-3 md:top-4 md:left-4 bg-white/90 backdrop-blur-sm px-2 py-1 md:px-3 md:py-2 rounded-full shadow-lg">

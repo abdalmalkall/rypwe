@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -20,7 +22,7 @@ html[lang="ar"] button,
 html[lang="ar"] input,
 html[lang="ar"] textarea,
 html[lang="ar"] select {
-  font-family: "GHAITHSANS", "Segoe UI", Tahoma, Arial, sans-serif;
+  font-family: "El Messiri", "Cairo", "Segoe UI", Tahoma, Arial, sans-serif;
 }
 
 @layer base {

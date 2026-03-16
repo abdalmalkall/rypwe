@@ -126,7 +126,7 @@ return(
 <span className="text-gray-300 text-sm">{type==="gallery"?t.premiumCollection:type==="video"?t.premiumContent:t.premiumArchitecture}</span>
 </div>
 </div>
-<div className={`p-3 rounded-full border transition-all duration-300 ${type==="gallery"?"bg-white/20 backdrop-blur-sm border-white/30 group-hover:bg-white/30":type==="video"?"bg-white/10 backdrop-blur-sm border-white/20 group-hover:bg-white/20":"bg-green-500/20 backdrop-blur-sm border-green-400/30 group-hover:bg-green-500/30"}`}>
+<div className={`p-3 rounded-full border transition-all duration-300 ${type==="gallery"?"bg-white/20 backdrop-blur-sm border-white/30 group-hover:bg-white/30":type==="video"?"bg-white/10 backdrop-blur-sm border-white/20 group-hover:bg-white/20":"bg-[#1f2937]/20 backdrop-blur-sm border-[#1f2937]/30 group-hover:bg-[#1f2937]/30"}`}>
 <ArrowRight className="w-5 h-5 text-white"/>
 </div>
 </div>
@@ -155,7 +155,7 @@ return(
 <div className="flex items-center justify-between mb-2">
 <div className="flex items-center gap-3">
 <div className="flex items-center gap-2">
-<div className={`w-2 h-2 rounded-full ${type==="gallery"?"bg-green-500":type==="video"?"bg-blue-500":"bg-emerald-500"}`}/>
+<div className={`w-2 h-2 rounded-full ${type==="gallery"?"bg-green-500":type==="video"?"bg-[#1f2937]":"bg-[#1f2937]"}`}/>
 <span className="text-sm font-medium text-gray-800">{type==="gallery"?t.liveUpdates:type==="video"?t.newVideos:t.latestProjects}</span>
 </div>
 <div className="w-px h-4 bg-gray-300"/>
@@ -166,7 +166,7 @@ return(
 
 <div className="space-y-1">
 <div className="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
-<div className={`h-2 rounded-full transition-all duration-500 ${type==="gallery"?"bg-gray-800 w-4/5":type==="video"?"bg-blue-600 w-3/4":"bg-emerald-600 w-2/3"}`}/>
+<div className={`h-2 rounded-full transition-all duration-500 ${type==="gallery"?"bg-gray-800 w-4/5":type==="video"?"bg-[#1f2937] w-3/4":"bg-[#1f2937] w-2/3"}`}/>
 </div>
 <div className="flex justify-between text-xs text-gray-600">
 <span>{type==="gallery"?t.collectionProgress:type==="video"?t.contentProgress:t.projectsProgress}</span>
