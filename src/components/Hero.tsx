@@ -30,7 +30,7 @@ const Hero = () => {
   // مصفوفة الصور الخاصة بك
   const backgroundImages = [
     "/Living.jpeg",
-    "/Dining.webp", 
+    "/Dining.webp",
     "/Kitchen.png",
     "/Bedroom.webp",
     "/4.png",
@@ -42,7 +42,7 @@ const Hero = () => {
   // تغيير الخلفية كل 5 ثواني
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentBgIndex((prevIndex) => 
+      setCurrentBgIndex((prevIndex) =>
         prevIndex === backgroundImages.length - 1 ? 0 : prevIndex + 1
       );
     }, 5000);
@@ -76,10 +76,10 @@ const Hero = () => {
         <div className="text-center">
           {/* شعار RYP */}
           <div className="flex justify-center mb-8">
-            <div className="w-20 h-20 rounded-full bg-white/10 border border-white/20 flex items-center justify-center backdrop-blur-sm">
-              <img 
-                src="/logo.jpg" 
-                alt="RYP Logo" 
+            <div className="w-20 h-20 rounded-full bg-white/30 border border-white/40 flex items-center justify-center backdrop-blur-sm">
+              <img
+                src="/logo.jpg"
+                alt="RYP Logo"
                 className="w-12 h-12 object-cover rounded-full"
               />
             </div>
@@ -89,7 +89,7 @@ const Hero = () => {
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
             {t.name}
           </h1>
-          
+
           {/* الوصف */}
           <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
             {t.roles}
