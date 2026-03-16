@@ -308,6 +308,20 @@ const Videos = () => {
       description: "Explore the transformation of a travel shop into a modern industrial space. This project highlights the use of raw materials, open layouts, and functional design elements to create an inviting retail environment that reflects contemporary aesthetics and practicality.",
       thumbnail: "https://youtu.be/oRgEdrtIbMI?si=nbyQ1DS-l7CnObZy",
       youtubeUrl: "https://youtu.be/oRgEdrtIbMI?si=nbyQ1DS-l7CnObZy",
+    },
+    {
+      id: 4,
+      title: "Modern Home Interior Design",
+      description: "Modern Contemporary Residential House Design with Elegant Architectural Details",
+      thumbnail: "https://youtu.be/57rifx3j2Zk?is=Wa9aSxlxoN8NAi_s",
+      youtubeUrl: "https://youtu.be/57rifx3j2Zk?is=Wa9aSxlxoN8NAi_s",
+    },
+    {
+      id: 5,
+      title: "Modern Contemporary Residential House Design",
+      description: "Modern Home Interior Design | Calm, Cozy and Elegant Living Spaces",
+      thumbnail: "https://youtu.be/Kp25glLkwfU?is=cglLzoP4fhLwmB3H",
+      youtubeUrl: "https://youtu.be/Kp25glLkwfU?is=cglLzoP4fhLwmB3H",
     }
   ];
 
@@ -377,7 +391,7 @@ const Videos = () => {
             </div>
 
 
-                
+
 
 
             {/* Videos Grid */}
@@ -483,7 +497,7 @@ const Videos = () => {
 
             {/* Call to Action */}
             <div className="text-center mt-12 md:mt-20">
-             
+
             </div>
           </div>
 
