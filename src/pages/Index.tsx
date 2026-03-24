@@ -14,7 +14,11 @@ interface SectionHeaderProps{title:string;description:string;}
 interface StatsGridProps{stats:StatItem[];}
 
 const galleryData={images:["bedroom3.jpg","Living.jpeg","bedroom2.jpg"],stats:[]}as const;
-const videoData={thumbnails:["a9e3b97c-29e7-4cff-b8ad-67925bc23866.jpeg","Dining.webp","2_2 - Photo.jpg"],stats:[]}as const;
+const videoData={thumbnails:[
+  "https://img.youtube.com/vi/7lTpXiLGsYI/maxresdefault.jpg",
+  "https://img.youtube.com/vi/Y3GIdSMPpqw/maxresdefault.jpg",
+  "https://img.youtube.com/vi/oRgEdrtIbMI/maxresdefault.jpg"
+],stats:[]}as const;
 const exteriorData={images:["architectural.jpg","ryp(2).PNG","ryp(1).JPG"],stats:[]}as const;
 
 const SECTION_TEXT = {
