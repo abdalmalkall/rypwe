@@ -26,7 +26,7 @@ const TRANSLATIONS = {
     phone: "Phone: +962 7 7077 798 6",
     address: "Address: Amman, JO",
     copyright: "© 2026 Ibrahim Alayan Interior Design. All rights reserved.",
-    langToggle: "عربي",
+        langToggle: "اللغة العربية",
   },
   ar: {
     brand: "Render Your Plan",

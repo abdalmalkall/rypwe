@@ -68,7 +68,7 @@ const TRANSLATIONS = {
     lightboxAlt: "Portfolio Masterpiece",
     lightboxHint: "Use ← → keys or swipe to navigate • ESC to close",
     moreSuffix: "more",
-    langToggle: "عربي",
+      langToggle: "اللغة العربية",
   },
   ar: {
     brand: "Render Your Plan",

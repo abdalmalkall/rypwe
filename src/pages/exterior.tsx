@@ -70,7 +70,7 @@ const TRANSLATIONS = {
     cvTitle: "Curriculum Vitae",
     cvAlt: "Ibrahem Alyan CV",
     close: "Close",
-    langToggle: "عربي",
+    langToggle: "اللغة العربية",
     webDev: "Web Developer",
   },
   ar: {
