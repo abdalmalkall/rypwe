@@ -43,7 +43,7 @@ const CONFIG = {
 
 const TRANSLATIONS = {
   en: {
-    brand: "Render Your Plan",
+    brand: "ArCLine Architecture",
     home: "Home",
     interior: "Interior Designs",
     exterior: "Exterior Designs",
@@ -71,7 +71,7 @@ const TRANSLATIONS = {
       langToggle: "اللغة العربية",
   },
   ar: {
-    brand: "Render Your Plan",
+    brand: "ArCLine Architecture",
     home: "الرئيسية",
     interior: "تصاميم داخلية",
     exterior: "تصاميم خارجية",

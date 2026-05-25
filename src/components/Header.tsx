@@ -4,7 +4,7 @@ import { useLang } from "@/lib/lang";
 
 const TRANSLATIONS = {
   en: {
-    brand: "Render Your Plan",
+    brand: "ArCLine Architecture",
     home: "Home",
     about: "About",
     designs: "Designs",
@@ -16,7 +16,7 @@ const TRANSLATIONS = {
     cvTitle: "My CV",
   },
   ar: {
-    brand: "Render Your Plan",
+    brand: "ArCLine Architecture",
     home: "الرئيسية",
     about: "من نحن",
     designs: "التصاميم",
